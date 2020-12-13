@@ -1,4 +1,4 @@
-package others;
+package misc;
 
 /**
  * This is an interesting problem. it says find the duplicate in array assuming only one duplicate exists

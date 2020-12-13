@@ -1,4 +1,4 @@
-package others;
+package misc;
 
 public class MajorityElement {
 

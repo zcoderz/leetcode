@@ -2,6 +2,7 @@
 *.d
 
 # Compiled Object files
+*.class
 *.slo
 *.lo
 *.o
@@ -21,6 +22,7 @@
 *.smod
 
 # Compiled Static libraries
+*.jar
 *.lai
 *.la
 *.a

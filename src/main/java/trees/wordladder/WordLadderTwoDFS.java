@@ -1,4 +1,4 @@
-package trees;
+package trees.wordladder;
 
 import java.util.*;
 

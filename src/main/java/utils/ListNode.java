@@ -5,6 +5,7 @@ public class ListNode {
     public int val;
     public ListNode next;
     public ListNode prior;
+    public ListNode random;
 
     public ListNode() {
     }
@@ -21,6 +22,22 @@ public class ListNode {
     public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public ListNode getRandom() {
+        return random;
+    }
+
+    public void setRandom(ListNode random) {
+        this.random = random;
     }
 
     public int getVal() {

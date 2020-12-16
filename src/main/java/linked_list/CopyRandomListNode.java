@@ -1,4 +1,4 @@
-package misc;
+package linked_list;
 
 import java.util.*;
 

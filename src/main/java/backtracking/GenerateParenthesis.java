@@ -3,6 +3,10 @@ package backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Simple problem to generate combination of valid parenthesis
+ *
+ */
 public class GenerateParenthesis {
 
     public static void main(String [] args) {
@@ -14,20 +18,33 @@ public class GenerateParenthesis {
         }
     }
 
+    /**
+     * main call that calls into recursive function
+     * @param num max number of open parenthesis
+     * @return
+     */
     public List<String> generateParenthesis(int num) {
 
         List<String> strList = new ArrayList<>();
         recurse("", num, strList,0,0);
-
         return strList;
     }
 
+    /**
+     * recuse to gather the combinations.
+     * @param str
+     * @param num
+     * @param strList
+     * @param open
+     * @param close
+     */
     public void recurse(String str, int num, List<String> strList, int open, int close) {
-        if (open ==num && close==num) {
+        if (open ==num && close==num) { //when both open and close reach the number , exit
             strList.add(str);
             return;
         }
 
+        //first recurse to open and then close.
         if (open < num )
             recurse(str+'(' , num, strList, open+1, close);
 
@@ -48,7 +65,5 @@ public class GenerateParenthesis {
         }
         return ans;
     }
-
-
 
 }

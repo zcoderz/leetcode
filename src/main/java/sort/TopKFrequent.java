@@ -2,64 +2,77 @@ package sort;
 
 import java.util.*;
 
+/**
+ * quick select is a fairly complicate implementation for an interview.
+ * perhaps choose map and priority queue if in interview.
+ *
+ * if choosing quick select , write place holder methods for partition , swap and quick select recursion
+ * for on the key calling method and time permitting go into the other methods.
+ *
+ */
 public class TopKFrequent {
 
-
-    public static void main (String [] args) {
+    public static void main(String[] args) {
         TopKFrequent top = new TopKFrequent();
-        //int [] nums = {1,2, 2, 2, 2, 3, 3, 3, 0, 1 };
-        //int [] nums = {1,2};
-        int [] nums = {3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6};
-        int [] vals = top.topKFrequent(nums , 8);
-        for (int i =0; i < vals.length; i++) {
+        int[] nums = {3, 2, 3, 1, 2, 4, 5, 5, 6, 7, 7, 8, 2, 3, 1, 1, 1, 10, 11, 5, 6, 2, 4, 7, 8, 5, 6};
+        int[] vals = top.topKFrequent(nums, 10);
+        for (int i = 0; i < vals.length; i++) {
             System.out.println(vals[i]);
         }
     }
 
+    Map<Integer, Integer> numCount = new HashMap<>();
+
+    /**
+     * clever method to leverage quick select for top K
+     * @param nums
+     * @param k
+     * @return
+     */
     public int[] topKFrequent(int[] nums, int k) {
-        Map<Integer, Integer> numCount = new HashMap<>();
 
-        for (int i =0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             int val = numCount.getOrDefault(nums[i], 0);
-            numCount.put(nums[i], val+ 1);
+            numCount.put(nums[i], val + 1);
         }
 
-        int [] counts = new int [nums.length];
-        Map<Integer, List<Integer>> countToNum = new HashMap<>();
+        Set<Integer> dNums = numCount.keySet();
+
+        //get the distinct numbers and sort based on them while using count in map
+        int[] distinct = new int[dNums.size()];
         int i = 0;
-        for(Map.Entry<Integer, Integer> mapE : numCount.entrySet()) {
-            List<Integer> lNums =  countToNum.computeIfAbsent(mapE.getValue(), (l) -> new ArrayList<>());
-            lNums.add(mapE.getKey());
-            counts[i++] = mapE.getValue();
+        for (Integer iNum : dNums) {
+            distinct[i++] = iNum;
         }
 
-        quickSelect(counts, 0, i-1, k);
-        int [] ret = new int[k];
+        //the parameter for K is tricky. you basically are looking for the highest K values
+        //therefore when you find the item that goes in N-K (-1 for adjusting oth index), that's the stop point
+        //for the quick selection
+        quickSelect(distinct, 0, distinct.length - 1, distinct.length-k-1);
 
-        Set<Integer> countProcessed = new HashSet<>();
-        int left =0;
-        int right = i-1;
-        while (left < k) {
-            int count = counts[right];
-            if (!countProcessed.contains(count)) {
-                countProcessed.add(count);
-                List<Integer> lNums = countToNum.get(counts[right]);
-                for (Integer n : lNums) {
-                    ret[left++] = n; right--;
-                }
-            }
-        }
-
-        return ret;
+        //copy starting from the N-K index
+        return Arrays.copyOfRange(distinct, distinct.length - k, distinct.length);
     }
 
-    void quickSelect(int [] arr, int low, int high, int k) {
+    /**
+     * regular QS recursion.
+     * The comparison is however based on values retrieved from key to count map
+     * this is a clever trick as it simplifies code a bunch
+     *
+     * @param arr
+     * @param low
+     * @param high
+     * @param k
+     */
+    void quickSelect(int[] arr, int low, int high, int k) {
         if (low >= high) return;
 
         int mid = (low + high) / 2;
-        int midV = arr[mid];
-        int lowV = arr[low];
-        int highV = arr[high];
+        //get counts from map
+        //use the median value from left, mid, right
+        int midV = numCount.get(arr[mid]);
+        int lowV = numCount.get(arr[low]);
+        int highV = numCount.get(arr[high]);
 
         int pivot = mid;
         if (lowV > midV && lowV < highV) {
@@ -68,32 +81,45 @@ public class TopKFrequent {
             pivot = high;
         }
 
-        swap(arr, low, pivot);
-
-        int index = partition(arr, low, high);
+        int index = partition(arr, low, high, pivot);
+        //when index is reached, exit!
         if (index == k) return;
         else if (index > k) {
-            quickSelect(arr, low, index-1, k);
+            quickSelect(arr, low, index - 1, k);
         } else {
-            quickSelect(arr, index+1, high, k);
+            quickSelect(arr, index + 1, high, k);
         }
-
     }
 
-    int partition(int [] arr, int low, int high) {
-       int pIndex = low;
-       int pivot = arr[low++];
-       while (true) {
-           while (low <= high && arr[low] < pivot ) low++;
-           while (low <= high && arr[high] > pivot) high--;
-           if (low >= high) break;
-           swap(arr, low++, high--);
-       }
-       swap(arr, high, pIndex);
-       return high;
+    /**
+     * the loops in QS partition are tricky! need to practice them a bunch
+     * @param arr
+     * @param low
+     * @param high
+     * @param pivot
+     * @return
+     */
+    int partition(int[] arr, int low, int high, int pivot) {
+        swap(arr, low, pivot);
+        int pIndex = low;
+        //get pivot from count map
+        int pivotV = numCount.get(arr[low++]);
+        //loop continuous
+        while (true) {
+            //check bounds before accessing array
+            while (low <= high && numCount.get(arr[low]) < pivotV) low++;
+            //check bounds before accessing array
+            while (low <= high && numCount.get(arr[high]) > pivotV) high--;
+            //break if off bound
+            if (low >= high) break;
+            swap(arr, low++, high--);
+        }
+        //high is at right index
+        swap(arr, high, pIndex);
+        return high;
     }
 
-    void swap(int [] arr, int a, int b) {
+    void swap(int[] arr, int a, int b) {
         int tmp = arr[b];
         arr[b] = arr[a];
         arr[a] = tmp;

@@ -1,7 +1,5 @@
 package utils;
 
-import dynamic.CanJump;
-
 public  class Pair<U, V>
 {
     public final U first;		// first field of a Pair

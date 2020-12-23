@@ -3,6 +3,9 @@ package dynamic;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+/**
+ * question asks for min number of coins needed to reach the desired amount
+ */
 public class CoinChange {
 
     public static void main(String [] args) {

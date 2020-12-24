@@ -84,8 +84,10 @@ public class Skyline {
             boolean isStart = h.isStart;
             //map.merge simplifies code.
             if (isStart) {
+                //if height already exists add 1 to it, otherwise add a new height of 1
                 priorityQueue.merge(h.height, 1, Integer::sum);
             } else {
+                //decrement height by 1, if the count reaches 0, remove it.
                 priorityQueue.merge(h.height, 1, (prev, one) -> {
                     int n = prev - one;
                     if (n ==0) return null;

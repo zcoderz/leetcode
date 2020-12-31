@@ -3,9 +3,12 @@ package utils;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public  class TrieNode {
-    private Map<Character, TrieNode> nodeMap = new HashMap<>();
+    //keeping the child chars in a tree map so that the child nodes
+    //can be retrieved in a sorted order. helps with some questions.
+    private Map<Character, TrieNode> nodeMap = new TreeMap<>();
     private String word = null;
 
     boolean containsChar(final Character character) {
@@ -42,6 +45,9 @@ public  class TrieNode {
         return nodeMap.get(ch);
     }
 
+    public Map<Character, TrieNode> getAllChildNodes() {
+        return nodeMap;
+    }
     public void buildTrie(Object [] words) {
         for (Object word : words) {
             buildTrie((String) word);

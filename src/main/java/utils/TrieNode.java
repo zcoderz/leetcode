@@ -89,14 +89,11 @@ public  class TrieNode {
     }
 
     private boolean search(int index, String word, boolean prefixOnly) {
-
-        if (index == word.length()-1 ) {
-            if (nodeMap.containsKey(word.charAt(index))) {
-                if(prefixOnly) {return true;}
-                else {return this.word != null;}
-            } else {
-                return false;
-            }
+        if(prefixOnly && index == word.length()-1 ) {
+            return nodeMap.containsKey(word.charAt(index));
+        }
+        if (index == word.length()) {
+            return this.word != null;
         }
         TrieNode node = nodeMap.get(word.charAt(index));
         if (node == null) {

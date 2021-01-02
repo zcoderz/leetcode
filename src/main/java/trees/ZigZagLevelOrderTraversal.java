@@ -1,15 +1,10 @@
 package trees;
 
+import utils.TreeNode;
+
 import java.util.*;
 
 public class ZigZagLevelOrderTraversal {
-
-    public static class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode(int x) { val = x; }
-    };
 
     public static enum Direction {
         GO_LEFT, GO_RIGHT

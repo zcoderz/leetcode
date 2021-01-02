@@ -1,12 +1,8 @@
 package trees;
-public class LowestCommonAncestor {
-    public class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode(int x) { val = x; }
-    }
 
+import utils.TreeNode;
+
+public class LowestCommonAncestor {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) {
             return null;

@@ -1,5 +1,7 @@
 package TreesAndGraph;
 
+import utils.Pair;
+
 import java.util.*;
 
 public class MostStonesRemoved {
@@ -11,24 +13,6 @@ public class MostStonesRemoved {
                 //{{0,0},{0,1},{1,0},{1,2},{2,1},{2,2}};
         mostStonesRemoved.removeStones(stones);
 
-    }
-
-    class Pair<T, U> {
-        T fst;
-        U snd;
-        Pair(T a, U b) {
-            this.fst = a;
-            this.snd = b;
-        }
-
-        public int hashCode() {
-            return fst.hashCode() + 7 * snd.hashCode();
-        }
-
-        public boolean equals(Object pP) {
-            Pair p = (Pair) pP;
-            return (p.snd == this.snd) && (p.fst == fst);
-        }
     }
 
     Map<Integer, List<Integer>> xCordMap = new HashMap<>();
@@ -64,22 +48,14 @@ public class MostStonesRemoved {
     }
 
     Integer process(Pair<Integer, Integer> p, Set<Pair<Integer, Integer>> visting) {
-        List<Integer> yCords =  xCordMap.get(p.fst);
-        List<Integer> xCords =  yCordMap.get(p.snd);
+        List<Integer> yCords =  xCordMap.get(p.first);
+        List<Integer> xCords =  yCordMap.get(p.second);
         int maxD = 0;
-//        if (visting.contains(p)) {
-//            return 0;
-//        }
-//        visting.add(p);
-        // if (pointDepth.containsKey(p)) {
-        //     return pointDepth.get(p);
-        // }
-
         for (Integer yCord : yCords) {
-            if (yCord.equals(p.snd)) {
+            if (yCord.equals(p.second)) {
                 continue;
             }
-            Pair pTmp = new Pair<>(p.fst, yCord);
+            Pair pTmp = new Pair<>(p.first, yCord);
             if (visting.contains(pTmp)) continue;
             visting.add(pTmp);
             maxD = Math.max(maxD, process(pTmp, visting));
@@ -87,10 +63,10 @@ public class MostStonesRemoved {
         }
 
         for (Integer xCord : xCords) {
-            if (xCord.equals(p.fst)) {
+            if (xCord.equals(p.first)) {
                 continue;
             }
-            Pair pTmp = new Pair<>(xCord, p.snd);
+            Pair pTmp = new Pair<>(xCord, p.second);
             if (visting.contains(pTmp)) continue;
             visting.add(pTmp);
             maxD = Math.max(maxD, process(pTmp, visting));

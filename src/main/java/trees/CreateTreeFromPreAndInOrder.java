@@ -1,15 +1,11 @@
 package trees;
 
+import utils.TreeNode;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class CreateTreeFromPreAndInOrder {
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
 
     public static void main (String [] args) {
         int [] preOrder = {3,9,20,15,7};

@@ -1,27 +1,11 @@
 package trees;
 
+import utils.Pair;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class RoomCleaner {
-
-    public class Pair<T, U> {
-        T fst;
-        U snd;
-        Pair(T a, U b) {
-            this.fst = a;
-            this.snd = b;
-        }
-
-        public int hashCode() {
-            return fst.hashCode() + 7 * snd.hashCode();
-        }
-
-        public boolean equals(Object pP) {
-            Pair p = (Pair) pP;
-            return (p.snd == this.snd) && (p.fst == fst);
-        }
-    }
 
     Set<Pair<Integer, Integer>> visited = new HashSet<>();
     int [][] moveDirections = { {0,1}, {1,0}, {0,-1}, {-1,0}};

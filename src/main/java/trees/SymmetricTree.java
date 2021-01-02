@@ -1,5 +1,7 @@
 package trees;
 
+import utils.TreeNode;
+
 /**
  * Definition for a binary tree node.
 */
@@ -28,12 +30,7 @@ class SymmetricTree {
         boolean comp = t.isSymmetric(parent);
         System.out.println(comp);
     }
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
+
 
     public boolean isSymmetric(TreeNode root) {
         return symCompare (root.left, root.right);

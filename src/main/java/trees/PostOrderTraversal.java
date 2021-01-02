@@ -1,19 +1,12 @@
 package trees;
 
+import utils.TreeNode;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
 public class PostOrderTraversal {
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     public static void main(String [] args) {
 

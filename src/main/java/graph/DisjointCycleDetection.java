@@ -1,5 +1,7 @@
 package graph;
 
+import utils.graph.Edge;
+
 public class DisjointCycleDetection {
     // Driver Method
     public static void main (String[] args)
@@ -13,16 +15,16 @@ public class DisjointCycleDetection {
         DisjointCycleDetection graph = new DisjointCycleDetection(V, E);
 
         // add edge 0-1
-        graph.edge[0].src = 0;
-        graph.edge[0].dest = 1;
+        graph.edge[0].setSrc(0);
+        graph.edge[0].setDest(1);
 
         // add edge 1-2
-        graph.edge[1].src = 1;
-        graph.edge[1].dest = 2;
+        graph.edge[1].setSrc(1);
+        graph.edge[1].setDest(2);
 
         // add edge 0-2
-        graph.edge[2].src = 0;
-        graph.edge[2].dest = 2;
+        graph.edge[2].setSrc(0);
+        graph.edge[2].setDest(2);
 
         if (graph.isCycle(graph)==1)
             System.out.println( "graph contains cycle" );
@@ -33,10 +35,6 @@ public class DisjointCycleDetection {
     int numVertices, numEdges;    // V-> no. of vertices & E->no.of edges
     Edge edge[]; // /collection of all edges
 
-    class Edge
-    {
-        int src, dest;
-    };
 
     // Creates a graph with V vertices and E edges
     DisjointCycleDetection(int numVertices, int numEdges)
@@ -81,8 +79,8 @@ public class DisjointCycleDetection {
         // there is cycle in graph.
         for (int i = 0; i < graph.numEdges; ++i)
         {
-            int x = graph.find(parent, graph.edge[i].src);
-            int y = graph.find(parent, graph.edge[i].dest);
+            int x = graph.find(parent, graph.edge[i].getSrc());
+            int y = graph.find(parent, graph.edge[i].getDest());
 
             if (x == y)
                 return 1;

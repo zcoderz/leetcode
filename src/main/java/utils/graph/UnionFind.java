@@ -4,6 +4,8 @@ import graph.DisjointSetsCycleOptimized;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UnionFind {
 
@@ -94,5 +96,31 @@ public class UnionFind {
         } else {
             return -1;
         }
+    }
+
+    public static void connectVertices(Vertex[] vertices, Edge[] edges)
+    {
+        int numVertices = vertices.length;
+        int seenVertices = 0;
+        //break when either all edges are exhausted or when all vertices have been joined
+        for (int i =0; i < edges.length && seenVertices < numVertices-1; i++) {
+            int x = find(vertices, edges[i].getSrc());
+            int y = find(vertices, edges[i].getDest());
+            //if the two vertices belong to diff parents then union them together
+            if (x != y) {
+                union(vertices, x, y);
+                seenVertices ++;
+            }
+        }
+    }
+
+    public static int numConnectedVertices(Vertex[] vertices)
+    {
+        Set<Integer> connectedComponents = new HashSet<>();
+        for (int i =0; i < vertices.length; i++) {
+            int parent = find(vertices, i);
+            connectedComponents.add(parent);
+        }
+        return connectedComponents.size();
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * the leetcode solution for this problem has a bug
- * they indicate to calculate left side view of tree , leaf nodes and reverse right side view
+ * they indicate to calculate left side view of tree without leaves, leaf nodes and reverse right side view without leaves
  * union them together to return result. but they miss the below case which has 1 missing from boundary
  *
  * the code below outputs 1 which is missing from leet code's solution

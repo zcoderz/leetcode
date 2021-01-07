@@ -109,7 +109,7 @@ public class UnionFind {
             //if the two vertices belong to diff parents then union them together
             if (x != y) {
                 union(vertices, x, y);
-                seenVertices ++;
+                seenVertices++;
             }
         }
     }
@@ -123,4 +123,23 @@ public class UnionFind {
         }
         return connectedComponents.size();
     }
+
+    public static Vertex [] constructVertices(int n) {
+        Vertex [] vertices = new Vertex[n];
+        for (int i =0; i < n; i++) {
+            Vertex v = new Vertex(i, i, 0);
+            vertices[i] = v;
+        }
+        return vertices;
+    }
+
+    public static Edge [] constructEdges(int [] [] edgesParam) {
+        Edge [] edges = new Edge[edgesParam.length];
+        for (int i =0; i < edgesParam.length; i++) {
+            Edge edge = new Edge(edgesParam[i][0], edgesParam[i][1]);
+            edges[i] = edge;
+        }
+        return edges;
+    }
+
 }

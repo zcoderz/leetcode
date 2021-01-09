@@ -103,4 +103,23 @@ public  class TrieNode {
         }
     }
 
+    public boolean searchWithDot(int index, String word) {
+        if (index == word.length()) {
+            return this.word != null;
+        }
+        if (word.charAt(index) == '.') {
+            for (TrieNode childNode : nodeMap.values()) {
+                boolean found = childNode.searchWithDot(index + 1, word);
+                if (found) return true;
+            }
+            return false;
+        } else {
+            TrieNode node = nodeMap.get(word.charAt(index));
+            if (node == null) {
+                return false;
+            } else {
+                return node.searchWithDot(index + 1, word);
+            }
+        }
+    }
 }

@@ -1,5 +1,9 @@
 package arrays;
 
+/**
+ * Given a 2D matrix matrix, find the sum of the elements inside the rectangle defined by its upper left corner (row1, col1)
+ * and lower right corner (row2, col2).
+ */
 public class MatrixSum {
 
     public static void main(String [] args) {
@@ -18,42 +22,34 @@ public class MatrixSum {
         System.out.println(sum);
     }
 
+    //precalculate sums and cache in this 2-d array
     int [][] dp;
+
+    /**
+     * very important to start indexes of cache as +1 offset of original row and col.
+     * this makes arithmetic for prior row, col offsets much simpler and less error prone.
+     *
+     * concept is that you create a matrix that has sum of values from coordinates 0,0 to the given cell
+     * then sum of the given cell is simply :
+     * cell-sum - sum (one row before row1 and col2) (below) - sum (row 2 , one col left) (left) +
+     * diagonal one below first row and col (this one gets subtracted twice) and hence need to add back
+     * @param matrix
+     */
     public MatrixSum(int[][] matrix) {
         int cols = 0;
         if (matrix.length !=0) {
             cols = matrix[0].length;
-            dp = new int[matrix.length][cols];
+            dp = new int[matrix.length+1][cols+1];
 
         }
         for (int i =0; i < matrix.length; i++) {
             for (int j =0; j < cols; j++) {
-                int priorRow = (i==0) ? 0 : dp[i-1][j];
-                int priorCol = (j==0) ? 0 : dp[i][j-1];
-                int priorDiagonal = 0;
-                if (priorCol != 0 && priorRow != 0) {
-                    priorDiagonal = dp[i-1][j-1];
-                }
-                dp[i][j]= priorRow + priorCol - priorDiagonal + matrix[i][j];
+                dp[i+1][j+1]= dp[i][j+1] + dp[i+1][j] - dp[i][j] + matrix[i][j];
             }
         }
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
-        int belowSum = 0;
-        int leftSum = 0;
-        int priorRow = row1-1;
-        int priorCol = col1-1;
-        int diagSum = 0;
-        if (priorCol >= 0 && priorRow >= 0) {
-            diagSum = dp[priorRow][priorCol];
-        }
-        if (priorRow >=0) {
-            belowSum = dp[priorRow][col2];
-        }
-        if (priorCol >=0) {
-            leftSum = dp[row2][priorCol];
-        }
-        return dp[row2][col2]-belowSum-leftSum+diagSum;
+        return dp[row2+1][col2+1]-dp[row1][col2+1]-dp[row2+1][col1]+dp[row1][col1];
     }
 }

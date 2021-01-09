@@ -1,7 +1,5 @@
 package trie;
 
-import utils.TrieNode;
-
 import java.util.*;
 
 /**
@@ -14,13 +12,13 @@ import java.util.*;
  * thereby reducing space needed for the set and map. however, we'd need an external aggregator that can build the trie
  * with top n strings and feed the top n strings to the trie responsible for returning the data
  */
-public class AutoCompletSytem {
+public class AutoCompleteSystem {
 
     public static void main(String [] args) {
 
         String [] sentences = {"for life", "for work" , "for dad", "mango is yum", "apple is good"};
         int [] times = {2, 1, 1, 1, 1};
-        AutoCompletSytem autoCompletSystem = new AutoCompletSytem(sentences, times);
+        AutoCompleteSystem autoCompletSystem = new AutoCompleteSystem(sentences, times);
         List<String> out =  autoCompletSystem.input('f');
         System.out.println(out);
         autoCompletSystem.input('#');
@@ -86,7 +84,7 @@ public class AutoCompletSytem {
         }
     }
 
-    public AutoCompletSytem(String[] sentences, int[] times) {
+    public AutoCompleteSystem(String[] sentences, int[] times) {
         node = new TrieNode();
         root = node;
         for(int i =0 ; i < sentences.length; i++) {

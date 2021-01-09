@@ -25,11 +25,11 @@ public class IsGraphBipartite {
         System.out.println(bipartite);
     }
 
-    int [] vertixColor ;
+    int [] vertexColor;
     int blue = 1;
 
     public boolean isBipartite(int[][] graph) {
-        vertixColor = new int[graph.length];
+        vertexColor = new int[graph.length];
         for (int i =0; i < graph.length; i++) {
             boolean processG = processGraph(graph, i, blue);
             if (!processG) {
@@ -54,13 +54,13 @@ public class IsGraphBipartite {
      * @return
      */
     boolean processGraph(int [][] graph, int i, int color) {
-        if (vertixColor[i] == 0) { //if the vertex is already colored than skip it
+        if (vertexColor[i] == 0) { //if the vertex is already colored than skip it
             //if vertex not already visited
-            vertixColor[i] = color;
+            vertexColor[i] = color;
             int [] childNodes = graph[i];
             for (int j : childNodes) {
                 //if a child vertex has same color as parent than the graph isnt bipartite
-                if (vertixColor[j] == color) {
+                if (vertexColor[j] == color) {
                     return false;
                 }
                 int nextColor = color == 1 ? 2: 1; //alternate colors as you traverse down

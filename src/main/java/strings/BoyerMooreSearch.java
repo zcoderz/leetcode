@@ -12,21 +12,17 @@ public class BoyerMooreSearch {
 
     boolean subStringSearch (String strToFind, String mainString) {
         int [] shifts = getShifts(strToFind);
-
         int skip ;
         for (int i = 0; i <= mainString.length() - strToFind.length(); i+=skip) {
             skip = 0;
-
             for (int m = strToFind.length()-1; m >=0; m--) {
-                //clever idea here to skip beyond one when a mismatch is found.
-                //number of characters to skip depends on where the character is in the string to be found.
-                //m - shifts[mainString.charAt(i+m) below is the essence of the ago
-                //i+m is the index in the original string where the char was found.
-                //strToFind indicates the index of last occurrence of that character if exists
-                //or -1. When -1 you want to skip as many characters as the location of the index right
-                //when not -1 you want to skip last location of the char in array from the current m index
-                //which is m - shifts[mainString.charAt(i+m)
-                //best to draw above on a white board to understand the skip
+                //idea here is to skip characters when a mismatch occurs.
+                //number of characters to skip is based on the last occurrence of that character in the string to search
+                //logic is that if a mismatch is found at an index from right , you can skip as many indexes from left
+                //in original string as the last index of that character that was mis matched. if that character doesn't
+                //exist at all in the string to search then you can skip the entire length from right that you have traversed
+                //its easier to understand the algo by watching a video such as :
+                //https://www.coursera.org/lecture/algorithms-part2/boyer-moore-CYxOT
                 if (mainString.charAt(i+m) != strToFind.charAt(m)) {
                     skip = Math.max(1, m - shifts[mainString.charAt(i+m)]);
                     break;

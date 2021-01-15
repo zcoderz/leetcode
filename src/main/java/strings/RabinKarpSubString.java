@@ -56,7 +56,7 @@ public class RabinKarpSubString {
     }
 
     /**
-     * smple algo to create a hash for the char array
+     * simple algo to create a hash for the char array
      * @param charArr
      * @param len
      * @return

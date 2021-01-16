@@ -1,4 +1,4 @@
-package google;
+package google.medium;
 
 import strings.KnuthMorrisPratSubstringSearch;
 

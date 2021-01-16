@@ -1,4 +1,4 @@
-package face_book;
+package face_book.medium;
 
 import java.util.*;
 

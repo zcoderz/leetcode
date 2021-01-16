@@ -1,4 +1,4 @@
-package google;
+package google.medium;
 
 /**
  * check LongestAbsoluteFilePath for a simple approach to the same problem.

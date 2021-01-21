@@ -46,11 +46,11 @@ public class BullsAndCows {
     public static void main(String [] args) {
         String secret = "1123", guess = "0111";
         BullsAndCows bullsAndCows = new BullsAndCows();
-        String out = bullsAndCows.getHint(secret, guess);
+        String out = bullsAndCows.getHintOptimized(secret, guess);
         System.out.println(out);
     }
 
-    public String getHint(String secret, String guess) {
+    public String getHintTwoPass(String secret, String guess) {
         Map<Integer, Integer> intToCountMap = new HashMap<>();
 
         int match = 0;
@@ -66,12 +66,6 @@ public class BullsAndCows {
             }
         }
 
-        for (; i < secret.length(); i++) {
-            int val = secret.charAt(i) - '0';
-            int ct = intToCountMap.getOrDefault(val, 0);
-            ct++;
-            intToCountMap.put(val, ct);
-        }
 
         int possibles = 0;
         for (i =0; i < guess.length(); i++) {
@@ -90,5 +84,60 @@ public class BullsAndCows {
             }
         }
         return  match + "A" +  possibles + "B";
+    }
+
+    public String getHint(String secret, String guess) {
+        Map<Integer, Integer> intToCountMap = new HashMap<>();
+        int match = 0;
+        int possibles = 0;
+        for (int i = 0; i < guess.length() && i < secret.length(); i++) {
+            if (guess.charAt(i) == secret.charAt(i)) {
+                match++;
+            } else {
+                int valSecret = secret.charAt(i) - '0';
+                int valGuess = guess.charAt(i) - '0';
+                if (intToCountMap.getOrDefault(valSecret, 0) < 0) {
+                    possibles++;
+                }
+                if (intToCountMap.getOrDefault(valGuess, 0) > 0) {
+                    possibles++;
+                }
+                intToCountMap.put(valSecret, intToCountMap.getOrDefault(valSecret, 0) + 1);
+                intToCountMap.put(valGuess, intToCountMap.getOrDefault(valGuess, 0) - 1);
+            }
+        }
+        return  match + "A" +  possibles + "B";
+    }
+
+    /**
+     * Accessing integers by their indices in an array is much faster than using a hash map
+     * the below code runs leetcode test cases in 1 ms whereas the one above runs in 6ms.
+     * @param secret
+     * @param guess
+     * @return
+     */
+    public String getHintOptimized(String secret, String guess) {
+        int [] cts = new int[10];
+        int match = 0;
+        int possibles = 0;
+        for (int i = 0; i < guess.length() && i < secret.length(); i++) {
+            if (guess.charAt(i) == secret.charAt(i)) {
+                match++;
+            } else {
+                int valSecret = secret.charAt(i) - '0';
+                int valGuess = guess.charAt(i) - '0';
+                if (cts[valSecret] < 0) {
+                    possibles++;
+                }
+                if (cts[valGuess] > 0) {
+                    possibles++;
+                }
+                cts[valGuess]--;
+                cts[valSecret]++;
+            }
+        }
+        StringBuilder builder = new StringBuilder();
+        builder.append(match).append('A').append(possibles).append('B');
+        return builder.toString();
     }
 }

@@ -2,8 +2,9 @@ package utils.graph.generic;
 
 
 /**
- * Source of this class is :
- *
+ * Got the base code from github and modified a bit
+ * code is similar to utils.graph.UnionFind however is generic and thus can be used for data type such as
+ * strings
  *
  * @param <T>
  */
@@ -13,7 +14,7 @@ public class UnionFindNode<T> {
     /* This structure can contain heterogeneous template types
      *  since no operation is performed between the nodes values themselves.
      */
-    private UnionFindNode parent;
+    private UnionFindNode<T> parent;
     private int rank;
 
     public UnionFindNode(T value){
@@ -31,7 +32,7 @@ public class UnionFindNode<T> {
         // Two nodes a and b are equal iif a.value.equals(b.value)
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UnionFindNode that = (UnionFindNode) o;
+        UnionFindNode<T> that = (UnionFindNode<T>) o;
         return value.equals(that.value);
     }
 
@@ -45,11 +46,11 @@ public class UnionFindNode<T> {
      * Finds the equivalence class of this node.
      * For all nodes a and b of the same tree, find(a) = find(b)
      *
-     * collapse parents so next find call is faster
+     * collapse parents, so next find call is faster
      * @return the root node which uniquely identify this tree.
      */
-    public UnionFindNode find() {
-        UnionFindNode node = this;
+    public UnionFindNode<T> find() {
+        UnionFindNode<T> node = this;
         if (node != parent) {
             node.parent = node.parent.find();
         }
@@ -65,7 +66,7 @@ public class UnionFindNode<T> {
      * So now find(A) = find(B) = 4 ≠ find(C) = D
      * @param other the subtree you want to join to this tree.
      */
-    public void join(UnionFindNode other){
+    public void join(UnionFindNode<T> other) {
         if (other == null) throw new NullPointerException();
         other.parent = this;
     }
@@ -77,13 +78,13 @@ public class UnionFindNode<T> {
      * This is not the same as join, c.f. join documentation.
      * @param other the tree you want to join to this tree.
      */
-    public void union(UnionFindNode other){
-        UnionFindNode p = this.find();
-        UnionFindNode q = other.find();
+    public void union(UnionFindNode<T> other){
+        UnionFindNode<T> p = this.find();
+        UnionFindNode<T> q = other.find();
         if (p.equals(q)) return;
         if (p.rank < q.rank){
             // Swaps like p,q = q,p would
-            UnionFindNode temp = p;
+            UnionFindNode<T> temp = p;
             p = q;
             q = temp;
         }

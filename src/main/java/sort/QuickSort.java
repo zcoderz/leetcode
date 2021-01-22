@@ -22,20 +22,15 @@ public class QuickSort {
         if (lo >= hi) {
             return;
         }
-
-
         int j = partition(arr, lo,  hi);
-
         quickSort(arr, lo, j-1);
         quickSort(arr, j+1, hi);
-
     }
 
     int partition(int []arr,  int lo, int hi) {
         int pivot = arr[lo];//better to take pivot as median of hi, mid , lo
         int i = lo+1;
         int j = hi;
-
         while (j > i) {
             while (arr[j] > pivot) j--;
             while (arr[i] < pivot) i++;

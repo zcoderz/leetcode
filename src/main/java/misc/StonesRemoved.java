@@ -5,8 +5,8 @@ import java.util.Set;
 
 public class StonesRemoved {
 
-    public static void main(String [] args) {
-        int[][]stones = {{0,1},{1,0}};
+    public static void main(String[] args) {
+        int[][] stones = {{0, 1}, {1, 0}};
         StonesRemoved removed = new StonesRemoved();
         int j = removed.removeStones(stones);
         System.out.println(j);
@@ -14,24 +14,24 @@ public class StonesRemoved {
 
     public int removeStones(int[][] stones) {
         DJS djs = new DJS(10000);
-        for (int i = 0 ; i < stones.length; i++) {
+        for (int i = 0; i < stones.length; i++) {
             djs.union(stones[i][0], stones[i][1]);
         }
         Set<Integer> hashStones = new HashSet<>();
-        for (int i=0; i < stones.length; i++) {
+        for (int i = 0; i < stones.length; i++) {
             hashStones.add(djs.find(stones[i][0]));
         }
-        return stones.length-hashStones.size();
+        return stones.length - hashStones.size();
     }
 
     public class DJS {
-        int [] parent;
-        int [] rank;
+        int[] parent;
+        int[] rank;
 
-        public DJS (int n) {
-            parent = new int [n];
-            rank = new int [n];
-            for (int i =0; i < n; i++) {
+        public DJS(int n) {
+            parent = new int[n];
+            rank = new int[n];
+            for (int i = 0; i < n; i++) {
                 parent[i] = i;
                 rank[i] = 0;
             }
@@ -44,7 +44,7 @@ public class StonesRemoved {
             return x;
         }
 
-        boolean union (int x, int y) {
+        boolean union(int x, int y) {
             int parentx = find(x);
             int parenty = find(y);
 

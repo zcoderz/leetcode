@@ -7,18 +7,19 @@ import java.util.Map;
 
 public class CreateTreeFromPreAndInOrder {
 
-    public static void main (String [] args) {
-        int [] preOrder = {3,9,20,15,7};
-        int [] inOrder = {9,3,15,20,7};
+    Map<Integer, Integer> inOrderIndexMap = new HashMap<>();
+    int rootIndex = 0;
+
+    public static void main(String[] args) {
+        int[] preOrder = {3, 9, 20, 15, 7};
+        int[] inOrder = {9, 3, 15, 20, 7};
 
         CreateTreeFromPreAndInOrder createTreeFromPreAndInOrder = new CreateTreeFromPreAndInOrder();
 
-        TreeNode node =  createTreeFromPreAndInOrder.buildTree(preOrder, inOrder);
+        TreeNode node = createTreeFromPreAndInOrder.buildTree(preOrder, inOrder);
         int j;
     }
-    Map<Integer, Integer> inOrderIndexMap = new HashMap<>();
 
-    int rootIndex = 0;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         for (int i = 0; i < inorder.length; i++) {
             inOrderIndexMap.put(inorder[i], i);
@@ -32,10 +33,10 @@ public class CreateTreeFromPreAndInOrder {
         }
 
         int val = preorder[rootIndex++];
-        TreeNode root = new TreeNode (val);
+        TreeNode root = new TreeNode(val);
         int index = inOrderIndexMap.get(val);
-        root.left = recurseTree(left, index-1, preorder, inorder);
-        root.right = recurseTree(index+1, right, preorder, inorder);
+        root.left = recurseTree(left, index - 1, preorder, inorder);
+        root.right = recurseTree(index + 1, right, preorder, inorder);
 
         return root;
     }

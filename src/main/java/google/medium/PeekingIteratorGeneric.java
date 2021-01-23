@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 /**
  * Same as PeekingIterator but implemented to solve generically.
+ *
  * @param <T>
  */
 public class PeekingIteratorGeneric<T> implements Iterator<T> {

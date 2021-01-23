@@ -5,22 +5,22 @@ import java.util.List;
 
 public class CountSmallerToSelf {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         CountSmallerToSelf ms = new CountSmallerToSelf();
-        int [] nums = {10, 1, 2, 5, 7, 3, 4 , 44, 99};
+        int[] nums = {10, 1, 2, 5, 7, 3, 4, 44, 99};
         ms.mergeSort(nums);
     }
 
     public List<Integer> mergeSort(int[] nums) {
-        int [][]vals = new int [nums.length][2];
+        int[][] vals = new int[nums.length][2];
         for (int i = 0; i < nums.length; i++) {
-            vals[i][0]= nums[i];
+            vals[i][0] = nums[i];
             vals[i][1] = i;
         }
 
-        int [] count = new int[nums.length];
-        int [][] aux = new int[nums.length][2];
-        recurseMerge(0, nums.length-1, vals, aux, count);
+        int[] count = new int[nums.length];
+        int[][] aux = new int[nums.length][2];
+        recurseMerge(0, nums.length - 1, vals, aux, count);
 
         List<Integer> arr = new ArrayList<>();
         for (int i = 0; i < count.length; i++) {
@@ -30,26 +30,26 @@ public class CountSmallerToSelf {
         return arr;
     }
 
-    void recurseMerge(int low, int high, int [][] vals, int [][] aux, int[] count) {
+    void recurseMerge(int low, int high, int[][] vals, int[][] aux, int[] count) {
         if (low >= high) {
             return;
         }
 
         int mid = (low + high) / 2;
-        recurseMerge(mid+1 , high, vals, aux, count);
-        recurseMerge(low , mid, vals, aux, count);
+        recurseMerge(mid + 1, high, vals, aux, count);
+        recurseMerge(low, mid, vals, aux, count);
 
         //if (num[mid] > num[mid+1]) return;
         merge(low, mid, high, vals, aux, count);
     }
 
-    void merge(int low, int mid, int high, int [][] num, int [][] aux, int [] count) {
+    void merge(int low, int mid, int high, int[][] num, int[][] aux, int[] count) {
         for (int i = low; i <= high; i++) {
             aux[i] = num[i];
         }
 
         int i = low;
-        int j = mid+1;
+        int j = mid + 1;
         int k = low;
 
         while (k <= high) {
@@ -57,13 +57,13 @@ public class CountSmallerToSelf {
             if (i > mid) {
                 num[k++] = aux[j++];
             } else if (j > high) {
-                count[aux[i][1]] += j - (mid+1);
+                count[aux[i][1]] += j - (mid + 1);
                 num[k++] = aux[i++];
 
             } else if (aux[i][0] > aux[j][0]) {
                 num[k++] = aux[j++];
             } else {
-                count[aux[i][1]] += j - (mid+1);
+                count[aux[i][1]] += j - (mid + 1);
                 num[k++] = aux[i++];
             }
 

@@ -4,7 +4,7 @@ public class Celebrity {
 
     public int findCelebrity(int n) {
         int celeberity = 0;
-        for (int i =0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             if (knows(celeberity, i)) {
                 celeberity = i;
             }
@@ -26,7 +26,7 @@ public class Celebrity {
         return true;
     }
 
-    private boolean knows (int a, int b) {
+    private boolean knows(int a, int b) {
         return true;
     }
 }

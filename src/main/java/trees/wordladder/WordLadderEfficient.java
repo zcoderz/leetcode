@@ -5,12 +5,12 @@ import utils.Pair;
 import java.util.*;
 
 /**
- * A very interesting approach the word ladder problem.
- * Work at the problem from both bottom up and top down via two directional BFS
+ * A very interesting approach the word ladder problem. Work at the problem from both bottom up and top down via two
+ * directional BFS
  */
 public class WordLadderEfficient {
 
-    public static void main (String [] args) {
+    public static void main(String[] args) {
         String strBeginWord = "hot";
         String strEndWord = "dog";
         List<String> strWords = new ArrayList<>();
@@ -37,10 +37,10 @@ public class WordLadderEfficient {
     }
 
     /**
-     * Do a BFS based search - i,e start from both ends.
-     * searching from both the bottom and top will help converge quicker as you will
-     * cut down the unnecessary search paths since the two searches meet some where in the middle
+     * Do a BFS based search - i,e start from both ends. searching from both the bottom and top will help converge
+     * quicker as you will cut down the unnecessary search paths since the two searches meet some where in the middle
      * thus reducing space and time complexity
+     *
      * @param beginWord
      * @param endWord
      * @param wordList
@@ -50,8 +50,8 @@ public class WordLadderEfficient {
         Map<String, List<String>> wordMappings = new HashMap<>();
         boolean matchEnd = false;
         for (String word : wordList) {
-            for (int i =0; i < word.length(); i++) {
-                String modWord = word.substring(0, i) + "*" + word.substring(i+1);
+            for (int i = 0; i < word.length(); i++) {
+                String modWord = word.substring(0, i) + "*" + word.substring(i + 1);
                 List<String> words = wordMappings.computeIfAbsent(modWord, (l) -> new ArrayList<>());
                 words.add(word);
             }
@@ -78,8 +78,8 @@ public class WordLadderEfficient {
         while (!leftQueue.isEmpty() || !rightQueue.isEmpty()) {
             Pair<String, Integer> lVal = leftQueue.poll();
             if (lVal != null) {
-                for (int i =0; i < lVal.first.length(); i++) {
-                    String modWord = lVal.first.substring(0, i) + "*" + lVal.first.substring(i+1);
+                for (int i = 0; i < lVal.first.length(); i++) {
+                    String modWord = lVal.first.substring(0, i) + "*" + lVal.first.substring(i + 1);
                     List<String> mappings = wordMappings.get(modWord);
                     if (mappings == null) continue;
                     for (String word : mappings) {
@@ -98,7 +98,7 @@ public class WordLadderEfficient {
 
             Pair<String, Integer> rVal = rightQueue.poll();
             if (rVal != null) {
-                for (int i =0; i < rVal.first.length(); i++) {
+                for (int i = 0; i < rVal.first.length(); i++) {
                     String modWord = rVal.first.substring(0, i) + "*" + rVal.first.substring(i + 1);
                     List<String> mappings = wordMappings.get(modWord);
                     if (mappings == null) continue;

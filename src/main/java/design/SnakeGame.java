@@ -9,36 +9,37 @@ import java.util.LinkedList;
  */
 public class SnakeGame {
 
-    public static void main(String [] args) {
-        int [][] food = {{0,1}};
-        SnakeGame snakeGame = new SnakeGame(2,2, food);
-        snakeGame.move("R");
-        snakeGame.move("D");
-    }
-
     int cols;
     int rows;
-    int [][] food ;
+    int[][] food;
     int foodIndex = 0;
-
     //direction - 'U' = Up, 'L' = Left, 'R' = Right, 'D' = Down
-    int [] rowMoves = {-1,0,0,1};
-    int [] colMoves = {0,-1,1,0};
-
+    int[] rowMoves = {-1, 0, 0, 1};
+    int[] colMoves = {0, -1, 1, 0};
     LinkedList<Pair<Integer, Integer>> snake = new LinkedList<>();
 
     public SnakeGame(int width, int height, int[][] food) {
         cols = width;
         rows = height;
         this.food = food;
-        Pair<Integer, Integer> start = new Pair<>(0,0);
+        Pair<Integer, Integer> start = new Pair<>(0, 0);
         snake.add(start);
     }
 
-    /** Moves the snake.
-     @param direction - 'U' = Up, 'L' = Left, 'R' = Right, 'D' = Down
-     @return The game's score after the move. Return -1 if game over.
-     Game over when snake crosses the screen boundary or bites its body. */
+    public static void main(String[] args) {
+        int[][] food = {{0, 1}};
+        SnakeGame snakeGame = new SnakeGame(2, 2, food);
+        snakeGame.move("R");
+        snakeGame.move("D");
+    }
+
+    /**
+     * Moves the snake.
+     *
+     * @param direction - 'U' = Up, 'L' = Left, 'R' = Right, 'D' = Down
+     * @return The game's score after the move. Return -1 if game over. Game over when snake crosses the screen boundary
+     * or bites its body.
+     */
     public int move(String direction) {
         int dir = 0;
         switch (direction) {
@@ -77,6 +78,7 @@ public class SnakeGame {
 
     /**
      * check whether the snake found the food
+     *
      * @param newR
      * @param newC
      * @return
@@ -85,7 +87,7 @@ public class SnakeGame {
         //if already at end dont check as it will throw an index out of bound exception
         if (foodIndex >= food.length) return false;
 
-        int [] foodL = food[foodIndex];
+        int[] foodL = food[foodIndex];
         if (newR == foodL[0] && newC == foodL[1]) {
             foodIndex++;
             return true;
@@ -95,6 +97,7 @@ public class SnakeGame {
 
     /**
      * check that the snake is hitting its tail as it moves forward
+     *
      * @param row
      * @param col
      * @return

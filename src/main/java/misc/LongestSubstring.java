@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class LongestSubstring {
 
-    public static void main(String []args) {
+    public static void main(String[] args) {
         int val = lengthOfLongestSubstring("dvdf");
     }
 

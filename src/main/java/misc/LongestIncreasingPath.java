@@ -12,28 +12,29 @@ public class LongestIncreasingPath {
 
     int[][] maxDepthPerNode;
 
-    Set<Integer> visting = new HashSet<> ();
+    Set<Integer> visting = new HashSet<>();
 
-    public static void main(String [] args) {
-        int [][]matrix = {{1}};//{{7,7,5},{2,4,6},{8,2,0}};//{{9,9,4},{6,6,8},{2,1,1}};
-        LongestIncreasingPath l= new LongestIncreasingPath();
+    public static void main(String[] args) {
+        int[][] matrix = {{1}};//{{7,7,5},{2,4,6},{8,2,0}};//{{9,9,4},{6,6,8},{2,1,1}};
+        LongestIncreasingPath l = new LongestIncreasingPath();
         l.longestIncreasingPath(matrix);
     }
+
     public int longestIncreasingPath(int[][] matrix) {
         this.matrix = matrix;
         this.rows = matrix.length;
-        if (this.rows ==0) {
+        if (this.rows == 0) {
             return 0;
         }
         this.columns = matrix[0].length;
-        maxDepthPerNode = new int [this.rows][this.columns];
-        for (int i =0; i < rows; i++) {
+        maxDepthPerNode = new int[this.rows][this.columns];
+        for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                maxDepthPerNode[i] [j] =-1;
+                maxDepthPerNode[i][j] = -1;
             }
         }
 
-        for (int i =0; i < rows; i++) {
+        for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 visting.clear();
                 dfs(i, j, 1, -1);
@@ -50,7 +51,7 @@ public class LongestIncreasingPath {
 
         int val = matrix[i][j];
 
-        if(visting.contains(val)) {
+        if (visting.contains(val)) {
             return -1;
         }
 
@@ -64,11 +65,11 @@ public class LongestIncreasingPath {
             maxd = Math.max(maxd, dfs(i - 1, j, depth + 1, val));
             maxd = Math.max(maxd, dfs(i, j + 1, depth + 1, val));
             maxd = Math.max(maxd, dfs(i, j - 1, depth + 1, val));
-            maxDepthPerNode[i][j] = Math.max(maxd+1, 1);
-            depth = maxd + depth -1;
+            maxDepthPerNode[i][j] = Math.max(maxd + 1, 1);
+            depth = maxd + depth - 1;
             visting.remove(val);
         } else {
-            depth = depth + maxDepthPerNode[i][j] -1;
+            depth = depth + maxDepthPerNode[i][j] - 1;
         }
 
         if (depth > maxCurrentPath) {

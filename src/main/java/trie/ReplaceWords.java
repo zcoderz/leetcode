@@ -11,10 +11,10 @@ public class ReplaceWords {
         trieRoot.buildTrie(dictionary.toArray());
         StringBuilder strToReturn = new StringBuilder();
 
-        for(String strWord : sentence.split(" ")) {
+        for (String strWord : sentence.split(" ")) {
             TrieNode node = trieRoot;
             boolean isWord = false;
-            for (int i =0 ; i < strWord.length(); i++) {
+            for (int i = 0; i < strWord.length(); i++) {
                 Character ch = strWord.charAt(i);
                 node = node.getNode(ch);
                 if (node != null && node.getWord() != null) {

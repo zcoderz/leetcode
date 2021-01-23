@@ -9,7 +9,11 @@ import java.util.*;
 //more efficient
 public class WordLadder {
 
-    public static void main (String [] args) {
+    Map<String, List<String>> mapToWords = new HashMap<>();
+    int minLength = Integer.MAX_VALUE;
+    Set<String> visitedWords = new HashSet<>();
+
+    public static void main(String[] args) {
         String strBeginWord = "hit";
         String strEndWord = "cog";
         List<String> strWords = new ArrayList<>();
@@ -26,16 +30,13 @@ public class WordLadder {
         System.out.println("Ladder length = " + len);
     }
 
-    Map<String, List<String>> mapToWords = new HashMap<>();
-    int minLength = Integer.MAX_VALUE;
-    Set<String> visitedWords = new HashSet<>();
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         //for the list of possible words update the mapping from
         //a candidate string to the given word
-        for (String word: wordList) {
-            for (int i =0; i < word.length(); i++) {
+        for (String word : wordList) {
+            for (int i = 0; i < word.length(); i++) {
                 //* indicates as a substitution that can be used to move forward from prior step
-                String modWord = word.substring(0, i) + "*" + word.substring(i+1) ;
+                String modWord = word.substring(0, i) + "*" + word.substring(i + 1);
                 List<String> list = mapToWords.computeIfAbsent(modWord, (l) -> new ArrayList<>());
                 list.add(word);
             }
@@ -49,18 +50,19 @@ public class WordLadder {
     }
 
     /**
-     * move from start towards the end by finding mappings at each step forward
-     * when target word is reached update depth
+     * move from start towards the end by finding mappings at each step forward when target word is reached update
+     * depth
+     *
      * @param currWord
      * @param targetWord
      * @param depth
      */
     void processWords(String currWord, String targetWord, int depth) {
-        for (int i =0; i < currWord.length(); i++) {
+        for (int i = 0; i < currWord.length(); i++) {
             String modWord = currWord.substring(0, i) + "*" + currWord.substring(i + 1);
             List<String> list = mapToWords.get(modWord);
-            if (list ==null) continue;
-            for (String word: list) {
+            if (list == null) continue;
+            for (String word : list) {
                 if (visitedWords.contains(word)) {
                     continue;
                 } else {
@@ -74,7 +76,7 @@ public class WordLadder {
                         return;
                     }
                 } else {
-                    processWords(word, targetWord, depth+1);
+                    processWords(word, targetWord, depth + 1);
                     visitedWords.remove(word);
                 }
             }

@@ -9,31 +9,27 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 1110. Delete Nodes And Return Forest
- * Given the root of a binary tree, each node in the tree has a distinct value.
- *
+ * 1110. Delete Nodes And Return Forest Given the root of a binary tree, each node in the tree has a distinct value.
+ * <p>
  * After deleting all nodes with a value in to_delete, we are left with a forest (a disjoint union of trees).
- *
+ * <p>
  * Return the roots of the trees in the remaining forest.  You may return the result in any order.
- *
+ * <p>
  * Example 1:
- *
- *
- *
- * Input: root = [1,2,3,4,5,6,7], to_delete = [3,5]
- * Output: [[1,2,null,4],[6],[7]]
- *
+ * <p>
+ * <p>
+ * <p>
+ * Input: root = [1,2,3,4,5,6,7], to_delete = [3,5] Output: [[1,2,null,4],[6],[7]]
  */
 public class DeleteNodesAndReturnForest {
 
     List<TreeNode> roots = new ArrayList<>();
 
     /**
-     * track the numbers to be deleted in a set
-     * this is simple. traverse tree before recursion stack returns delete the left and or right child if they are
-     * in the set to be deleted.
-     * to ensure that the set of items that are to be deleted get trimmed after every delete, remove the deleted
-     * item from the set
+     * track the numbers to be deleted in a set this is simple. traverse tree before recursion stack returns delete the
+     * left and or right child if they are in the set to be deleted. to ensure that the set of items that are to be
+     * deleted get trimmed after every delete, remove the deleted item from the set
+     *
      * @param root
      * @param to_delete
      * @return
@@ -60,7 +56,7 @@ public class DeleteNodesAndReturnForest {
     }
 
     void traverseTree(TreeNode node, Set<Integer> toDelete) {
-        if(node == null) {
+        if (node == null) {
             return;
         }
 

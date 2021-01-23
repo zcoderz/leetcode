@@ -6,23 +6,23 @@ import java.util.List;
 
 public class DiagnoralTraverse {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
 
-        int [][] matrix = {{1,2,3}, {4,5,6}, {7,8,9}};
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
         DiagnoralTraverse diagnoralTraverse = new DiagnoralTraverse();
 
-        int [] tmp = diagnoralTraverse.findDiagonalOrder(matrix);
-        for (int num: tmp) {
+        int[] tmp = diagnoralTraverse.findDiagonalOrder(matrix);
+        for (int num : tmp) {
             System.out.println(num);
         }
     }
 
 
     /**
-     * this is a simpler approach than having the indexes traverse based on edges.
-     * but its slower because you are reversing collection and using a place holder collection
-     * to store the diagonal values
+     * this is a simpler approach than having the indexes traverse based on edges. but its slower because you are
+     * reversing collection and using a place holder collection to store the diagonal values
+     *
      * @param matrix
      * @return
      */
@@ -38,24 +38,25 @@ public class DiagnoralTraverse {
             List<Integer> vals = new ArrayList<>();
 
             for (int di = 0; di < rows + cols; di++) {
-                int row =0;
+                int row = 0;
                 int col;
                 vals.clear();
 
-                col = Math.min(di, cols-1);
-                if (col == cols-1) {
-                    row = di-col;
+                col = Math.min(di, cols - 1);
+                if (col == cols - 1) {
+                    row = di - col;
                 }
 
                 while (row < rows && col >= 0) {
                     vals.add(matrix[row][col]);
-                    row++; col--;
+                    row++;
+                    col--;
                 }
-                if( di%2==0 ) {
+                if (di % 2 == 0) {
                     Collections.reverse(vals);
                 }
 
-                for (int val: vals) {
+                for (int val : vals) {
                     out[index++] = val;
                 }
             }
@@ -69,12 +70,12 @@ public class DiagnoralTraverse {
         if (rows > 0) {
             int cols = matrix[0].length;
             int size = rows * cols;
-            int [] out = new int[size];
-            if(cols ==0) return out;
+            int[] out = new int[size];
+            if (cols == 0) return out;
 
             int index = 0;
 
-            int row =0, col = 0;
+            int row = 0, col = 0;
             boolean upDirection = true;
 
 
@@ -109,7 +110,7 @@ public class DiagnoralTraverse {
             out[index] = matrix[row][col]; //last col
             return out;
         }
-        return  new int[0];
+        return new int[0];
     }
 
 }

@@ -2,10 +2,10 @@ package arrays.multidimensional;
 
 public class SetMatrixZeroes {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
 
         SetMatrixZeroes matrixZeros = new SetMatrixZeroes();
-        int [][] nums = {{1}, {0}};
+        int[][] nums = {{1}, {0}};
         matrixZeros.setZeroes(nums);
 
         System.out.println(nums);
@@ -31,7 +31,7 @@ public class SetMatrixZeroes {
                 firstCol = true;
             }
 
-            for (int iCol = 1 ; iCol < cols; iCol++) {
+            for (int iCol = 1; iCol < cols; iCol++) {
                 if ((matrix[iRow][iCol]) == 0) {
                     matrix[0][iCol] = 0;
                     matrix[iRow][0] = 0;
@@ -42,8 +42,8 @@ public class SetMatrixZeroes {
 
         //update rows/cols starting from index 1 to 0 if indeed needed
         for (int iRow = 1; iRow < rows; iRow++) {
-            for (int iCol = 1 ; iCol < cols; iCol++) {
-                if ((matrix[iRow][0] == 0) || matrix[0][iCol] ==0) {
+            for (int iCol = 1; iCol < cols; iCol++) {
+                if ((matrix[iRow][0] == 0) || matrix[0][iCol] == 0) {
                     matrix[iRow][iCol] = 0;
                 }
             }
@@ -52,7 +52,7 @@ public class SetMatrixZeroes {
         //treat first row special
         if (matrix[0][0] == 0) {
             //update first row to 0
-            for (int iCol = 1 ; iCol < cols; iCol++) {
+            for (int iCol = 1; iCol < cols; iCol++) {
                 matrix[0][iCol] = 0;
             }
         }
@@ -60,7 +60,7 @@ public class SetMatrixZeroes {
         //treat first column special.
         if (firstCol) {
             //update first col to 0
-            for (int iRow =0; iRow < rows; iRow++) {
+            for (int iRow = 0; iRow < rows; iRow++) {
                 matrix[iRow][0] = 0;
             }
         }

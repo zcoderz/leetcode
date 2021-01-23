@@ -7,14 +7,15 @@ public class Vector2D {
     int[][] v;
 
     public Vector2D(int[][] v) {
-        row = 0; col = 0;
+        row = 0;
+        col = 0;
         this.v = v;
     }
 
     private void advanceToNext() {
-        while ((col <= v[row].length) && (row+1 < v.length)){
+        while ((col <= v[row].length) && (row + 1 < v.length)) {
             row++;
-            col=0;
+            col = 0;
         }
     }
 
@@ -24,7 +25,8 @@ public class Vector2D {
     }
 
     public int next() {
-        advanceToNext();;
+        advanceToNext();
+        ;
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
@@ -32,7 +34,7 @@ public class Vector2D {
     }
 
     public int nextComplex() {
-        while (v.length >= row+1) {
+        while (v.length >= row + 1) {
             col++;
             if (v[row].length > col) {
                 return v[row][col];
@@ -46,7 +48,7 @@ public class Vector2D {
     public boolean hasNextComplex() {
         int tmpCol = col;
         int tmpRow = row;
-        while (v.length >= tmpRow+1) {
+        while (v.length >= tmpRow + 1) {
             tmpCol++;
             if (v[tmpRow].length > tmpCol) {
                 return true;

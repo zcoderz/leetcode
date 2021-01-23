@@ -8,8 +8,8 @@ public class MeetingRooms {
     private Integer roomsInUse = 0;
 
 
-    public static void main(String [] args) {
-        int [][] meetings = {{15,16}, {10, 15}, {16, 25}};
+    public static void main(String[] args) {
+        int[][] meetings = {{15, 16}, {10, 15}, {16, 25}};
 
         MeetingRooms mr = new MeetingRooms();
         int val = mr.minMeetingRooms(meetings);

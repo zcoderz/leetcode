@@ -8,7 +8,9 @@ import java.util.Stack;
 
 public class InOrderTraversalIterative {
 
-    public static void main(String [] args) {
+    List<Integer> list = new ArrayList<>();
+
+    public static void main(String[] args) {
 
 
         TreeNode node7 = new TreeNode(7);
@@ -24,8 +26,6 @@ public class InOrderTraversalIterative {
 
         //5, 2, 3 , 7
     }
-
-    List<Integer> list = new ArrayList<>();
 
     public List<Integer> inorderTraversal(TreeNode root) {
         Stack<TreeNode> stackLeft = new Stack<>();

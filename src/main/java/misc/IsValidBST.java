@@ -1,20 +1,25 @@
 package misc;
 
 public class IsValidBST {
+    public static enum CompareType {
+        LESS, GREATER
+    }
+
     /**
      * Definition for a binary tree node.
      **/
 
     public static class TreeNode {
-         int val;
-          TreeNode left;
-          TreeNode right;
-          TreeNode(int x) { val = x; }
-      }
+        int val;
+        TreeNode left;
+        TreeNode right;
 
-    public static enum CompareType {
-        LESS, GREATER
-    };
+        TreeNode(int x) {
+            val = x;
+        }
+    }
+
+    ;
 
     class Solution {
 
@@ -29,11 +34,11 @@ public class IsValidBST {
             return true;
         }
 
-        boolean compareBST (TreeNode node , CompareType compareType, Integer val) {
+        boolean compareBST(TreeNode node, CompareType compareType, Integer val) {
             if (node == null) {
                 return true;
             }
-            boolean compVal = compare(node.val, val , compareType);
+            boolean compVal = compare(node.val, val, compareType);
             if (!compVal) {
                 return false;
             }
@@ -49,7 +54,7 @@ public class IsValidBST {
             return true;
         }
 
-        boolean compare (Integer nodeVal, Integer val, CompareType compareType) {
+        boolean compare(Integer nodeVal, Integer val, CompareType compareType) {
             if (compareType == CompareType.LESS) {
                 return val > nodeVal;
             } else {

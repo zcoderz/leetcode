@@ -5,30 +5,29 @@ import java.util.Map;
 
 /**
  * this is a very interesting problem and should be practiced carefully
- *
+ * <p>
  * suggest do this again!
  */
 public class PrisonCellsAfterNDays {
 
-    public static void main (String [] args) {
+    public static void main(String[] args) {
         PrisonCellsAfterNDays cellsAfterNDays = new PrisonCellsAfterNDays();
         //int [] cells = {0,1,0,1,1,0,0,1};
-        int [] cells = {1,0,0,1,0,0,1,0};
-        int [] nC = cellsAfterNDays.prisonAfterNDays(cells, 1000000000);
+        int[] cells = {1, 0, 0, 1, 0, 0, 1, 0};
+        int[] nC = cellsAfterNDays.prisonAfterNDays(cells, 1000000000);
         cellsAfterNDays.printCells(nC);
     }
 
-    void printCells (int [] cells) {
-        for(int i = 0; i < cells.length; i++) {
+    void printCells(int[] cells) {
+        for (int i = 0; i < cells.length; i++) {
             System.out.print(cells[i] + ",");
         }
         System.out.println();
     }
 
     /**
-     * returns transformation in cells after moves that's passed as param
-     * transformation is given by logic in nextBit method below
-     *
+     * returns transformation in cells after moves that's passed as param transformation is given by logic in nextBit
+     * method below
      *
      * @param cells
      * @param movesLeft
@@ -40,7 +39,7 @@ public class PrisonCellsAfterNDays {
         boolean cycleFound = false;
         while (movesLeft > 0) {
             //if cycle not already found and the current bit was already seen then
-            if(!cycleFound && bitCycleMap.containsKey(currBit)) {
+            if (!cycleFound && bitCycleMap.containsKey(currBit)) {
                 //calculate length of the cycle
                 int cycleLength = bitCycleMap.get(currBit) - movesLeft;
                 //since the moves will repeat every cycle length mod cycle length with moves left
@@ -63,13 +62,14 @@ public class PrisonCellsAfterNDays {
 
     /**
      * method gets cells from bit
+     *
      * @param bit
      * @param n
      * @return
      */
-    int [] getCellsFromBit(Integer bit , int n) {
-        int [] cells = new int[n];
-        for (int i =n-1 ; i >= 0; i--) {
+    int[] getCellsFromBit(Integer bit, int n) {
+        int[] cells = new int[n];
+        for (int i = n - 1; i >= 0; i--) {
             cells[i] = bit & 1;
             bit = (bit >> 1);
         }
@@ -77,8 +77,9 @@ public class PrisonCellsAfterNDays {
     }
 
     /**
-     * method returns bit transformation of the current bit based on below logic
-     * 1 if both left and right neighbors are 1 or 0, otherwise bit is 0
+     * method returns bit transformation of the current bit based on below logic 1 if both left and right neighbors are
+     * 1 or 0, otherwise bit is 0
+     *
      * @param currBit
      * @return
      */
@@ -93,10 +94,11 @@ public class PrisonCellsAfterNDays {
 
     /**
      * method returns a bit representation of cells
+     *
      * @param cells
      * @return
      */
-    private int bitFromCells (int [] cells) {
+    private int bitFromCells(int[] cells) {
         int val = 0;
         for (int cell : cells) {
             val = (val << 1); //each iteration shift prior left

@@ -6,8 +6,7 @@ import utils.TreeNode;
 import java.util.ArrayList;
 
 /**
- * conceptually simple, flatten the children in an n-array tree
- * into a list of connected binary tree nodes
+ * conceptually simple, flatten the children in an n-array tree into a list of connected binary tree nodes
  */
 public class EncodeDecodeBinaryTree {
 
@@ -34,7 +33,7 @@ public class EncodeDecodeBinaryTree {
     public Node decode(TreeNode root) {
         if (root == null) return null;
         Node node = new Node(root.val, new ArrayList<>());
-        TreeNode next =  root.left;
+        TreeNode next = root.left;
         while (next != null) {
             node.children.add(decode(next));
             next = next.right;

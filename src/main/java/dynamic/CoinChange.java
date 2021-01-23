@@ -1,6 +1,5 @@
 package dynamic;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -8,9 +7,9 @@ import java.util.Arrays;
  */
 public class CoinChange {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
 
-        int [] coins = {2};
+        int[] coins = {2};
 
         int amount = 3;
 
@@ -21,18 +20,17 @@ public class CoinChange {
     }
 
     public int coinChange(int[] coins, int amount) {
-        int [] changeNum = new int[amount+1];
+        int[] changeNum = new int[amount + 1];
         Arrays.fill(changeNum, 0);
         Arrays.sort(coins);
         return processTopDownCoinChange(coins, amount, changeNum);
     }
 
     /**
-     * this is a simple solution for the problem.
-     * start finding next smallest # for each value 0...N.
-     *
+     * this is a simple solution for the problem. start finding next smallest # for each value 0...N.
+     * <p>
      * build each next value using the already calculated smaller values
-     *
+     * <p>
      * repeat until you reach the desired amount
      *
      * @param coins
@@ -40,11 +38,11 @@ public class CoinChange {
      * @return
      */
     public int coinChangeBottomUp(int[] coins, int amount) {
-        int [] changeNum = new int[amount+1];
+        int[] changeNum = new int[amount + 1];
         Arrays.sort(coins);
-        Arrays.fill(changeNum, amount+1);
+        Arrays.fill(changeNum, amount + 1);
         for (int i = 0; i <= amount; i++) {
-            if (i==0) {
+            if (i == 0) {
                 changeNum[i] = 0;
             } else {
                 for (int j = 0; j < coins.length; j++) {
@@ -53,12 +51,12 @@ public class CoinChange {
                     int theCoin = coins[j];
                     int priorIndex = i - theCoin;
                     int priorMin = changeNum[priorIndex];
-                    int newMin = priorMin+1;
+                    int newMin = priorMin + 1;
                     changeNum[i] = Math.min(changeNum[i], newMin);
                 }
             }
         }
-        return changeNum[amount] == amount+1 ? -1 : changeNum[amount];
+        return changeNum[amount] == amount + 1 ? -1 : changeNum[amount];
     }
 
     /**
@@ -69,14 +67,14 @@ public class CoinChange {
      * @param changeNum
      * @return
      */
-    public int processTopDownCoinChange(int [] coins, int amount, int [] changeNum) {
+    public int processTopDownCoinChange(int[] coins, int amount, int[] changeNum) {
         if (amount == 0) {
             changeNum[0] = 0;
             return 0;
         }
 
         int changeAmt = Integer.MAX_VALUE;
-        for (int coin: coins) {
+        for (int coin : coins) {
             if (coin > amount) {
                 break;
             }
@@ -92,8 +90,8 @@ public class CoinChange {
             } else {
                 //if amount is not calculated recuse down.
                 int amt = processTopDownCoinChange(coins, remaining, changeNum);
-                if (amt !=  Integer.MAX_VALUE) {
-                    changeAmt = Math.min(amt+1, changeAmt);
+                if (amt != Integer.MAX_VALUE) {
+                    changeAmt = Math.min(amt + 1, changeAmt);
                 }
             }
         }

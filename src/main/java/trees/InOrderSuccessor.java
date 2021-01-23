@@ -10,7 +10,7 @@ public class InOrderSuccessor {
         TreeNode curr = root;
 
         TreeNode right = p.right;
-        while (right != null && (right.left != null) ) {
+        while (right != null && (right.left != null)) {
             right = right.left;
         }
         if (right != null) {

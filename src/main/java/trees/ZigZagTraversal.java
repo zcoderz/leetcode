@@ -8,7 +8,7 @@ import java.util.Queue;
 
 public class ZigZagTraversal {
 
-    public static void main (String [] args) {
+    public static void main(String[] args) {
         TreeNode node3 = new TreeNode(3);
         TreeNode node9 = new TreeNode(9);
         TreeNode node20 = new TreeNode(20);
@@ -29,10 +29,11 @@ public class ZigZagTraversal {
         boolean traverse_left = false;
         List<List<Integer>> arr = new LinkedList<>();
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root); queue.add(null);
+        queue.add(root);
+        queue.add(null);
         LinkedList<Integer> currentLevel = new LinkedList<>();
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
             if (node != null) {
                 if (traverse_left) {
@@ -52,7 +53,7 @@ public class ZigZagTraversal {
             if (null != node && node.left != null) {
                 queue.add(node.left);
             }
-            if(null != node && node.right != null) {
+            if (null != node && node.right != null) {
                 queue.add(node.right);
             }
 

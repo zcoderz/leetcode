@@ -9,8 +9,8 @@ public class PreOrder {
     public List<Integer> preorder(Node root) {
         Stack<Node> stack = new Stack<>();
         stack.push(root);
-        List<Integer> list  = new ArrayList<>();
-        if(root == null) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
             return list;
         }
         while (!stack.isEmpty()) {

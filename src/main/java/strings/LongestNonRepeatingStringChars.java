@@ -1,10 +1,10 @@
 package strings;
 
 public class LongestNonRepeatingStringChars {
-    private int [] indexArr = new int [128];
     int longestP = 0;
+    private int[] indexArr = new int[128];
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         LongestNonRepeatingStringChars lp = new LongestNonRepeatingStringChars();
 
         int iLen = lp.lengthOfLongestSubstring("pwwkew");
@@ -12,9 +12,10 @@ public class LongestNonRepeatingStringChars {
     }
 
     /**
-     * this is a sliding window problem. you are looking for length between start index i and j
-     * its important to remember to set index val starting with index 1 instead of 0 (i,e add 1 to j).
-     * this is so that we can identify the array sizes correctly -> array size is (j-i + 1)
+     * this is a sliding window problem. you are looking for length between start index i and j its important to
+     * remember to set index val starting with index 1 instead of 0 (i,e add 1 to j). this is so that we can identify
+     * the array sizes correctly -> array size is (j-i + 1)
+     *
      * @param s
      * @return
      */

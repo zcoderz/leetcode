@@ -16,7 +16,7 @@ public class RoomAndKeys {
 
         stack.push(0);
         visited[0] = true;
-        
+
         while (!stack.isEmpty()) {
             int index = stack.pop();
             List<Integer> keys = rooms.get(index);
@@ -28,7 +28,7 @@ public class RoomAndKeys {
             }
         }
 
-        for (boolean v: visited) {
+        for (boolean v : visited) {
             if (!v) return false;
         }
 

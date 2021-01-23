@@ -7,18 +7,18 @@ import java.util.*;
 public class PostOrder {
 
     /**
-     * this is a beautiful approach.
-     * mentally think of adding to the beginning of output list instead of the end
-     * similarly add last child on top of stack so that is the next to be processed
-     * as it will be added to the beginning of the list....
+     * this is a beautiful approach. mentally think of adding to the beginning of output list instead of the end
+     * similarly add last child on top of stack so that is the next to be processed as it will be added to the beginning
+     * of the list....
+     *
      * @param root
      * @return
      */
     public List<Integer> postorder(Node root) {
         Stack<Node> stack = new Stack<>();
         stack.push(root);
-        LinkedList<Integer> list  = new LinkedList<>();
-        if(root == null) {
+        LinkedList<Integer> list = new LinkedList<>();
+        if (root == null) {
             return list;
         }
 
@@ -31,16 +31,17 @@ public class PostOrder {
     }
 
     /**
-     * regular approach, will visit each item twice. need to pop it only when its already
-     * been seen (i,e worked on its children)
+     * regular approach, will visit each item twice. need to pop it only when its already been seen (i,e worked on its
+     * children)
+     *
      * @param root
      * @return
      */
     public List<Integer> postorderUsingHash(Node root) {
         Stack<Node> stack = new Stack<>();
         stack.push(root);
-        List<Integer> list  = new ArrayList<>();
-        if(root == null) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
             return list;
         }
 

@@ -3,15 +3,15 @@ package misc;
 public class ContainerWithMostWater {
 
     /**
-     * start from both right and left edges calculating max area for each container.
-     * after each iteration move the smaller side inwards
-     * keep repeating until right is ahead of left
+     * start from both right and left edges calculating max area for each container. after each iteration move the
+     * smaller side inwards keep repeating until right is ahead of left
+     *
      * @param height
      * @return
      */
     public static int maxArea(int[] height) {
         int maxArea = 0;
-        int r = height.length-1;
+        int r = height.length - 1;
         int l = 0;
         while (r > l) {
             int dist = r - l;
@@ -25,8 +25,8 @@ public class ContainerWithMostWater {
         return maxArea;
     }
 
-    public static void main(String [] args) {
-        int [] arr= {1,1};
+    public static void main(String[] args) {
+        int[] arr = {1, 1};
         int theArea = maxArea(arr);
     }
 

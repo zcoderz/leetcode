@@ -6,23 +6,28 @@ import java.util.*;
 
 /**
  * 939. Minimum Area Rectangle
- *
- * Given a set of points in the xy-plane, determine the minimum area of a rectangle formed from these points, with sides parallel to the x and y axes.
- *
+ * <p>
+ * Given a set of points in the xy-plane, determine the minimum area of a rectangle formed from these points, with sides
+ * parallel to the x and y axes.
+ * <p>
  * If there isn't any rectangle, return 0.
- *
- *  check MinAreaRectangle for a simpler and more efficient solution for the same problem.
- *
+ * <p>
+ * check MinAreaRectangle for a simpler and more efficient solution for the same problem.
  */
 public class MinAreaRectangleComplicated {
 
-    public static void main(String [] args) {
+    TreeMap<Integer, TreeSet<Integer>> coordinateMap = new TreeMap<>();
+    TreeMap<Integer, TreeSet<Pair<Integer, Integer>>> coordinateMapPairs = new TreeMap<>();
+    PairComparator comparator = new PairComparator();
+    int minArea = Integer.MAX_VALUE;
+
+    public static void main(String[] args) {
 //        int [][] cords = {{1,1},{1,3},{3,1},{3,3},{2,2}};
 //        MinAreaRectangle min = new MinAreaRectangle();
 //        int area = min.minAreaRect(cords);
 //        System.out.println(area);
 
-        int [][] cords2 = {{1,1},{1,3},{3,1},{3,3},{4,1},{4,3}};
+        int[][] cords2 = {{1, 1}, {1, 3}, {3, 1}, {3, 3}, {4, 1}, {4, 3}};
         MinAreaRectangleComplicated min2 = new MinAreaRectangleComplicated();
         int area2 = min2.minAreaRect(cords2);
         System.out.println(area2);
@@ -30,18 +35,13 @@ public class MinAreaRectangleComplicated {
 
     }
 
-    TreeMap<Integer, TreeSet<Integer>> coordinateMap = new TreeMap<>();
-    TreeMap<Integer, TreeSet<Pair<Integer, Integer>>> coordinateMapPairs = new TreeMap<>();
-    PairComparator comparator = new PairComparator();
-
-    int minArea = Integer.MAX_VALUE;
     public int minAreaRect(int[][] points) {
-        for (int [] point: points) {
-            TreeSet<Integer> yCoordinates =  coordinateMap.computeIfAbsent(point[0], (l) -> new TreeSet<>());
+        for (int[] point : points) {
+            TreeSet<Integer> yCoordinates = coordinateMap.computeIfAbsent(point[0], (l) -> new TreeSet<>());
             yCoordinates.add(point[1]);
         }
 
-        for (Map.Entry<Integer, TreeSet<Integer>> entry: coordinateMap.entrySet()) {
+        for (Map.Entry<Integer, TreeSet<Integer>> entry : coordinateMap.entrySet()) {
             TreeSet<Pair<Integer, Integer>> ySides = convertYCoordinatesToPairs(entry.getValue());
             coordinateMapPairs.put(entry.getKey(), ySides);
         }
@@ -76,7 +76,7 @@ public class MinAreaRectangleComplicated {
     TreeSet<Pair<Integer, Integer>> convertYCoordinatesToPairs(TreeSet<Integer> coordinates) {
         TreeSet<Pair<Integer, Integer>> list = new TreeSet<>(comparator);
         for (Integer cord : coordinates) {
-            NavigableSet<Integer> upperCords =  coordinates.tailSet(cord, false);
+            NavigableSet<Integer> upperCords = coordinates.tailSet(cord, false);
             for (Integer upperCord : upperCords) {
                 list.add(Pair.of(cord, upperCord));
             }

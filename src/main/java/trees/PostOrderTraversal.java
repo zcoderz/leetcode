@@ -8,7 +8,9 @@ import java.util.Stack;
 
 public class PostOrderTraversal {
 
-    public static void main(String [] args) {
+    LinkedList<Integer> list = new LinkedList<>();
+
+    public static void main(String[] args) {
 
 
         TreeNode node7 = new TreeNode(7);
@@ -25,8 +27,6 @@ public class PostOrderTraversal {
         //5, 2, 3 , 7
     }
 
-    LinkedList<Integer> list = new LinkedList<>();
-
     public List<Integer> postOrderTravesal(TreeNode root) {
         Stack<TreeNode> stackLeft = new Stack<>();
         Stack<TreeNode> stackRight = new Stack<>();
@@ -40,7 +40,7 @@ public class PostOrderTraversal {
 
     public void inOrderStack(Stack<TreeNode> stackLeft, Stack<TreeNode> stackRight) {
 
-        while (!stackLeft.isEmpty() ) {
+        while (!stackLeft.isEmpty()) {
             TreeNode node = stackLeft.pop();
             stackRight.push(node);
             if (node.left != null) {

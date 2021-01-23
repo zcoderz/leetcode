@@ -8,7 +8,8 @@ public class Node {
     public String name;
     public List<Node> children;
 
-    public Node() {}
+    public Node() {
+    }
 
     public Node(String name) {
         this.name = name;

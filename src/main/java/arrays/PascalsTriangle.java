@@ -1,31 +1,36 @@
 package arrays;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PascalsTriangle {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         PascalsTriangle pt = new PascalsTriangle();
         List<Integer> list = pt.getRow(3);
-        for (Integer i: list) {
+        for (Integer i : list) {
             System.out.println(i);
         }
     }
 
     /**
-     * this is an easy problem but remember to store value in prior row of left col was critical
-     * took me sometime to get this right :(
+     * this is an easy problem but remember to store value in prior row of left col was critical took me sometime to get
+     * this right :(
+     *
      * @param rowIndex
      * @return
      */
     public List<Integer> getRow(int rowIndex) {
-        int size = rowIndex+1; //rowIndex starts from 0
-        Integer [] arList = new Integer[size]; Arrays.fill(arList, 0);
-        arList[0]=1; //code the first triangle row as 1
-        for (int i = 2; i <= size ; i++) { //start from the second row
+        int size = rowIndex + 1; //rowIndex starts from 0
+        Integer[] arList = new Integer[size];
+        Arrays.fill(arList, 0);
+        arList[0] = 1; //code the first triangle row as 1
+        for (int i = 2; i <= size; i++) { //start from the second row
             int j = 0;
-            arList[j]=1; int left = 1; //left is the value to remember for cell before the current
-            while(j+1 < i) { //fill each row with the right values, i is the last cell in row
+            arList[j] = 1;
+            int left = 1; //left is the value to remember for cell before the current
+            while (j + 1 < i) { //fill each row with the right values, i is the last cell in row
                 j++;
                 //this is imp to remember.
                 //we need to store the value that was there in given index before its updated
@@ -35,13 +40,14 @@ public class PascalsTriangle {
                 arList[j] += left; //left is the value of cell one row above and left which was previously stored
                 left = tmp;
             }
-            arList[i-1] = 1;
+            arList[i - 1] = 1;
         }
         return Arrays.asList(arList);
     }
 
     /**
      * this is leet code's solution much simpler.....
+     *
      * @param rowIndex
      * @return
      */

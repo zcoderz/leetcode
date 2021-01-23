@@ -1,12 +1,15 @@
 package trees;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MostStonesRemovedTryTwo {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         MostStonesRemovedTryTwo mostStonesRemoved = new MostStonesRemovedTryTwo();
-        int [][] stones = {{3,2},{3,1},{4,4},{1,1},{0,2},{4,0}};
+        int[][] stones = {{3, 2}, {3, 1}, {4, 4}, {1, 1}, {0, 2}, {4, 0}};
         int val = mostStonesRemoved.removeStones(stones);
         System.out.println(val);
     }
@@ -29,12 +32,12 @@ public class MostStonesRemovedTryTwo {
             List<Integer> sClist = sameCols.getOrDefault(y, new ArrayList<>());
             sameCols.put(y, sClist);
 
-            for(Integer iVal : sRlist) {
+            for (Integer iVal : sRlist) {
                 graph[iVal].add(i);
                 graph[i].add(iVal);
             }
 
-            for(Integer iVal : sClist) {
+            for (Integer iVal : sClist) {
                 graph[iVal].add(i);
                 graph[i].add(iVal);
             }
@@ -43,7 +46,7 @@ public class MostStonesRemovedTryTwo {
             sClist.add(i);
         }
 
-        boolean [] visited = new boolean[stones.length];
+        boolean[] visited = new boolean[stones.length];
         int countOfConnected = 0;
 
         for (int j = 0; j < stones.length; j++) {
@@ -53,7 +56,7 @@ public class MostStonesRemovedTryTwo {
             }
         }
 
-        return stones.length-countOfConnected;
+        return stones.length - countOfConnected;
     }
 
     void dfs(int i, List<Integer>[] graph, boolean[] visited) {

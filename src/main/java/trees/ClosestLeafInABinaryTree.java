@@ -1,7 +1,6 @@
 package trees;
 
 import utils.Node;
-import utils.Pair;
 import utils.TreeNode;
 
 import java.util.HashSet;
@@ -10,18 +9,20 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
- * Given a binary tree where every node has a unique value, and a target key k,
- * find the value of the nearest leaf node to target k in the tree.
- *
- * Here, nearest to a leaf means the least number of edges travelled on the binary
- * tree to reach any leaf of the tree. Also, a node is called a leaf if it has no children.
- *
- * In the following examples, the input tree is represented in flattened form row by row.
- * The actual root tree given will be a TreeNode object.
+ * Given a binary tree where every node has a unique value, and a target key k, find the value of the nearest leaf node
+ * to target k in the tree.
+ * <p>
+ * Here, nearest to a leaf means the least number of edges travelled on the binary tree to reach any leaf of the tree.
+ * Also, a node is called a leaf if it has no children.
+ * <p>
+ * In the following examples, the input tree is represented in flattened form row by row. The actual root tree given
+ * will be a TreeNode object.
  */
 public class ClosestLeafInABinaryTree {
 
-    public static void main(String [] args) {
+    Node searchNode;
+
+    public static void main(String[] args) {
         TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
         TreeNode node3 = new TreeNode(3);
@@ -49,7 +50,6 @@ public class ClosestLeafInABinaryTree {
         System.out.println(val);
     }
 
-    Node searchNode;
     public int findClosestLeaf(TreeNode root, int k) {
         //handle root separately
         if (root.val == k && root.left == null && root.right == null) return k;
@@ -59,6 +59,7 @@ public class ClosestLeafInABinaryTree {
 
     /**
      * do a BFS of the tree starting from the target node. as soon as you find the first leaf node stop.
+     *
      * @param startNode
      * @param rootVal
      * @return
@@ -73,7 +74,7 @@ public class ClosestLeafInABinaryTree {
                 Node node = queue.poll();
                 //dont process root as a leaf node as root can have a single child and thus be treated
                 //as a leaf node
-                if (node.children.size() == 1 && node.val != rootVal ) {
+                if (node.children.size() == 1 && node.val != rootVal) {
                     return node.val;
                 }
                 visited.add(node);
@@ -89,6 +90,7 @@ public class ClosestLeafInABinaryTree {
 
     /**
      * traverse the tree and transform it into a graph
+     *
      * @param treeNode
      * @param k
      * @param parent

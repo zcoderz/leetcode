@@ -1,16 +1,20 @@
 package sort;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
- * quick select is a fairly complicate implementation for an interview.
- * perhaps choose map and priority queue if in interview.
- *
- * if choosing quick select , write place holder methods for partition , swap and quick select recursion
- * for on the key calling method and time permitting go into the other methods.
- *
+ * quick select is a fairly complicate implementation for an interview. perhaps choose map and priority queue if in
+ * interview.
+ * <p>
+ * if choosing quick select , write place holder methods for partition , swap and quick select recursion for on the key
+ * calling method and time permitting go into the other methods.
  */
 public class TopKFrequent {
+
+    Map<Integer, Integer> numCount = new HashMap<>();
 
     public static void main(String[] args) {
         TopKFrequent top = new TopKFrequent();
@@ -21,10 +25,9 @@ public class TopKFrequent {
         }
     }
 
-    Map<Integer, Integer> numCount = new HashMap<>();
-
     /**
      * clever method to leverage quick select for top K
+     *
      * @param nums
      * @param k
      * @return
@@ -48,16 +51,15 @@ public class TopKFrequent {
         //the parameter for K is tricky. you basically are looking for the highest K values
         //therefore when you find the item that goes in N-K (-1 for adjusting oth index), that's the stop point
         //for the quick selection
-        quickSelect(distinct, 0, distinct.length - 1, distinct.length-k-1);
+        quickSelect(distinct, 0, distinct.length - 1, distinct.length - k - 1);
 
         //copy starting from the N-K index
         return Arrays.copyOfRange(distinct, distinct.length - k, distinct.length);
     }
 
     /**
-     * regular QS recursion.
-     * The comparison is however based on values retrieved from key to count map
-     * this is a clever trick as it simplifies code a bunch
+     * regular QS recursion. The comparison is however based on values retrieved from key to count map this is a clever
+     * trick as it simplifies code a bunch
      *
      * @param arr
      * @param low
@@ -93,6 +95,7 @@ public class TopKFrequent {
 
     /**
      * the loops in QS partition are tricky! need to practice them a bunch
+     *
      * @param arr
      * @param low
      * @param high

@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class BasicCalculator {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         BasicCalculator bc = new BasicCalculator();
 
         String expression = "2*3*4";
@@ -41,13 +41,12 @@ public class BasicCalculator {
     }
 
     /**
-     * similar to the below solution but doesnt use stack.
-     * the only reason to keep the stack was to store the last calculated value
-     * and prior numbers that could be aggregated once the string was parsed
+     * similar to the below solution but doesnt use stack. the only reason to keep the stack was to store the last
+     * calculated value and prior numbers that could be aggregated once the string was parsed
+     * <p>
+     * so the idea here is that we will track the last number in a variable and store the prior calculated numbers in a
+     * result variable that will be aggregated dynamically as string is parsed
      *
-     * so the idea here is that we will track the last number in a variable
-     * and store the prior calculated numbers in a result variable that will be aggregated dynamically
-     * as string is parsed
      * @param s
      * @return
      */
@@ -58,18 +57,26 @@ public class BasicCalculator {
         int currentNum = 0;
         char operator = '+';
 
-        for (int i =0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (Character.isDigit(c)) {
                 currentNum = currentNum * 10 + c - '0';
             }
-            if ((!Character.isDigit(c) && c != ' ') || i == s.length()-1) {
+            if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) {
                 switch (operator) {
                     //when you see a +- add the last value to result and make current the last
-                    case '+' -> {result += lastNum; lastNum = currentNum;}
-                    case '-' -> {result += lastNum; lastNum = -1*currentNum;}
+                    case '+' -> {
+                        result += lastNum;
+                        lastNum = currentNum;
+                    }
+                    case '-' -> {
+                        result += lastNum;
+                        lastNum = -1 * currentNum;
+                    }
                     //when you see a * just update the last number
-                    case '/' -> {lastNum /= currentNum; }
+                    case '/' -> {
+                        lastNum /= currentNum;
+                    }
                     case '*' -> lastNum *= currentNum;
                 }
                 currentNum = 0;
@@ -82,11 +89,12 @@ public class BasicCalculator {
     }
 
     /**
-     * this is a very simple solution but the simplicity results due to elegance in design
-     * goes to show once again that should deliberate very carefully about creating an elegant solution at start
-     * otherwise on the go (figure as you write code) solutions are never elegant
-     *
+     * this is a very simple solution but the simplicity results due to elegance in design goes to show once again that
+     * should deliberate very carefully about creating an elegant solution at start otherwise on the go (figure as you
+     * write code) solutions are never elegant
+     * <p>
      * got the below solution from leetcode, my original solution was a lot more complicated
+     *
      * @param s
      * @return
      */
@@ -96,17 +104,25 @@ public class BasicCalculator {
         int currentNum = 0;
         char operator = '+';
 
-        for (int i =0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (Character.isDigit(c)) {
                 currentNum = currentNum * 10 + c - '0';
             }
-            if ((!Character.isDigit(c) && c != ' ') || i == s.length()-1) {
+            if ((!Character.isDigit(c) && c != ' ') || i == s.length() - 1) {
                 switch (operator) {
                     case '+' -> stack.push(currentNum);
-                    case '-' -> stack.push(-1*currentNum);
-                    case '/' -> {int last = stack.pop(); last /= currentNum; stack.push(last);}
-                    case '*' -> {int last = stack.pop(); last *= currentNum; stack.push(last);}
+                    case '-' -> stack.push(-1 * currentNum);
+                    case '/' -> {
+                        int last = stack.pop();
+                        last /= currentNum;
+                        stack.push(last);
+                    }
+                    case '*' -> {
+                        int last = stack.pop();
+                        last *= currentNum;
+                        stack.push(last);
+                    }
                 }
                 currentNum = 0;
                 operator = c;

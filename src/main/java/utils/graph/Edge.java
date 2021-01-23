@@ -21,8 +21,16 @@ public class Edge {
         return src;
     }
 
+    public void setSrc(int src) {
+        this.src = src;
+    }
+
     public int getDest() {
         return dest;
+    }
+
+    public void setDest(int dest) {
+        this.dest = dest;
     }
 
     public int getCost() {
@@ -31,13 +39,5 @@ public class Edge {
 
     public void setCost(int cost) {
         this.cost = cost;
-    }
-
-    public void setSrc(int src) {
-        this.src = src;
-    }
-
-    public void setDest(int dest) {
-        this.dest = dest;
     }
 }

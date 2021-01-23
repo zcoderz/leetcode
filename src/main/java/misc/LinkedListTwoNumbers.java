@@ -23,12 +23,14 @@ public class LinkedListTwoNumbers {
         }
 
         if (l1 != null) {
-            theNode.next = l1; theNode = l1;
+            theNode.next = l1;
+            theNode = l1;
         } else {
-            theNode.next = l2; theNode = l2;
+            theNode.next = l2;
+            theNode = l2;
         }
 
-        while (carry !=0) {
+        while (carry != 0) {
             int a = theNode.val + carry;
             carry = a / 10;
             int leftO = a % 10;
@@ -45,10 +47,13 @@ public class LinkedListTwoNumbers {
         return firstNode;
     }
 
-     public class ListNode {
-         int val;
-         ListNode next;
-         ListNode(int x) { val = x; }
-     }
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
 
 }

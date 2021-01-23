@@ -5,8 +5,8 @@ import java.util.*;
 public class OpenTheLock {
     private Set<String> visited = new HashSet<>();
 
-    public static void main (String [] args) {
-        String [] strDeadEnds = {"8887","8889","8878","8898","8788","8988","7888","9888"};
+    public static void main(String[] args) {
+        String[] strDeadEnds = {"8887", "8889", "8878", "8898", "8788", "8988", "7888", "9888"};
 
         OpenTheLock openTheLock = new OpenTheLock();
         int numMoves = openTheLock.openLock(strDeadEnds, "8888");
@@ -17,7 +17,8 @@ public class OpenTheLock {
         String start = "0000";
         Queue<String> queue = new LinkedList<>();
         String level = "L";
-        queue.add(start); queue.add(level);
+        queue.add(start);
+        queue.add(level);
 
         Set<String> deads = new HashSet<>();
         Collections.addAll(deads, deadends);
@@ -48,8 +49,8 @@ public class OpenTheLock {
         List<String> strTransforms = new ArrayList<>();
         for (int i = 0; i < str.length(); i++) {
             char val = str.charAt(i);
-            String strNewA = str.substring(0, i) + transformCharAhead(val) + str.substring(i+1);
-            String strNewB = str.substring(0, i) + transformCharBack(val) + str.substring(i+1);
+            String strNewA = str.substring(0, i) + transformCharAhead(val) + str.substring(i + 1);
+            String strNewB = str.substring(0, i) + transformCharBack(val) + str.substring(i + 1);
 
             if (!visited.contains(strNewA)) {
                 strTransforms.add(strNewA);
@@ -65,7 +66,7 @@ public class OpenTheLock {
 
     String transformCharAhead(char givenChar) {
         int i = givenChar - 48;
-        int iNext = i+ 1;
+        int iNext = i + 1;
         iNext = iNext % 10;
         return String.valueOf(iNext);
     }
@@ -74,7 +75,7 @@ public class OpenTheLock {
         int i = givenChar - 48;
         int iNext = i - 1;
         if (iNext == -1) {
-            iNext =9;
+            iNext = 9;
         }
         return String.valueOf(iNext);
     }

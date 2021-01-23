@@ -2,7 +2,7 @@ package misc;
 
 public class BitBasedAdd {
 
-    public static void main (String [] args) {
+    public static void main(String[] args) {
         int y = -12;
         int x = -8;
 
@@ -15,12 +15,12 @@ public class BitBasedAdd {
         int x = Math.abs(a);
         int y = Math.abs(b);
 
-        int sign = a >=0 ? 1 : -1;
+        int sign = a >= 0 ? 1 : -1;
         if (y > x) {
             return getSum(b, a);
         } else {
             if (a * b > 0) {
-                while (y !=0) {
+                while (y != 0) {
                     int s = x ^ y; // add the xor bits (bits unique in each num)
                     int c = (x & y) << 1; //find the carry bits and shift them left by 1 to identify the carry
                     x = s;
@@ -28,7 +28,7 @@ public class BitBasedAdd {
                 }
             } else {
                 //subtract
-                while (y !=0) {
+                while (y != 0) {
                     int s = x ^ y; // add the xor bits (bits unique in each num)
                     //find the borrow bit and shift them right by 1 to identify the borrow
                     //the off bits in x when & with y identify the bits where borrow is needed.
@@ -40,7 +40,7 @@ public class BitBasedAdd {
                 }
             }
         }
-        return sign*x;
+        return sign * x;
     }
 
 }

@@ -6,27 +6,9 @@ import java.util.Stack;
 
 public class LeastCommonAncestor {
 
-    public static enum ChildVisited {
-        NONE, LEFT, RIGHT
-    };
-
-    public static class TreeNode {
-         int val;
-         TreeNode left;
-         TreeNode right;
-         TreeNode(int x) { val = x; }
-    }
-
-    public static class NodeVisitor {
-        TreeNode treeNode;
-        ChildVisited visited;
-        public NodeVisitor(TreeNode node, ChildVisited visited) {
-            this.treeNode = node;
-            this.visited = visited;
-        }
-    }
-
     Stack<NodeVisitor> nodeStack = new Stack<>();
+
+    ;
     Set<TreeNode> nodesToFind = new HashSet<>();
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -60,7 +42,7 @@ public class LeastCommonAncestor {
                 }
             } else { //if both left and right have been visited
                 nodeStack.pop();
-                if (lca == visitor.treeNode && nodesToFind.size()==1) {
+                if (lca == visitor.treeNode && nodesToFind.size() == 1) {
                     //if we have found one of the items already then adjust lca to its parent as move
                     //down in stack to the parent
                     lca = nodeStack.peek().treeNode;
@@ -68,5 +50,29 @@ public class LeastCommonAncestor {
             }
         }
         return null;
+    }
+
+    public static enum ChildVisited {
+        NONE, LEFT, RIGHT
+    }
+
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
+
+    public static class NodeVisitor {
+        TreeNode treeNode;
+        ChildVisited visited;
+
+        public NodeVisitor(TreeNode node, ChildVisited visited) {
+            this.treeNode = node;
+            this.visited = visited;
+        }
     }
 }

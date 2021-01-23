@@ -2,18 +2,21 @@ package trie;
 
 import utils.TrieNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WordSearchTwo {
 
-    public static void main(String [] args) {
+    List<String> wordsFound = new ArrayList<>();
+
+    public static void main(String[] args) {
 //        char [][] board =       {{'o','a','a','n'},
 //                {'e','t','a','e'},
 //                {'i','h','k','r'},
 //                {'i','f','l','v'}};
 //        String [] words = {"oath","pea","eat","rain"};
-        char [][] board =       {{'a'}};
-        String [] words = {"a"};
+        char[][] board = {{'a'}};
+        String[] words = {"a"};
 
         WordSearchTwo ws = new WordSearchTwo();
         List<String> fWords = ws.findWords(board, words);
@@ -22,18 +25,14 @@ public class WordSearchTwo {
         }
     }
 
-    List<String> wordsFound = new ArrayList<>();
-
-
-
     public List<String> findWords(char[][] board, String[] words) {
         TrieNode root = new TrieNode();
         root.buildTrie(words);
 
         int maxRows = board.length;
-        if (maxRows ==0) return wordsFound;
+        if (maxRows == 0) return wordsFound;
         int maxCols = board[0].length;
-        if (maxCols==0) return wordsFound;
+        if (maxCols == 0) return wordsFound;
 
         for (int iRow = 0; iRow < maxRows; iRow++) {
             for (int iCol = 0; iCol < maxCols; iCol++) {
@@ -57,11 +56,11 @@ public class WordSearchTwo {
 
         int maxRows = board.length;
         int maxCols = board[0].length;
-        int [][]moves = {{-1,0}, {0,1}, {1,0}, {0,-1}};
+        int[][] moves = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
         board[row][col] = '#';
 
-        for (int [] move : moves) {
+        for (int[] move : moves) {
             int tmpRow = row + move[0];
             int tmpCol = col + move[1];
 

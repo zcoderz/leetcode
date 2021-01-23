@@ -5,7 +5,10 @@ import utils.TreeNode;
 
 public class SerializeAndDeserializeBST {
 
-    public static void main(String [] args) {
+    private static String nullDelim = "null,";
+    private static int nullDelimLen = nullDelim.length();
+
+    public static void main(String[] args) {
         TreeNode nodeA = new TreeNode(1);
         TreeNode nodeB = new TreeNode(2);
         TreeNode nodeC = new TreeNode(3);
@@ -20,10 +23,6 @@ public class SerializeAndDeserializeBST {
         TreeNode node = serial.deserialize(str);
         int j = 0;
     }
-
-
-    private static String nullDelim = "null,";
-    private static int nullDelimLen = nullDelim.length();
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
@@ -42,7 +41,7 @@ public class SerializeAndDeserializeBST {
         if (index >= string.length()) {
             return Pair.of(null, index);
         }
-        if(Character.isDigit(string.charAt(index))) {
+        if (Character.isDigit(string.charAt(index))) {
             StringBuilder number = new StringBuilder();
             while (Character.isDigit(string.charAt(index))) {
                 number.append(string.charAt(index++));
@@ -59,7 +58,7 @@ public class SerializeAndDeserializeBST {
             index = right.second;
             return Pair.of(node, index);
         } else {
-            return Pair.of(null, index+ nullDelimLen);
+            return Pair.of(null, index + nullDelimLen);
         }
 
     }

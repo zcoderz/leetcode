@@ -4,13 +4,12 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 /**
- *681. Next Closest Time
- * Given a time represented in the format "HH:MM", form the next closest time by reusing the current digits.
- * There is no limit on how many times a digit can be reused.
- *
- * You may assume the given input string is always valid.
- * For example, "01:34", "12:09" are all valid. "1:34", "12:9" are all invalid.
- *
+ * 681. Next Closest Time Given a time represented in the format "HH:MM", form the next closest time by reusing the
+ * current digits. There is no limit on how many times a digit can be reused.
+ * <p>
+ * You may assume the given input string is always valid. For example, "01:34", "12:09" are all valid. "1:34", "12:9"
+ * are all invalid.
+ * <p>
  * Seems deceptively extremely simple. nextTime needs to be coded with good focus to handle the edge cases.
  */
 public class NextClosestTime {
@@ -20,7 +19,7 @@ public class NextClosestTime {
     int firstMin = 0;
     TreeSet<Integer> digits = new TreeSet<>();
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         NextClosestTime next = new NextClosestTime();
         String time = "19:34";
         time = next.nextClosestTime(time);
@@ -31,6 +30,7 @@ public class NextClosestTime {
         System.out.println(time);
 
     }
+
     public String nextClosestTime(String time) {
         parseTime(time);
         if (digits.size() == 1) {
@@ -44,20 +44,21 @@ public class NextClosestTime {
         secondHr = time.charAt(0) - '0';
         firstHr = time.charAt(1) - '0';
         secondMin = time.charAt(3) - '0';
-        firstMin = time.charAt(4) -  '0';
+        firstMin = time.charAt(4) - '0';
 
-        digits.add(secondHr); digits.add(firstHr);
-        digits.add(secondMin); digits.add(firstMin);
+        digits.add(secondHr);
+        digits.add(firstHr);
+        digits.add(secondMin);
+        digits.add(firstMin);
     }
 
     /**
-     * for each of first min, second min, first hr, second hr
-     * adjust to the next highest in range, if you can find that's it.
-     * else set to lowest and move to the next highest time digit.
-     *
-     * i personally found this approach much simpler to understand and implement than the approach in leet code
-     * which searches for the lowest possible next time based on time delta from orig to each of the possitibilities
-     * based on available digits
+     * for each of first min, second min, first hr, second hr adjust to the next highest in range, if you can find
+     * that's it. else set to lowest and move to the next highest time digit.
+     * <p>
+     * i personally found this approach much simpler to understand and implement than the approach in leet code which
+     * searches for the lowest possible next time based on time delta from orig to each of the possitibilities based on
+     * available digits
      *
      * @return
      */
@@ -69,13 +70,13 @@ public class NextClosestTime {
         }
         firstMin = digits.first();
         next = digits.higher(secondMin);
-        if (next != null && next <=5) {
+        if (next != null && next <= 5) {
             secondMin = next;
             return buildNewTime();
         }
         secondMin = digits.first();
         next = digits.higher(firstHr);
-        if (next != null && next <=9) {
+        if (next != null && next <= 9) {
             if (!(secondHr == 2 && next > 4)) {
                 firstHr = next;
                 return buildNewTime();
@@ -87,7 +88,7 @@ public class NextClosestTime {
             secondHr = next;
         } else {
             secondHr = digits.first();
-            if (secondHr ==0 ) {
+            if (secondHr == 0) {
                 //if you reached this case then for each of hr, min you have picked the lowest
                 //but you cant do that for the second hr, it has to be one next after the first
                 Iterator<Integer> iter = digits.iterator();

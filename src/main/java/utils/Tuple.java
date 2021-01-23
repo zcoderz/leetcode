@@ -1,28 +1,25 @@
 package utils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 // Triplet class
-public class Tuple<U, V, T>
-{
+public class Tuple<U, V, T> {
     public final U first;       // first field of a Triplet
     public final V second;      // second field of a Triplet
     public final T third;       // third field of a Triplet
 
     // Constructs a new Triplet with the given values
-    private Tuple(U first, V second, T third)
-    {
+    private Tuple(U first, V second, T third) {
         this.first = first;
         this.second = second;
         this.third = third;
     }
 
+    // Factory method for creating a Typed immutable instance of Triplet
+    public static <U, V, T> Tuple<U, V, T> of(U a, V b, T c) {
+        return new Tuple<>(a, b, c);
+    }
+
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         /* Checks specified object is "equal to" current object or not */
 
         if (this == o) return true;
@@ -42,8 +39,7 @@ public class Tuple<U, V, T>
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         /* Computes hash code for an object by using hash codes of
         the underlying objects */
 
@@ -54,14 +50,7 @@ public class Tuple<U, V, T>
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "(" + first + ", " + second + ", " + third + ")";
-    }
-
-    // Factory method for creating a Typed immutable instance of Triplet
-    public static <U, V, T> Tuple <U, V, T> of(U a, V b, T c)
-    {
-        return new Tuple <>(a, b, c);
     }
 }

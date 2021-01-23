@@ -8,10 +8,10 @@ import java.util.Set;
  */
 public class FriendCircles {
 
-    public static void main(String [] args) {
-        int [][] matrix = {{1,1,0},
-         {1,1,1},
-         {0,1,1}};
+    public static void main(String[] args) {
+        int[][] matrix = {{1, 1, 0},
+                {1, 1, 1},
+                {0, 1, 1}};
 
         FriendCircles fc = new FriendCircles();
         int count = fc.findCircleNum(matrix);
@@ -36,6 +36,7 @@ public class FriendCircles {
 
     /**
      * DFS to find all people that are linked to the given person
+     *
      * @param i
      * @param p
      * @param people
@@ -47,7 +48,7 @@ public class FriendCircles {
             //note that we are checking the row of person passed as first argument.
             //this ensures that once we find a person who is friend of current person
             //we can dfs through that person's friends.
-            if (i != j && p[i][j] ==1 &&  !visited.contains(j)) {
+            if (i != j && p[i][j] == 1 && !visited.contains(j)) {
                 dfs(j, p, people, visited);
             }
         }

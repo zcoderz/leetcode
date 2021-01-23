@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class WordBreak {
-    public static void main (String [] args) {
+    public static void main(String[] args) {
 //        String strWord = "catskicatcats";
 //        List<String> theWords = Arrays.asList("cats", "cat", "dog", "ski");
         String strWord = "leetcode";
@@ -18,36 +18,35 @@ public class WordBreak {
 
     private HashSet<String> wordDict;
     int len;
-    Boolean [] memorization;
+    Boolean[] memorization;
 
 
     public boolean wordBreak(String s, List<String> wordDict) {
         this.wordDict = new HashSet<>(wordDict);
         len = s.length();
-        memorization = new Boolean[len+1];
+        memorization = new Boolean[len + 1];
         return processWordBreaks(s, 0);
     }
 
     /**
-     * the solution is clever
-     * 1. it tries to use memorization, this makes a huge difference in performance
-     * 2. the idea to put dictionary words in a hashset and compare them with string sub strings
-     * is clever
+     * the solution is clever 1. it tries to use memorization, this makes a huge difference in performance 2. the idea
+     * to put dictionary words in a hashset and compare them with string sub strings is clever
+     *
      * @param strOrig
      * @param iStart
      * @return
      */
     boolean processWordBreaks(String strOrig, int iStart) {
 
-        if (iStart==len) return true;
+        if (iStart == len) return true;
         if (memorization[iStart] != null) {
             return memorization[iStart];
         }
 
-        for (int i = iStart+1; i <= len; i++) {
+        for (int i = iStart + 1; i <= len; i++) {
             if (wordDict.contains(strOrig.substring(iStart, i))) {
-                memorization[i]  = processWordBreaks(strOrig, i);
-                if(memorization[i]) {
+                memorization[i] = processWordBreaks(strOrig, i);
+                if (memorization[i]) {
                     return memorization[i];
                 }
             }

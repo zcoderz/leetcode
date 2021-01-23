@@ -2,9 +2,8 @@ package utils.graph.generic;
 
 
 /**
- * Got the base code from github and modified a bit
- * code is similar to utils.graph.UnionFind however is generic and thus can be used for data type such as
- * strings
+ * Got the base code from github and modified a bit code is similar to utils.graph.UnionFind however is generic and thus
+ * can be used for data type such as strings
  *
  * @param <T>
  */
@@ -17,7 +16,7 @@ public class UnionFindNode<T> {
     private UnionFindNode<T> parent;
     private int rank;
 
-    public UnionFindNode(T value){
+    public UnionFindNode(T value) {
         this.value = value;
         this.parent = this; // Make it its own set
         this.rank = 0;
@@ -38,7 +37,7 @@ public class UnionFindNode<T> {
 
     @Override
     public String toString() {
-        if (parent != this) return "[" + value + "]->"+ parent;
+        if (parent != this) return "[" + value + "]->" + parent;
         return "[" + value + "](root)";
     }
 
@@ -78,11 +77,11 @@ public class UnionFindNode<T> {
      * This is not the same as join, c.f. join documentation.
      * @param other the tree you want to join to this tree.
      */
-    public void union(UnionFindNode<T> other){
+    public void union(UnionFindNode<T> other) {
         UnionFindNode<T> p = this.find();
         UnionFindNode<T> q = other.find();
         if (p.equals(q)) return;
-        if (p.rank < q.rank){
+        if (p.rank < q.rank) {
             // Swaps like p,q = q,p would
             UnionFindNode<T> temp = p;
             p = q;

@@ -2,7 +2,9 @@ package strings;
 
 public class RabinKarpSubString {
 
-    public static void main(String [] args) {
+    int prime = 101;
+
+    public static void main(String[] args) {
         RabinKarpSubString search = new RabinKarpSubString();
         String a = "abcdefghi";
         String b = "def";
@@ -14,14 +16,13 @@ public class RabinKarpSubString {
         System.out.println(found);
     }
 
-    int prime = 101;
     public boolean subStringFound(String strToFind, String strToSearchFrom) {
         int strToFindLen = strToFind.length();
         int stringToFindHash = createHash(strToFind.toCharArray(), strToFindLen);
         int mainStringHash = createHash(strToSearchFrom.toCharArray(), strToFindLen);
         int j = strToFindLen;
         int i = 0;
-        double lastPowerPrime = Math.pow(prime, strToFindLen-1);
+        double lastPowerPrime = Math.pow(prime, strToFindLen - 1);
         //rolling hash
         while (j < strToSearchFrom.length()) {
             if (mainStringHash == stringToFindHash) {
@@ -41,13 +42,14 @@ public class RabinKarpSubString {
 
     /**
      * hashes may match while actual string is diff, so match the actual string char by char to confirm
+     *
      * @param strToFind
      * @param strOrigString
      * @param startIndex
      * @return
      */
     boolean validate(String strToFind, String strOrigString, int startIndex) {
-        for (int i =0; i < strToFind.length(); i++) {
+        for (int i = 0; i < strToFind.length(); i++) {
             if (strToFind.charAt(i) != strOrigString.charAt(i + startIndex)) {
                 return false;
             }
@@ -57,13 +59,14 @@ public class RabinKarpSubString {
 
     /**
      * simple algo to create a hash for the char array
+     *
      * @param charArr
      * @param len
      * @return
      */
-    int createHash(char [] charArr, int len) {
+    int createHash(char[] charArr, int len) {
         int hash = 0;
-        for (int i =0; i < len; i++) {
+        for (int i = 0; i < len; i++) {
             hash += (charArr[i]) * Math.pow(prime, i);
         }
         return hash;

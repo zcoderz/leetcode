@@ -1,14 +1,14 @@
 package trees.wordladder;
 
 import utils.Pair;
-import utils.Tuple;
 
-import java.sql.Struct;
 import java.util.*;
 
 public class WordLadderTwo {
 
-    public static void main (String [] args) {
+    List<List<String>> out = new ArrayList<>();
+
+    public static void main(String[] args) {
 
 //        String strBeginWord = "kiss";
 //        String strEndWord = "tusk";
@@ -41,23 +41,11 @@ public class WordLadderTwo {
         }
     }
 
-    List<List<String>> out = new ArrayList<>();
-    static class WordLink {
-        String strWord;
-        Integer depth;
-        WordLink previousWord;
-        public WordLink(String strWord, Integer depth, WordLink previousWord) {
-            this.strWord = strWord;
-            this.depth = depth;
-            this.previousWord = previousWord;
-        }
-    };
-
     /**
-     * Do a BFS based search - i,e start from both ends.
-     * searching from both the bottom and top will help converge quicker as you will
-     * cut down the unnecessary search paths since the two searches meet some where in the middle
+     * Do a BFS based search - i,e start from both ends. searching from both the bottom and top will help converge
+     * quicker as you will cut down the unnecessary search paths since the two searches meet some where in the middle
      * thus reducing space and time complexity
+     *
      * @param beginWord
      * @param endWord
      * @param wordList
@@ -68,8 +56,8 @@ public class WordLadderTwo {
         boolean matchEnd = false;
         for (String word : wordList) {
             if (word.equals(beginWord)) continue;
-            for (int i =0; i < word.length(); i++) {
-                String modWord = word.substring(0, i) + "*" + word.substring(i+1);
+            for (int i = 0; i < word.length(); i++) {
+                String modWord = word.substring(0, i) + "*" + word.substring(i + 1);
                 List<String> words = wordMappings.computeIfAbsent(modWord, (l) -> new ArrayList<>());
                 words.add(word);
             }
@@ -86,8 +74,10 @@ public class WordLadderTwo {
 
         WordLink beg = new WordLink(beginWord, 1, null);
         WordLink end = new WordLink(endWord, 1, null);
-        leftQueue.add(beg);leftQueue.add(null);
-        rightQueue.add(end); rightQueue.add(null);
+        leftQueue.add(beg);
+        leftQueue.add(null);
+        rightQueue.add(end);
+        rightQueue.add(null);
 
         Map<String, WordLink> leftVisited = new HashMap<>();
         Map<String, WordLink> rightVisited = new HashMap<>();
@@ -100,8 +90,9 @@ public class WordLadderTwo {
         Set<Pair<String, String>> mergedVals = new HashSet<>();
         int minLevel = Integer.MAX_VALUE;
         boolean found = false;
-        boolean stopLeft = false; boolean stopRight = false;
-        while ((!leftQueue.isEmpty() || !rightQueue.isEmpty()) ) {
+        boolean stopLeft = false;
+        boolean stopRight = false;
+        while ((!leftQueue.isEmpty() || !rightQueue.isEmpty())) {
 
             WordLink lVal = leftQueue.poll();
             if (found && lVal == null) {
@@ -112,9 +103,9 @@ public class WordLadderTwo {
                     leftQueue.add(null);
                 }
             }
-            if (!stopLeft && lVal != null ) { //&& lVal.depth <= leftMin) {
-                for (int i =0; i < lVal.strWord.length(); i++) {
-                    String modWord = lVal.strWord.substring(0, i) + "*" + lVal.strWord.substring(i+1);
+            if (!stopLeft && lVal != null) { //&& lVal.depth <= leftMin) {
+                for (int i = 0; i < lVal.strWord.length(); i++) {
+                    String modWord = lVal.strWord.substring(0, i) + "*" + lVal.strWord.substring(i + 1);
                     List<String> mappings = wordMappings.get(modWord);
                     if (mappings == null) continue;
                     for (String word : mappings) {
@@ -123,8 +114,8 @@ public class WordLadderTwo {
                         }
                         WordLink level = rightVisited.get(word);
                         if (level != null) {
-                            int newLevel =  lVal.depth + level.depth;
-                            if (newLevel > minLevel ) {
+                            int newLevel = lVal.depth + level.depth;
+                            if (newLevel > minLevel) {
                                 return out;
                             } else {
                                 minLevel = newLevel;
@@ -141,7 +132,7 @@ public class WordLadderTwo {
                             }
                         }
 
-                        WordLink wl = new WordLink(word, lVal.depth+1, lVal);
+                        WordLink wl = new WordLink(word, lVal.depth + 1, lVal);
                         leftVisited.put(word, wl);
                         leftQueue.add(wl);
                     }
@@ -161,7 +152,7 @@ public class WordLadderTwo {
 
 
             if (!stopRight && rVal != null) { // && rVal.depth <= rightMin) {
-                for (int i =0; i < rVal.strWord.length(); i++) {
+                for (int i = 0; i < rVal.strWord.length(); i++) {
                     String modWord = rVal.strWord.substring(0, i) + "*" + rVal.strWord.substring(i + 1);
                     List<String> mappings = wordMappings.get(modWord);
                     if (mappings == null) continue;
@@ -171,8 +162,8 @@ public class WordLadderTwo {
                         }
                         WordLink level = leftVisited.get(word);
                         if (level != null) {
-                            int newLevel =  rVal.depth + level.depth;
-                            if (newLevel > minLevel ) {
+                            int newLevel = rVal.depth + level.depth;
+                            if (newLevel > minLevel) {
                                 return out;
                             } else {
                                 minLevel = newLevel;
@@ -188,7 +179,7 @@ public class WordLadderTwo {
                                 }
                             }
                         }
-                        WordLink wl = new WordLink(word, rVal.depth+1, rVal);
+                        WordLink wl = new WordLink(word, rVal.depth + 1, rVal);
                         rightVisited.put(word, wl);
                         rightQueue.add(wl);
                     }
@@ -197,6 +188,8 @@ public class WordLadderTwo {
         }
         return out;
     }
+
+    ;
 
     void processLeftAndRight(WordLink left, WordLink right) {
         List<String> list = new ArrayList<>();
@@ -210,5 +203,17 @@ public class WordLadderTwo {
             right = right.previousWord;
         }
         out.add(list);
+    }
+
+    static class WordLink {
+        String strWord;
+        Integer depth;
+        WordLink previousWord;
+
+        public WordLink(String strWord, Integer depth, WordLink previousWord) {
+            this.strWord = strWord;
+            this.depth = depth;
+            this.previousWord = previousWord;
+        }
     }
 }

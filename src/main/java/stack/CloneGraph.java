@@ -4,7 +4,9 @@ import java.util.*;
 
 public class CloneGraph {
 
-    public static void main(String [] args) {
+    private HashMap<Node, Node> visited = new HashMap<>();
+
+    public static void main(String[] args) {
         Node nodeA = new Node(1);
         Node nodeB = new Node(2);
         Node nodeC = new Node(3);
@@ -24,31 +26,11 @@ public class CloneGraph {
         int j = 2;
     }
 
-    public static class Node {
-        public int val;
-        public List<Node> neighbors;
-
-        public Node() {
-            val = 0;
-            neighbors = new ArrayList<>();
-        }
-
-        public Node(int _val) {
-            val = _val;
-            neighbors = new ArrayList<>();
-        }
-
-        public Node(int _val, ArrayList<Node> _neighbors) {
-            val = _val;
-            neighbors = _neighbors;
-        }
-    }
-
     public Node cloneGraph(Node node) {
-        if (node==null) return null;
+        if (node == null) return null;
         Stack<Node[]> stack = new Stack<>();
         Map<Node, Node> visited = new HashMap<>();
-        Node[] arr = new Node [] {node, cloneNode(node)};
+        Node[] arr = new Node[]{node, cloneNode(node)};
         //took me a long time to realize that i had missed adding the root to visited...
         //a small miss can lead to confusing affects. in this case, need to debug the output and figure out
         visited.put(arr[0], arr[1]);
@@ -58,7 +40,7 @@ public class CloneGraph {
             Node orig = n[0];
             Node clone = n[1];
             //System.out.println("processing node " + orig.val);
-            for (Node child: orig.neighbors) {
+            for (Node child : orig.neighbors) {
                 Node nChild = visited.get(child);
                 if (nChild == null) {
                     nChild = cloneNode(child);
@@ -82,15 +64,15 @@ public class CloneGraph {
 
     /**
      * does a copy of the node val. doesnt copy node list
+     *
      * @param node
      * @return
      */
-    private Node cloneNode(Node node ) {
+    private Node cloneNode(Node node) {
         Node nNode = new Node(node.val);
         return nNode;
     }
 
-    private HashMap <Node, Node> visited = new HashMap <> ();
     public Node cloneGraphRecusive(Node node) {
         if (node == null) {
             return node;
@@ -110,11 +92,31 @@ public class CloneGraph {
 
         // Iterate through the neighbors to generate their clones
         // and prepare a list of cloned neighbors to be added to the cloned node.
-        for (Node neighbor: node.neighbors) {
+        for (Node neighbor : node.neighbors) {
             System.out.println("recursing neighbor " + neighbor.val);
             cloneNode.neighbors.add(cloneGraphRecusive(neighbor));
         }
         return cloneNode;
+    }
+
+    public static class Node {
+        public int val;
+        public List<Node> neighbors;
+
+        public Node() {
+            val = 0;
+            neighbors = new ArrayList<>();
+        }
+
+        public Node(int _val) {
+            val = _val;
+            neighbors = new ArrayList<>();
+        }
+
+        public Node(int _val, ArrayList<Node> _neighbors) {
+            val = _val;
+            neighbors = _neighbors;
+        }
     }
 
 }

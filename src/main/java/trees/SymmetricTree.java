@@ -4,12 +4,12 @@ import utils.TreeNode;
 
 /**
  * Definition for a binary tree node.
-*/
+ */
 
 
 class SymmetricTree {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
 
 
         TreeNode nodeA = new TreeNode(3);
@@ -33,14 +33,14 @@ class SymmetricTree {
 
 
     public boolean isSymmetric(TreeNode root) {
-        return symCompare (root.left, root.right);
+        return symCompare(root.left, root.right);
     }
 
     boolean symCompare(TreeNode nodeA, TreeNode nodeB) {
-        if (nodeA==null && nodeB==null) {
+        if (nodeA == null && nodeB == null) {
             return true;
         }
-        if (nodeA == null || nodeB ==null) {
+        if (nodeA == null || nodeB == null) {
             return false;
         }
         boolean comp = (nodeA.val == nodeB.val);

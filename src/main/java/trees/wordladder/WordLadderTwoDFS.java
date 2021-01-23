@@ -4,7 +4,11 @@ import java.util.*;
 
 public class WordLadderTwoDFS {
 
-    public static void main (String [] args) {
+    List<List<String>> combList = new ArrayList<>();
+    Map<String, List<String>> wordKeyMap = new HashMap<>();
+    int minLength = Integer.MAX_VALUE;
+
+    public static void main(String[] args) {
         String strBeginWord = "hit";
         String strEndWord = "cog";
         List<String> strWords = new ArrayList<>();
@@ -19,24 +23,23 @@ public class WordLadderTwoDFS {
         int i = 1;
     }
 
-    List<List<String>> combList = new ArrayList<>();
-    Map<String, List<String>> wordKeyMap = new HashMap<>();
-    int minLength = Integer.MAX_VALUE;
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         if (!wordList.contains(endWord)) {
             return combList;
         }
-        for (String strWord: wordList) {
+        for (String strWord : wordList) {
             for (int i = 0; i < strWord.length(); i++) {
-                String strModWord = strWord.substring(0,i) + "*" + strWord.substring(i+1);
+                String strModWord = strWord.substring(0, i) + "*" + strWord.substring(i + 1);
                 List<String> strWordList = wordKeyMap.getOrDefault(strModWord, new ArrayList<>());
                 strWordList.add(strWord);
                 wordKeyMap.put(strModWord, strWordList);
             }
         }
 
-        Stack<String> stackWords = new Stack<>(); stackWords.add(beginWord);
-        Set<String>  strVisitedSet = new HashSet<>(); strVisitedSet.add(beginWord);
+        Stack<String> stackWords = new Stack<>();
+        stackWords.add(beginWord);
+        Set<String> strVisitedSet = new HashSet<>();
+        strVisitedSet.add(beginWord);
         findPath(beginWord, endWord, stackWords, strVisitedSet);
         return combList;
     }

@@ -2,7 +2,7 @@ package utils;
 
 import java.util.List;
 
-public class File implements  IFile {
+public class File implements IFile {
     private String strName;
     private Directory parentDir;
     private StringBuilder builder = new StringBuilder();

@@ -4,7 +4,11 @@ import java.util.*;
 
 public class WordLadderTwoBFS {
 
-    public static void main (String [] args) {
+    List<List<String>> combList = new ArrayList<>();
+    Map<String, List<String>> wordKeyMap = new HashMap<>();
+    int minLength = Integer.MAX_VALUE;
+
+    public static void main(String[] args) {
         String strBeginWord = "hit";
         String strEndWord = "cog";
         List<String> strWords = new ArrayList<>();
@@ -19,28 +23,13 @@ public class WordLadderTwoBFS {
         int i = 1;
     }
 
-    List<List<String>> combList = new ArrayList<>();
-    Map<String, List<String>> wordKeyMap = new HashMap<>();
-    int minLength = Integer.MAX_VALUE;
-    static class WordDepth {
-        String strWord;
-        Integer depth;
-        List<String> previousWords;
-        public WordDepth(String strWord, Integer depth, List<String> previousWords) {
-            this.strWord = strWord;
-            this.depth = depth;
-            this.previousWords = previousWords;
-            previousWords.add(strWord);
-        }
-    }
-
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
         if (!wordList.contains(endWord)) {
             return combList;
         }
-        for (String strWord: wordList) {
+        for (String strWord : wordList) {
             for (int i = 0; i < strWord.length(); i++) {
-                String strModWord = strWord.substring(0,i) + "*" + strWord.substring(i+1);
+                String strModWord = strWord.substring(0, i) + "*" + strWord.substring(i + 1);
                 List<String> strWordList = wordKeyMap.getOrDefault(strModWord, new ArrayList<>());
                 strWordList.add(strWord);
                 wordKeyMap.put(strModWord, strWordList);
@@ -53,7 +42,7 @@ public class WordLadderTwoBFS {
 
     void findPath(String strWord, String strEndWord) {
         Queue<WordDepth> wordQueue = new LinkedList<>();
-        WordDepth wordDepth = new WordDepth(strWord, 1, new LinkedList<> ());
+        WordDepth wordDepth = new WordDepth(strWord, 1, new LinkedList<>());
         wordQueue.add(wordDepth);
         Set<String> visited = new HashSet<>();
         visited.add(strWord);
@@ -74,12 +63,12 @@ public class WordLadderTwoBFS {
                         for (String strLinkedWord : strWords) {
                             if (strLinkedWord.equals(strEndWord)) {
                                 constructPath(wordDepth.previousWords, strEndWord);
-                            } else if ((wordDepth.depth  < minLength) &&
+                            } else if ((wordDepth.depth < minLength) &&
                                     (!(visited.contains(strLinkedWord)))) {
                                 //(!(wordDepth.previousWords.contains(strLinkedWord)))) {
 
                                 visitedLevel.add(strLinkedWord);
-                                WordDepth newWordDepth = new WordDepth(strLinkedWord, wordDepth.depth+1,
+                                WordDepth newWordDepth = new WordDepth(strLinkedWord, wordDepth.depth + 1,
                                         new LinkedList<>(wordDepth.previousWords));
                                 wordQueue.add(newWordDepth);
                             }
@@ -91,8 +80,6 @@ public class WordLadderTwoBFS {
         }
     }
 
-
-
     void constructPath(List<String> pathSoFar, String strEndWord) {
         pathSoFar.add(strEndWord);
         int length = pathSoFar.size();
@@ -102,6 +89,19 @@ public class WordLadderTwoBFS {
             minLength = length;
         } else if (length == minLength) {
             combList.add(new ArrayList<>(pathSoFar));
+        }
+    }
+
+    static class WordDepth {
+        String strWord;
+        Integer depth;
+        List<String> previousWords;
+
+        public WordDepth(String strWord, Integer depth, List<String> previousWords) {
+            this.strWord = strWord;
+            this.depth = depth;
+            this.previousWords = previousWords;
+            previousWords.add(strWord);
         }
     }
 

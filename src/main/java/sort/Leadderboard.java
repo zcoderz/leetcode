@@ -7,11 +7,16 @@ import java.util.Map;
 
 /**
  * simple implementation of a ladder board using a hash map and a sorted array.
- *
  */
 public class Leadderboard {
 
-    public static void main(String [] args) {
+    Map<Integer, Person> personMap = new HashMap<>();
+    ArrayList<Integer> scores = new ArrayList<>();
+
+    public Leadderboard() {
+    }
+
+    public static void main(String[] args) {
         Leadderboard board = new Leadderboard();
         board.addScore(1, 13);
         board.addScore(2, 93);
@@ -39,19 +44,9 @@ public class Leadderboard {
         System.out.println(score);
     }
 
-    public static class Person {
-        int personId;
-        int score;
-    }
-
-    Map<Integer, Person> personMap = new HashMap<>();
-    ArrayList<Integer> scores = new ArrayList<>();
-
-    public Leadderboard() {
-    }
-
     /**
      * update score for player
+     *
      * @param playerId
      * @param score
      */
@@ -62,7 +57,9 @@ public class Leadderboard {
             scores.remove(id);
             person.score += score;
         } else {
-            person = new Person(); person.personId = playerId; person.score = score;
+            person = new Person();
+            person.personId = playerId;
+            person.score = score;
         }
         personMap.put(playerId, person);
         int id = Collections.binarySearch(scores, person.score);
@@ -74,12 +71,13 @@ public class Leadderboard {
 
     /**
      * get sum of top k scores
+     *
      * @param k
      * @return
      */
     public int top(int k) {
         int score = 0;
-        for (int i = scores.size()-1; i >= 0 && k > 0; k--, i--) {
+        for (int i = scores.size() - 1; i >= 0 && k > 0; k--, i--) {
             score += scores.get(i);
         }
         return score;
@@ -87,6 +85,7 @@ public class Leadderboard {
 
     /**
      * remove player id from the lader board
+     *
      * @param playerId
      */
     public void reset(int playerId) {
@@ -94,5 +93,10 @@ public class Leadderboard {
         personMap.remove(playerId);
         int id = Collections.binarySearch(scores, person.score);
         scores.remove(id);
+    }
+
+    public static class Person {
+        int personId;
+        int score;
     }
 }

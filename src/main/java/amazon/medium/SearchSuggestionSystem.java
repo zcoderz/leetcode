@@ -7,8 +7,8 @@ import java.util.List;
 
 public class SearchSuggestionSystem {
 
-    public static void main(String [] args) {
-        String [] products = {"mobile","mouse","moneypot","monitor","mousepad"};
+    public static void main(String[] args) {
+        String[] products = {"mobile", "mouse", "moneypot", "monitor", "mousepad"};
         String searchWord = "mouse";
         SearchSuggestionSystem search = new SearchSuggestionSystem();
         List<List<String>> llist = search.suggestedProducts(products, searchWord);
@@ -24,7 +24,7 @@ public class SearchSuggestionSystem {
         node.buildTrie(products);
         List<List<String>> list = new ArrayList<>();
         for (int i = 1; i <= searchWord.length(); i++) {
-            String str = searchWord.substring(0,i);
+            String str = searchWord.substring(0, i);
             list.add(search(node, 0, str));
         }
         return list;

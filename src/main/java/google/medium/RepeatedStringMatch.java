@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class RepeatedStringMatch {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         BigInteger test = BigInteger.valueOf(2);
         test = test.modInverse(BigInteger.valueOf(3));
         System.out.println(test);
@@ -48,13 +48,13 @@ public class RepeatedStringMatch {
         HashMap<Character, Integer> charCountA = new HashMap<>();
         HashMap<Character, Integer> charCountB = new HashMap<>();
 
-        for(int i =0; i < a.length(); i++) {
+        for (int i = 0; i < a.length(); i++) {
             Character c = a.charAt(i);
             int ct = charCountA.getOrDefault(c, 0);
             charCountA.put(c, ct + 1);
         }
 
-        for(int i =0; i < b.length(); i++) {
+        for (int i = 0; i < b.length(); i++) {
             Character c = b.charAt(i);
             int ct = charCountB.getOrDefault(c, 0);
             charCountB.put(c, ct + 1);
@@ -72,7 +72,7 @@ public class RepeatedStringMatch {
         StringBuilder cBuilder = new StringBuilder(a);
         cBuilder.append(a.repeat(Math.max(0, largestDiff)));
         String c = cBuilder.toString();
-        int valid =  validate(a, b, c);
+        int valid = validate(a, b, c);
         if (valid == -1) {
             return -1;
         } else {

@@ -2,18 +2,17 @@ package sort;
 
 
 /**
- * fastest algo to work on small arrays.
- * use binary search to find location of the element
- * move elements between i and lo right
- *
- * the sort is fast because on small arrays the items are located close together
- * this algo requires a bunch of moves in the array, but moves are fast because of closeness in locality
- * what is more expensive are the comparisons, and since this sort uses less comparisons its faster. 
+ * fastest algo to work on small arrays. use binary search to find location of the element move elements between i and
+ * lo right
+ * <p>
+ * the sort is fast because on small arrays the items are located close together this algo requires a bunch of moves in
+ * the array, but moves are fast because of closeness in locality what is more expensive are the comparisons, and since
+ * this sort uses less comparisons its faster.
  */
 public class BinaryInsertionSort {
 
-    public static void main(String [] args) {
-        int [] arr = {7, 2, 5, 11, 9,98, 2, 6, 879 , 98, 101, 2, 7, 9, 11, 1232, 8782178, 7, 1, 2};
+    public static void main(String[] args) {
+        int[] arr = {7, 2, 5, 11, 9, 98, 2, 6, 879, 98, 101, 2, 7, 9, 11, 1232, 8782178, 7, 1, 2};
         BinaryInsertionSort bs = new BinaryInsertionSort();
         bs.sort(arr);
         for (int j = 0; j < arr.length; j++) {
@@ -21,10 +20,10 @@ public class BinaryInsertionSort {
         }
     }
 
-    public void sort(int [] arr) {
+    public void sort(int[] arr) {
         int n = arr.length;
 
-        for(int i =1; i < n; i++) {
+        for (int i = 1; i < n; i++) {
 
             int lo = 0;
             int hi = i;
@@ -39,7 +38,7 @@ public class BinaryInsertionSort {
                 }
             }
 
-            if (i-lo >0) {
+            if (i - lo > 0) {
                 System.arraycopy(arr, lo, arr, lo + 1, i - lo);
             }
             arr[lo] = val;

@@ -5,17 +5,18 @@ import java.util.Stack;
 public class DecodeString {
 
 
-    public static void main(String [] args) {
+    Stack<String> stringStack = new Stack<>();
+
+    public static void main(String[] args) {
         String strVal = "3[a2[c]]";
         DecodeString dS = new DecodeString();
         strVal = dS.decodeString(strVal);
         System.out.println(strVal);
     }
 
-    Stack<String> stringStack = new Stack<>();
     public String decodeString(String s) {
         String strPrior = "";
-        for(int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '[') {
                 stringStack.push(strPrior);
                 strPrior = "";
@@ -32,7 +33,7 @@ public class DecodeString {
                         stringStack.push(concatVal);
                     }
                 }
-                strPrior="";
+                strPrior = "";
             } else {
                 String newC = "" + s.charAt(i);
                 boolean isStringSplit = stringSplit(newC, strPrior);
@@ -53,9 +54,9 @@ public class DecodeString {
         return ((numA == -1 && numB > 0) || (numB == -1 && numA > 0));
     }
 
-    String repeat (String strVal , int num) {
+    String repeat(String strVal, int num) {
         String strRetVal = strVal;
-        for (int i = 0; i < num-1; i++) {
+        for (int i = 0; i < num - 1; i++) {
             strRetVal = strRetVal + strVal;
         }
         return strRetVal;

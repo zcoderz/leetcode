@@ -8,7 +8,7 @@ import java.util.*;
 public class WordLetterTwoBiDirBFS {
 
 
-    public static void main (String [] args) {
+    public static void main(String[] args) {
 
         String strBeginWord = "kiss";
         String strEndWord = "tusk";
@@ -57,8 +57,8 @@ public class WordLetterTwoBiDirBFS {
         Map<String, List<String>> wordMappings = new HashMap<>();
         for (String word : wordList) {
             if (word.equals(beginWord)) continue;
-            for (int i =0; i < word.length(); i++) {
-                String modWord = word.substring(0, i) + "*" + word.substring(i+1);
+            for (int i = 0; i < word.length(); i++) {
+                String modWord = word.substring(0, i) + "*" + word.substring(i + 1);
                 List<String> words = wordMappings.computeIfAbsent(modWord, (l) -> new ArrayList<>());
                 words.add(word);
             }
@@ -93,11 +93,11 @@ public class WordLetterTwoBiDirBFS {
             Set<String> newQueue = new HashSet<>();
             for (String word : queue1) {
                 //find possible mappings for the given word
-                for (int i =0; i < word.length(); i++) {
-                    String modWord = word.substring(0, i) + "*" + word.substring(i+1);
+                for (int i = 0; i < word.length(); i++) {
+                    String modWord = word.substring(0, i) + "*" + word.substring(i + 1);
                     List<String> mappings = wordMappings.get(modWord);
                     if (mappings == null) continue;
-                    for (String mapWord: mappings) {
+                    for (String mapWord : mappings) {
                         //only process if the given word is included in our list of words to process
                         if (vocabulary.contains(mapWord)) {
                             if (queue2.contains(mapWord)) {
@@ -119,7 +119,7 @@ public class WordLetterTwoBiDirBFS {
             if (queue1.size() > queue2.size()) {
                 //swap the queues to use the queue with the smaller size. this ensures we converge towards the
                 //solution faster
-                isForward = ! isForward; //update forward direction every time we swap queues
+                isForward = !isForward; //update forward direction every time we swap queues
                 Set<String> temp = queue1;
                 queue1 = queue2;
                 queue2 = temp;
@@ -142,11 +142,12 @@ public class WordLetterTwoBiDirBFS {
 
     /**
      * back track to find solutions to the problem given the mappings
+     *
      * @param ans
      * @param path
      * @param currWord
-     * @param mappings these are mapping between source and mapped words that are leveraged to find
-     *                 the paths to end word.
+     * @param mappings  these are mapping between source and mapped words that are leveraged to find the paths to end
+     *                  word.
      * @param endWord
      * @param maxLength this is the length determined by the above BFS solution. need to stop when we reach this length
      */

@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 271. Encode and Decode Strings
- * Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network
- * and is decoded back to the original list of strings.
- *
+ * 271. Encode and Decode Strings Design an algorithm to encode a list of strings to a string. The encoded string is
+ * then sent over the network and is decoded back to the original list of strings.
  */
 public class EncodeAndDecodeStrings {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         EncodeAndDecodeStrings encAndDecode = new EncodeAndDecodeStrings();
         List<String> list = new ArrayList<>();
-        list.add("hello"); list.add("sam"); list.add("world");
+        list.add("hello");
+        list.add("sam");
+        list.add("world");
         String strRes = encAndDecode.encode(list);
         List<String> parsed = encAndDecode.decode(strRes);
         System.out.println(parsed);
@@ -28,7 +28,7 @@ public class EncodeAndDecodeStrings {
         StringBuilder string = new StringBuilder();
         //first write out the length of the list
         string.append(strings.size()).append(",");
-        for (String str: strings) {
+        for (String str : strings) {
             //write length of each string followed by a sentinel and then the actual string
             string.append(str.length()).append(",").append(str);
         }
@@ -45,19 +45,19 @@ public class EncodeAndDecodeStrings {
             length.append(s.charAt(index++));
         }
         int len = Integer.parseInt(length.toString());
-        if (len ==0) {
+        if (len == 0) {
             return strings;
         }
         index++;
         //read next element, add it to list and move on..
-        while (index < s.length()-1) {
+        while (index < s.length() - 1) {
             length = new StringBuilder();
             while (Character.isDigit(s.charAt(index))) {
                 length.append(s.charAt(index++));
             }
             index++;
             len = Integer.parseInt(length.toString());
-            strings.add(s.substring(index, index+len));
+            strings.add(s.substring(index, index + len));
             index = index + len;
         }
         return strings;

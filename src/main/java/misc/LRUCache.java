@@ -1,34 +1,32 @@
 package misc;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 
 public class LRUCache {
 
     private int capacity;
-    private HashMap<Integer, Entry> itemMap = new HashMap<Integer, Entry> ();
+    private HashMap<Integer, Entry> itemMap = new HashMap<Integer, Entry>();
     private Entry head;
     private Entry tail;
 
-
-    public static void main(String [] args) {
-          LRUCache cache = new LRUCache(2);
-          cache.put(2,1);
-          cache.put(1,1);
-          cache.put(2,3);
-          cache.put(4,1);
-          cache.get(1);
-    }
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
     }
 
+    public static void main(String[] args) {
+        LRUCache cache = new LRUCache(2);
+        cache.put(2, 1);
+        cache.put(1, 1);
+        cache.put(2, 3);
+        cache.put(4, 1);
+        cache.get(1);
+    }
+
     public int get(int key) {
         if (itemMap.containsKey(key)) {
-            Entry theKey =  itemMap.get(key);
+            Entry theKey = itemMap.get(key);
             adjustTail(theKey);
             moveToFront(theKey);
             return theKey.val;
@@ -74,7 +72,7 @@ public class LRUCache {
 
     void moveToFront(final Entry entry) {
         //if entry.previous == null, then the entry must be the head.
-        if (entry.previous != null ) {
+        if (entry.previous != null) {
             entry.previous.next = entry.next;
             if (entry.next != null) {
                 entry.next.previous = entry.previous;
@@ -113,5 +111,7 @@ public class LRUCache {
             return next;
         }
 
-    };
+    }
+
+    ;
 }

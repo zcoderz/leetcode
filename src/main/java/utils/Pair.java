@@ -1,21 +1,24 @@
 package utils;
 
-public  class Pair<U, V>
-{
-    public final U first;		// first field of a Pair
-    public final V second; 	// second field of a Pair
+public class Pair<U, V> {
+    public final U first;        // first field of a Pair
+    public final V second;    // second field of a Pair
 
     // Constructs a new Pair with specified values
-    public Pair(U first, V second)
-    {
+    public Pair(U first, V second) {
         this.first = first;
         this.second = second;
     }
 
+    // Factory method for creating a Typed Pair instance
+    public static <U, V> Pair<U, V> of(U a, V b) {
+        // calls private constructor
+        return new Pair<>(a, b);
+    }
+
     @Override
     // Checks specified object is "equal to" current object or not
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o)
             return true;
 
@@ -32,22 +35,13 @@ public  class Pair<U, V>
 
     @Override
     // Computes hash code for an object to support hash tables
-    public int hashCode()
-    {
+    public int hashCode() {
         // use hash codes of the underlying objects
         return 31 * first.hashCode() + second.hashCode();
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "(" + first + ", " + second + ")";
-    }
-
-    // Factory method for creating a Typed Pair instance
-    public static <U, V> Pair<U, V> of(U a, V b)
-    {
-        // calls private constructor
-        return new Pair<>(a, b);
     }
 }

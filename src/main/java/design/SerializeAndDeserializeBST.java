@@ -3,19 +3,11 @@ package design;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class SerializeAndDeserializeBST {
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-
     private static String nullStr = new String("null");
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         SerializeAndDeserializeBST sBst = new SerializeAndDeserializeBST();
         TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
@@ -23,8 +15,8 @@ public class SerializeAndDeserializeBST {
         TreeNode node4 = new TreeNode(4);
         TreeNode node5 = new TreeNode(5);
         node1.left = node2;
-        node1.right=node3;
-        node3.left= node4;
+        node1.right = node3;
+        node3.left = node4;
         node3.right = node5;
         String str = sBst.serialize(node1);
         System.out.println(str);
@@ -50,16 +42,16 @@ public class SerializeAndDeserializeBST {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-       String [] arrData = data.split(",");
-       List<String> lData = new LinkedList<>(Arrays.asList(arrData));
-       TreeNode node = recurseDeserialize(lData);
-       return node;
+        String[] arrData = data.split(",");
+        List<String> lData = new LinkedList<>(Arrays.asList(arrData));
+        TreeNode node = recurseDeserialize(lData);
+        return node;
     }
 
     private TreeNode recurseDeserialize(List<String> lData) {
         String strVal = lData.get(0);
         lData.remove(0);
-        if (strVal.compareTo(nullStr) ==0) {
+        if (strVal.compareTo(nullStr) == 0) {
             return null;
         } else {
             int ival = Integer.valueOf(strVal);
@@ -67,6 +59,16 @@ public class SerializeAndDeserializeBST {
             theNode.left = recurseDeserialize(lData);
             theNode.right = recurseDeserialize(lData);
             return theNode;
+        }
+    }
+
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
         }
     }
 

@@ -6,19 +6,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * this is the most asked interview question since a long time.
- * i have personally been asked to write this code in past interviews.
- * practice it.
- *
- * the below code is not the most optimal but its fast to implement and is nicely written in reusable blocks
- * important to write this code via reusable methods as this is more a design question than an algorithm question
+ * this is the most asked interview question since a long time. i have personally been asked to write this code in past
+ * interviews. practice it.
+ * <p>
+ * the below code is not the most optimal but its fast to implement and is nicely written in reusable blocks important
+ * to write this code via reusable methods as this is more a design question than an algorithm question
  */
 public class LRUCache {
 
-    public static void main(String [] args) {
+    int capacity;
+    Map<Integer, ListNode> nodeMap = new HashMap<>();
+    //very important to keep these sentinels as they make the code much simpler to write
+    //these are place holders sentinels to for tail and head
+    //the actual head is next to head
+    //the actual tail is before the tail
+    ListNode head;
+    ListNode tail;
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        head = new ListNode();
+        tail = new ListNode();
+        //initialize head to point to tail and vice versa
+        head.next = tail;
+        tail.prior = head;
+    }
 
-    //["LRUCache","put","put","put","put","get","get","get","get","put","get","get","get","get","get"]
-    //[[3],[1,1],[2,2],[3,3],[4,4],
+    public static void main(String[] args) {
+
+        //["LRUCache","put","put","put","put","get","get","get","get","put","get","get","get","get","get"]
+        //[[3],[1,1],[2,2],[3,3],[4,4],
         //
         // [4],[3],[2],[1],
         // [5,5],
@@ -58,29 +74,9 @@ public class LRUCache {
 //        System.out.println(v);
     }
 
-
-    int capacity;
-    Map<Integer, ListNode> nodeMap = new HashMap<>();
-
-
-    //very important to keep these sentinels as they make the code much simpler to write
-    //these are place holders sentinels to for tail and head
-    //the actual head is next to head
-    //the actual tail is before the tail
-    ListNode head;
-    ListNode tail;
-
-    public LRUCache(int capacity) {
-        this.capacity = capacity;
-        head = new ListNode();
-        tail = new ListNode();
-        //initialize head to point to tail and vice versa
-        head.next = tail;
-        tail.prior = head;
-    }
-
     /**
      * remove node and adjust pointers
+     *
      * @param node
      */
     void removeNode(ListNode node) {
@@ -91,6 +87,7 @@ public class LRUCache {
 
     /**
      * add after head
+     *
      * @param node
      */
     void addNode(ListNode node) {
@@ -103,6 +100,7 @@ public class LRUCache {
 
     /**
      * remove and add does the same
+     *
      * @param node
      */
     void moveToHead(ListNode node) {
@@ -112,6 +110,7 @@ public class LRUCache {
 
     /**
      * get the actual tail and adjust pointers related to popping of the tail
+     *
      * @return
      */
     ListNode popTail() {
@@ -122,6 +121,7 @@ public class LRUCache {
 
     /**
      * leverage the methods above to write a simple algo for put
+     *
      * @param key
      * @param value
      */
@@ -144,6 +144,7 @@ public class LRUCache {
 
     /**
      * leverage methods already created to write a simple solution for get
+     *
      * @param key
      * @return
      */

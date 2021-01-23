@@ -6,6 +6,13 @@ public class TreeNode {
     public int count;
     public TreeNode left;
     public TreeNode right;
-    public TreeNode(int x) { val = x; }
-    public TreeNode(int x, int count) {val = x; this.count = count;}
+
+    public TreeNode(int x) {
+        val = x;
+    }
+
+    public TreeNode(int x, int count) {
+        val = x;
+        this.count = count;
+    }
 }

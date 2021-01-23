@@ -29,11 +29,11 @@ public class AlienDictionary {
         }
 
         for (int i = 1; i < numWords; i++) {
-            String wordA = words[i-1];
+            String wordA = words[i - 1];
             String wordB = words[i];
             int inLen = Math.min(wordA.length(), wordB.length());
             for (int j = 0; j < inLen; j++) {
-                if(wordA.charAt(j) != wordB.charAt(j)) {
+                if (wordA.charAt(j) != wordB.charAt(j)) {
                     String strDep = wordDependencies.getOrDefault(wordA.charAt(j), "");
                     strDep = strDep + wordB.charAt(j);
                     wordDependencies.put(wordA.charAt(j), strDep);
@@ -60,7 +60,7 @@ public class AlienDictionary {
     }
 
     int topoSort(Map<Character, String> wordDependencies, StringBuilder builder, Set<Character> visited,
-                  Character ch, Set<Character> visiting) {
+                 Character ch, Set<Character> visiting) {
         visiting.add(ch);
         String dep = wordDependencies.get(ch);
         if (null != dep) {

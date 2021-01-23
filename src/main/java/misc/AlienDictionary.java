@@ -18,7 +18,7 @@ public class AlienDictionary {
         }
 
         for (int i = 1; i < numWords; i++) {
-            String wordA = words[i-1];
+            String wordA = words[i - 1];
             String wordB = words[i];
             int inLen = Math.min(wordA.length(), wordB.length());
             int index = 0;
@@ -26,7 +26,7 @@ public class AlienDictionary {
                 index++;
             }
 
-            if(index < inLen) {
+            if (index < inLen) {
                 String strDep = wordDependencies.getOrDefault(wordA.charAt(index), "");
                 strDep = strDep + wordB.charAt(index);
                 wordDependencies.put(wordA.charAt(index), strDep);

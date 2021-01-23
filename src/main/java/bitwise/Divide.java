@@ -2,32 +2,29 @@ package bitwise;
 
 /**
  * 29. Divide Two Integers
- *
- * Given two integers dividend and divisor, divide two integers without using multiplication,
- * division, and mod operator.
- *
+ * <p>
+ * Given two integers dividend and divisor, divide two integers without using multiplication, division, and mod
+ * operator.
+ * <p>
  * Return the quotient after dividing dividend by divisor.
- *
- * The integer division should truncate toward zero, which means losing its fractional part.
- * For example, truncate(8.345) = 8 and truncate(-2.7335) = -2.
- *
- * This problem requires A LOT OF FOCUS!
- * best to start with simple test cases
+ * <p>
+ * The integer division should truncate toward zero, which means losing its fractional part. For example,
+ * truncate(8.345) = 8 and truncate(-2.7335) = -2.
+ * <p>
+ * This problem requires A LOT OF FOCUS! best to start with simple test cases
  */
 public class Divide {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         Divide div = new Divide();
         int res = div.divide(-2147483648, -3);
         System.out.println(res);
     }
 
     /**
-     * you could simplify your life by writing this code assuming only positive numbers
-     * and then as a second step handle overflow and negative number conditions.
-     * for me thinking on the number line rightwards (positive) is mentally much simpler when justifying the
-     * conditions....
-     *
+     * you could simplify your life by writing this code assuming only positive numbers and then as a second step handle
+     * overflow and negative number conditions. for me thinking on the number line rightwards (positive) is mentally
+     * much simpler when justifying the conditions....
      *
      * @param dividend
      * @param divisor
@@ -44,16 +41,16 @@ public class Divide {
         //if both dividend and divisors are negative than quotient is positive , else if one is negative its neg
         //if both are positive, its positive.
         int neg = (divisor < 0) ? -1 : 1;
-        neg = (dividend < 0) ? -neg: neg;
+        neg = (dividend < 0) ? -neg : neg;
 
         //change dividend and divisor to negative numbers
         //this is so you could handle the case of division of Integer.MIN_VALUE
-        dividend = (dividend < 0) ? dividend  : -dividend;
-        divisor = (divisor < 0) ? divisor  : -divisor;
+        dividend = (dividend < 0) ? dividend : -dividend;
+        divisor = (divisor < 0) ? divisor : -divisor;
 
         int aggPower = 0;
         int remDividend = dividend;
-        while(true) {
+        while (true) {
             int power = 0;
             int origRemaining = remDividend;
             while (remDividend < 0) {
@@ -67,7 +64,7 @@ public class Divide {
             if ((remDividend + divisor) <= 0) {
                 int val = aggPower;
                 if (power >= 0) {
-                    val +=  (1 << power) ;
+                    val += (1 << power);
                     if (remDividend + divisor < 0) {
                         val--; //remove one from power to get the rem dividend in negative territory
                     }

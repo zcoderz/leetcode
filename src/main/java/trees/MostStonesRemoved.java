@@ -6,32 +6,32 @@ import java.util.*;
 
 public class MostStonesRemoved {
 
-    public static void main(String [] args) {
-        MostStonesRemoved mostStonesRemoved = new MostStonesRemoved();
-
-        int [][] stones = {{3,2},{3,1},{4,4},{1,1},{0,2},{4,0}};
-                //{{0,0},{0,1},{1,0},{1,2},{2,1},{2,2}};
-        mostStonesRemoved.removeStones(stones);
-
-    }
-
     Map<Integer, List<Integer>> xCordMap = new HashMap<>();
     Map<Integer, List<Integer>> yCordMap = new HashMap<>();
     List<Pair<Integer, Integer>> points = new ArrayList<>();
     Map<Pair<Integer, Integer>, Integer> pointDepth = new HashMap<>();
     Integer maxD = 0;
 
+    public static void main(String[] args) {
+        MostStonesRemoved mostStonesRemoved = new MostStonesRemoved();
+
+        int[][] stones = {{3, 2}, {3, 1}, {4, 4}, {1, 1}, {0, 2}, {4, 0}};
+        //{{0,0},{0,1},{1,0},{1,2},{2,1},{2,2}};
+        mostStonesRemoved.removeStones(stones);
+
+    }
+
     public int removeStones(int[][] stones) {
         for (int i = 0; i < stones.length; i++) {
             Integer x = stones[i][0];
             Integer y = stones[i][1];
-            List<Integer> yCordinates =  xCordMap.getOrDefault(x, new ArrayList<>());
+            List<Integer> yCordinates = xCordMap.getOrDefault(x, new ArrayList<>());
             yCordinates.add(y);
             xCordMap.put(x, yCordinates);
-            List<Integer> xCordinates =  yCordMap.getOrDefault(y, new ArrayList<>());
+            List<Integer> xCordinates = yCordMap.getOrDefault(y, new ArrayList<>());
             xCordinates.add(x);
             yCordMap.put(y, xCordinates);
-            Pair<Integer, Integer> p  = new Pair(x, y);
+            Pair<Integer, Integer> p = new Pair(x, y);
             points.add(p);
         }
         Set<Pair<Integer, Integer>> visiting = new HashSet<>();
@@ -43,13 +43,13 @@ public class MostStonesRemoved {
                 this.maxD = maxD;
             }
         }
-        System.out.println(maxD-1);
-        return maxD-1;
+        System.out.println(maxD - 1);
+        return maxD - 1;
     }
 
     Integer process(Pair<Integer, Integer> p, Set<Pair<Integer, Integer>> visting) {
-        List<Integer> yCords =  xCordMap.get(p.first);
-        List<Integer> xCords =  yCordMap.get(p.second);
+        List<Integer> yCords = xCordMap.get(p.first);
+        List<Integer> xCords = yCordMap.get(p.second);
         int maxD = 0;
         for (Integer yCord : yCords) {
             if (yCord.equals(p.second)) {
@@ -73,7 +73,7 @@ public class MostStonesRemoved {
             visting.remove(pTmp);
         }
         //pointDepth.put(p, maxD+1);
-        return maxD+1;
+        return maxD + 1;
     }
 
 }

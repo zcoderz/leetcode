@@ -1,11 +1,10 @@
 package utils;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-public  class TrieNode {
+public class TrieNode {
     //keeping the child chars in a tree map so that the child nodes
     //can be retrieved in a sorted order. helps with some questions.
     private Map<Character, TrieNode> nodeMap = new TreeMap<>();
@@ -21,7 +20,7 @@ public  class TrieNode {
         }
     }
 
-    public TrieNode getNode (Character ch) {
+    public TrieNode getNode(Character ch) {
         return nodeMap.get(ch);
     }
 
@@ -29,7 +28,7 @@ public  class TrieNode {
         return word;
     }
 
-    public void setWord (String strWord) {
+    public void setWord(String strWord) {
         this.word = strWord;
     }
 
@@ -48,13 +47,14 @@ public  class TrieNode {
     public Map<Character, TrieNode> getAllChildNodes() {
         return nodeMap;
     }
-    public void buildTrie(Object [] words) {
+
+    public void buildTrie(Object[] words) {
         for (Object word : words) {
             buildTrie((String) word);
         }
     }
 
-    public void buildTrie(String [] words) {
+    public void buildTrie(String[] words) {
         for (String word : words) {
             buildTrie(word);
         }
@@ -73,10 +73,10 @@ public  class TrieNode {
         addNode(ch);
         TrieNode child = getNode(ch);
 
-        if (word.length()-1 == index) {
+        if (word.length() - 1 == index) {
             child.setWord(word);
         } else {
-            child.buildTrie(word, index+1);
+            child.buildTrie(word, index + 1);
         }
     }
 
@@ -89,7 +89,7 @@ public  class TrieNode {
     }
 
     private boolean search(int index, String word, boolean prefixOnly) {
-        if(prefixOnly && index == word.length()-1 ) {
+        if (prefixOnly && index == word.length() - 1) {
             return nodeMap.containsKey(word.charAt(index));
         }
         if (index == word.length()) {
@@ -99,7 +99,7 @@ public  class TrieNode {
         if (node == null) {
             return false;
         } else {
-            return node.search(index+ 1, word, prefixOnly);
+            return node.search(index + 1, word, prefixOnly);
         }
     }
 

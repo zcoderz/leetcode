@@ -8,7 +8,7 @@ import java.util.Set;
 public class RoomCleaner {
 
     Set<Pair<Integer, Integer>> visited = new HashSet<>();
-    int [][] moveDirections = { {0,1}, {1,0}, {0,-1}, {-1,0}};
+    int[][] moveDirections = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     public void cleanRoom(Robot robot) {
         RoomCleaner cleaner = new RoomCleaner();
@@ -20,8 +20,8 @@ public class RoomCleaner {
         Pair<Integer, Integer> p = new Pair<>(x, y);
         visited.add(p);
 
-        for (int i =0; i < moveDirections.length; i ++) {
-            int newD = (d + i ) % 4;
+        for (int i = 0; i < moveDirections.length; i++) {
+            int newD = (d + i) % 4;
             int xx = x + moveDirections[newD][0];
             int yy = y + moveDirections[newD][1];
 

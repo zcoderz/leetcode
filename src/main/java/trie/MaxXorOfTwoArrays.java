@@ -1,14 +1,12 @@
 package trie;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 421. Maximum XOR of Two Numbers in an Array
- * Given an integer array nums, return the maximum result of nums[i] XOR nums[j], where 0 ≤ i ≤ j < n.
- * this is a very interesting application of a trie
- * create a trie of bits and use that to figure out xor
+ * 421. Maximum XOR of Two Numbers in an Array Given an integer array nums, return the maximum result of nums[i] XOR
+ * nums[j], where 0 ≤ i ≤ j < n. this is a very interesting application of a trie create a trie of bits and use that to
+ * figure out xor
  */
 public class MaxXorOfTwoArrays {
 
@@ -18,10 +16,6 @@ public class MaxXorOfTwoArrays {
         MaxXorOfTwoArrays maxXorOfTwoArrays = new MaxXorOfTwoArrays();
         int maxXor = maxXorOfTwoArrays.findMaximumXOR(nums);
         System.out.println(maxXor);
-    }
-
-    class TrieNode {
-        Map<Integer, TrieNode> map = new HashMap<>();
     }
 
     public int findMaximumXOR(int[] nums) {
@@ -42,6 +36,7 @@ public class MaxXorOfTwoArrays {
 
     /**
      * this is a very clever approach to calc max xor on an array of numbers
+     *
      * @param num
      * @param node
      * @param bitMask
@@ -75,5 +70,9 @@ public class MaxXorOfTwoArrays {
             node = newNode;
         }
         return maxXor;
+    }
+
+    class TrieNode {
+        Map<Integer, TrieNode> map = new HashMap<>();
     }
 }

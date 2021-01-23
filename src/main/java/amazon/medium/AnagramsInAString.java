@@ -4,6 +4,8 @@ import java.util.*;
 
 public class AnagramsInAString {
 
+    Set<String> anagrams = new HashSet<>();
+
     public static void main(String[] args) {
         AnagramsInAString ags = new AnagramsInAString();
         List<Integer> l = ags.findAnagrams("cbaebabacd", "abc");
@@ -11,36 +13,37 @@ public class AnagramsInAString {
     }
 
     /**
-     * same approach as the hash map but leverages an array for comparing count of chars in array 1 vs array 2
-     * this can be done as we know the possible chars are lower case letters consisting of 26 unique chars
+     * same approach as the hash map but leverages an array for comparing count of chars in array 1 vs array 2 this can
+     * be done as we know the possible chars are lower case letters consisting of 26 unique chars
+     *
      * @param s
      * @param p
      * @return
      */
     public List<Integer> findAnagrams(String s, String p) {
         if (s.isEmpty() || p.isEmpty() || p.length() > s.length()) return new ArrayList();
-        int [] target = new int[26];
-        int [] source = new int[26];
+        int[] target = new int[26];
+        int[] source = new int[26];
 
         List<Integer> out = new ArrayList<>();
         for (int i = 0; i < p.length(); i++) {
             char c = p.charAt(i);
-            target[c-'a'] += 1;
+            target[c - 'a'] += 1;
         }
 
         for (int i = 0; i < p.length(); i++) {
             char c = s.charAt(i);
-            source[c-'a'] += 1;
+            source[c - 'a'] += 1;
         }
         if (Arrays.equals(target, source)) {
             out.add(0);
         }
         int len = p.length();
         for (int i = 1; (i + len) <= s.length(); i++) {
-            char c = s.charAt(i-1);
-            source[c-'a'] -= 1;
+            char c = s.charAt(i - 1);
+            source[c - 'a'] -= 1;
             c = s.charAt(i + len - 1);
-            source[c-'a'] += 1;
+            source[c - 'a'] += 1;
             if (Arrays.equals(target, source)) {
                 out.add(i);
             }
@@ -49,11 +52,12 @@ public class AnagramsInAString {
     }
 
     /**
-     * a very clever approach, calculate char count and store in a map
-     * then as you pass through the string, construct a new map and compare that against the target map
+     * a very clever approach, calculate char count and store in a map then as you pass through the string, construct a
+     * new map and compare that against the target map
+     * <p>
+     * algo's approach is very clever, but hash map operations arent the fastest. hence the algo takes a good amount of
+     * time.
      *
-     * algo's approach is very clever, but hash map operations arent the fastest. hence the algo takes a good
-     * amount of time.
      * @param s
      * @param p
      * @return
@@ -98,9 +102,9 @@ public class AnagramsInAString {
     }
 
     /**
-     * sorts the target string
-     * for each substring , sort it and then compare against the target sorted string
-     * still slow as sort is slow N*logN and you have to repeat it for each sub string
+     * sorts the target string for each substring , sort it and then compare against the target sorted string still slow
+     * as sort is slow N*logN and you have to repeat it for each sub string
+     *
      * @param s
      * @param p
      * @return
@@ -123,11 +127,9 @@ public class AnagramsInAString {
         return l;
     }
 
-    Set<String> anagrams = new HashSet<>();
-
     /**
-     * leverages the anagrams created and stored in map
-     * where it matches that against current substring
+     * leverages the anagrams created and stored in map where it matches that against current substring
+     *
      * @param s
      * @param p
      * @return
@@ -146,8 +148,8 @@ public class AnagramsInAString {
     }
 
     /**
-     * generates all possible anagrams for string and adds to hash map
-     * this is a slow algo , runs in N! time.
+     * generates all possible anagrams for string and adds to hash map this is a slow algo , runs in N! time.
+     *
      * @param str
      * @param startIndex
      */
@@ -162,6 +164,7 @@ public class AnagramsInAString {
 
     /**
      * swap chars at index i & j
+     *
      * @param builder
      * @param i
      * @param j

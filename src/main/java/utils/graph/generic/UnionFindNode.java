@@ -2,7 +2,8 @@ package utils.graph.generic;
 
 
 /**
- * Got the base code from github and modified a bit code is similar to utils.graph.UnionFind however is generic and thus
+ * Got the base code from github and modified a bit.
+ * code is similar to utils.graph.UnionFind however is generic and thus
  * can be used for data type such as strings
  *
  * @param <T>

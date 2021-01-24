@@ -26,6 +26,8 @@ package google.medium;
  * Input: N = 21, K = 17, W = 10
  * Output: 0.73278
  *
+ * IMP-1
+ * TODO - repeat!
  */
 public class NewGame21 {
 
@@ -35,8 +37,19 @@ public class NewGame21 {
         System.out.println(res);
     }
 
+    /**
+     * At the code this problem is a simple probability problem. but the way its formulated it gets tricky to
+     * simplify.
+     * The below logic was mostly sourced from this discussion on leetcode. its the best discussion on this problem
+     * that i could find
+     * https://leetcode.com/problems/new-21-game/discuss/132503/My-take-on-how-to-reach-at-Solution
+     *
+     * @param N
+     * @param K
+     * @param W
+     * @return
+     */
     public double new21Game(int N, int K, int W) {
-
         //game stops when we are at K
         //at K-1 there are W possible points that can be made
         //so max points possible are k-1 +1
@@ -45,18 +58,33 @@ public class NewGame21 {
         }
         //prob of one move
         double oneProbability = 1 / (W + 0.0);
-        double [] probabilities = new double [K+W];
+        double [] probabilities = new double [K+1];
+        //this is the base case for probability and hence needs to be set as 1
+        //for example probability to get a score of 1 is 1 * 1/W
         probabilities[0] = 1;
         double previousProb = 0;
+        //calculate the probabilities from 1-k as sum (of probabilities from i-1......i-w) * 1/w (single probability)
+        //this is because there is a way to get to i from each of i-1....i-w by using one of 1-w in a single move
+        //for example
+        //get from 0-1 in one move by choosing 1
+        //get to 2 from 0-2 by choosing 2 or by choosing 1 after 1 had been chosen
+        //get to 3 from 0-3 by choosing 3, from 2 to 3, by choosing 1 or from 1-3 by choosing 2
+        //and so on.....until K because once you reach K or more the game ends
         for (int i = 1; i <= K; i++) {
-            previousProb +=   (i-W-1) >= 0 ?  -probabilities[i-W-1] : 0  + probabilities[i-1];
+            previousProb +=   ((i-W-1) >= 0 ?  -probabilities[i-W-1] : 0)  + probabilities[i-1];
             probabilities[i]= previousProb * oneProbability;
         }
         double res = probabilities[K];
-        for (int i =K+1; i <= N; i++) {
-            previousProb -= (i-W-1) >= 0 ? probabilities[i-W-1] : 0;
-            probabilities[i] = previousProb * oneProbability;
-            res += probabilities[i];
+        double val;
+        //K+w-1 is covered by edge condition above which results in probability of 1
+        //the below condition covers cases from K+1 to N where N is at most K+W-2
+        //logic is similar to above where you calculate probability of getting to X where x > k as
+        //p[x] = (p[K-1] + p[K-2] + .... + p[x - W]) * 1/W;
+        //this is because you cant reach x from i > K because the game would already have finished if that was true
+        for (int i = K+1; i <= N; i++) {
+            previousProb -= ((i-W-1) >= 0 ? probabilities[i-W-1] : 0);
+            val = previousProb * oneProbability;
+            res += val;
         }
         return res;
     }

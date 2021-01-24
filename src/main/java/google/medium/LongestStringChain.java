@@ -15,7 +15,7 @@ import java.util.*;
  *
  * Return the longest possible length of a word chain with words chosen from the given list of words.
  *
- * IMP-1 : UQ- think is a real nice question to practice!
+ * IMP-1 : UQ- this is a real nice question to practice!
  */
 public class LongestStringChain {
 

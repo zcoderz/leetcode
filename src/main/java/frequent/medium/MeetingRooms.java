@@ -32,7 +32,7 @@ public class MeetingRooms {
               if (a.isStart) {
                   return 1;
               } else {
-                  return -1;
+                  return -1; //-1 so a (end) is recorded before b
               }
           } else {
             return Integer.compare(a.time, b.time);

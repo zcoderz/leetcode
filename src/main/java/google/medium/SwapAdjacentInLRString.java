@@ -17,39 +17,85 @@ public class SwapAdjacentInLRString {
         isPossible = swap.canTransform(start, end);
         System.out.println(isPossible);
 
-        start = "LX XL XR LX XL"; end = "XL LX  RX LX LX";
+        start = "LXXLXRLXXL"; end = "XLLXRXLXLX";
         isPossible = swap.canTransform(start, end);
         System.out.println(isPossible);
     }
 
 
-    //"XL" with "LX", or replacing one occurrence of "RX" with "XR"
     public boolean canTransform(String start, String end) {
         if (start.length() != end.length()) {
             return false;
         }
-
-        StringBuilder builder = new StringBuilder(start);
-        int len = start.length();
-
-        for (int i =0; i < len; i++) {
-            if (builder.charAt(i) == end.charAt(i)) {
-                continue;
-            }
-            if (i == len-1) {
-                return false;
-            }
-            if ((builder.charAt(i+1) == end.charAt(i)) && (builder.charAt(i) == 'X'|| builder.charAt(i+1) == 'X')) {
-                char ch = builder.charAt(i);
-                builder.setCharAt(i, builder.charAt(i+1));
-                builder.setCharAt(i+1, ch);
-            } else {
-                return false;
+        //check countX is same in both strings
+        int countX =0;
+        for (int i =0; i < start.length(); i++) {
+            if (start.charAt(i) == 'X') {
+                countX++;
             }
         }
+        for (int i =0; i < end.length(); i++) {
+            if (end.charAt(i) == 'X') {
+                countX--;
+            }
+        }
+        if (countX != 0) {
+            return false;
+        }
+        int i = 0;
+        int j = 0;
+        int len = start.length();
 
+        while (i < len && j < len) {
+            while (start.charAt(i) == 'X') {
+                i++;
+            }
+            while(end.charAt(j) == 'X') {
+                j++;
+            }
+            if ((start.charAt(i) == 'L') && ((end.charAt(j) != 'L') || j > i)) {
+                return false;
+            }
+            if ((end.charAt(j) == 'R') && ((start.charAt(i) != 'R') || i > j)) {
+                return false;
+            }
+            i++; j++;
+        }
         return true;
+    }
 
+    public boolean canTransformSlow(String start, String end) {
+        if (start.length() != end.length()) {
+            return false;
+        }
+        String pplOrderS = start.replaceAll("X", "");
+        String ppOrderE = end.replaceAll("X", "");
+        if (!pplOrderS.equals(ppOrderE)) {
+            return false;
+        }
+        int rFound = 0;
+        int lFound = 0;
+        for (int i =0; i < start.length() -1; i++) {
+            if (start.charAt(i) == 'R') {
+                rFound++;
+            }
+            if (end.charAt(i) == 'L') {
+                lFound++;
+            }
+            if ( start.charAt(i) == 'L') {
+                if (lFound == 0) {
+                    return false;
+                }
+                lFound--;
+            }
+            if ( end.charAt(i) == 'R') {
+                if (rFound == 0) {
+                    return false;
+                }
+                rFound--;
+            }
+        }
+        return true;
     }
 
 }

@@ -23,10 +23,16 @@ package google.medium;
  * need to recognize constraints that must be true after the transform.
  * the transform could move L left and R right.
  *
- * need to recognize that transform when it shifts L left, must therefore have the location of the lth index in final
- * string at or before the location of the starting string.
+ * need to recognize that transform when it shifts L left, moves it index further to left from starting string
+ * there location of each l in end string must occur at or before that of the starting
  *
- * similarly the transform must have the location of the R, be at or after that of the starting string
+ * similarly the transform must have the location of the R, be at or after that of the starting string.
+ * therefore location of each R in final string must occur at or after that in the original string.
+ *
+ * 1 <= start.length <= 104
+ * start.length == end.length
+ * Both start and end will only consist of characters in 'L', 'R', and 'X'.
+ *
  *
  * X can be ignored......
  *
@@ -53,30 +59,26 @@ public class SwapAdjacentInLRString {
         System.out.println(isPossible);
     }
 
-
+    /**
+     * clever solution from leetcode in that it checks that number of
+     * @param start
+     * @param end
+     * @return
+     */
     public boolean canTransform(String start, String end) {
-        if (start.length() != end.length()) {
-            return false;
+        int n = start.length();
+        // count X in start and end --> should be the same
+        int count = 0;
+        for (int i = 0; i < n; ++i) {
+            if (start.charAt(i) == 'X') count++;
+            if (end.charAt(i) == 'X') count--;
         }
-        //check countX is same in both strings
-        int countX =0;
-        for (int i =0; i < start.length(); i++) {
-            if (start.charAt(i) == 'X') {
-                countX++;
-            }
-        }
-        for (int i =0; i < end.length(); i++) {
-            if (end.charAt(i) == 'X') {
-                countX--;
-            }
-        }
-        if (countX != 0) {
-            return false;
-        }
+        if (count != 0) return false;
         int i = 0;
         int j = 0;
-        int n = start.length();
+
         while (i < n && j < n) {
+            //skip X
             while (i < n && start.charAt(i) == 'X') i++;
             while (j < n && end.charAt(j) == 'X') j++;
 

@@ -1,5 +1,36 @@
 package google.medium;
 
+/**
+ * 777. Swap Adjacent in LR String
+ *
+ * In a string composed of 'L', 'R', and 'X' characters, like "RXXLRXRXL", a move consists of either replacing one
+ * occurrence of "XL" with "LX", or replacing one occurrence of "RX" with "XR". Given the starting string start and
+ * the ending string end,return True if and only if there exists a sequence
+ * of moves to transform one string to the other.
+ *
+ *
+ * Example 1:
+ *
+ * Input: start = "RXXLRXRXL", end = "XRLXXRRLX"
+ * Output: true
+ * Explanation: We can transform start to end following these steps:
+ * RXXLRXRXL ->
+ * XRXLRXRXL ->
+ * XRLXRXRXL ->
+ * XRLXXRRXL ->
+ * XRLXXRRLX
+ *
+ * need to recognize constraints that must be true after the transform.
+ * the transform could move L left and R right.
+ *
+ * need to recognize that transform when it shifts L left, must therefore have the location of the lth index in final
+ * string at or before the location of the starting string.
+ *
+ * similarly the transform must have the location of the R, be at or after that of the starting string
+ *
+ * X can be ignored......
+ *
+ */
 public class SwapAdjacentInLRString {
 
     public static void main(String [] args) {
@@ -44,25 +75,25 @@ public class SwapAdjacentInLRString {
         }
         int i = 0;
         int j = 0;
-        int len = start.length();
+        int n = start.length();
+        while (i < n && j < n) {
+            while (i < n && start.charAt(i) == 'X') i++;
+            while (j < n && end.charAt(j) == 'X') j++;
 
-        while (i < len && j < len) {
-            while (start.charAt(i) == 'X') {
-                i++;
+            //if the last character of start or end was X then same must be true for both of them
+            if (i == n || j == n) {
+                return i == n && j == n;
             }
-            while(end.charAt(j) == 'X') {
-                j++;
-            }
-            if ((start.charAt(i) == 'L') && ((end.charAt(j) != 'L') || j > i)) {
-                return false;
-            }
-            if ((end.charAt(j) == 'R') && ((start.charAt(i) != 'R') || i > j)) {
-                return false;
-            }
-            i++; j++;
+            if (start.charAt(i) != end.charAt(j)) return false;
+            if (start.charAt(i) == 'L' && i < j) return false;
+            if (start.charAt(i) == 'R' && i > j) return false;
+
+            i++;
+            j++;
         }
         return true;
     }
+
 
     public boolean canTransformSlow(String start, String end) {
         if (start.length() != end.length()) {

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Node {
     public int val;
+    public int var;
     public String name;
     public List<Node> children;
 

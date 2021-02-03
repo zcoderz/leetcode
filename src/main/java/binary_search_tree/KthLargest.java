@@ -3,10 +3,30 @@ package binary_search_tree;
 import utils.TreeNode;
 
 /**
+ * 215. Kth Largest Element in an Array
+ *
+ * Find the kth largest element in an unsorted array.
+ * Note that it is the kth largest element in the sorted order, not the kth distinct element.
+ *
+ * Example 1:
+ *
+ * Input: [3,2,1,5,6,4] and k = 2
+ * Output: 5
+ * Example 2:
+ *
+ * Input: [3,2,3,1,2,4,5,5,6] and k = 4
+ * Output: 4
+ * Note:
+ * You may assume k is always valid, 1 ≤ k ≤ array's length.
+ *
  * this is an interesting problem.
  * takes some thinking to get the concept of counts in the head
  * but its simple once you understand the logic of when to search left or right based on current count
  * and that of its left and right children :)
+ *
+ * There are simpler ways to solve the problem. For example put the data in a treeset whose size is ensured to be at
+ * max k. move left to right in array adding and removing elements from the treeset. at end return the last element
+ * in the treeset.
  */
 public class KthLargest {
 

@@ -5,6 +5,27 @@ import utils.TreeNode;
 
 import java.util.Stack;
 
+/**
+ * /**
+ *  * 236. Lowest Common Ancestor of a Binary Tree
+ *  * Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+ *  *
+ *  * According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between
+ *  * two nodes p and q as the lowest node in T that has both p and q as descendants
+ *  * (where we allow a node to be a descendant of itself).”
+ *  *
+ *  *
+ *  *
+ *  * Example 1:
+ *  *
+ *  *
+ *  * Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+ *  * Output: 3
+ *  * Explanation: The LCA of nodes 5 and 1 is 3.
+ *  *
+ *  * IMP-1 : Common question (also check iterative solution LeastCommonAncestorRecursive)
+ *
+ */
 public class LeastCommonAncestorIterativeStack {
 
     /**
@@ -51,8 +72,8 @@ public class LeastCommonAncestorIterativeStack {
                     stack.push(new Pair<>(child, BOTH_PENDING));
 
             } else {
-                //if both childs visited, pop the element and move the LCA to the prior ndoe which
-                // was parent of the current node with LCA
+                //if both childs visited, pop the element and move the LCA to the prior node which
+                //was parent of the current node with LCA
                 if (LCA == topPair.first) {
                     stack.pop();
                     LCA = stack.peek().first;

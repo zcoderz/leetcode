@@ -2,6 +2,22 @@ package binary_tree;
 
 import utils.TreeNode;
 
+/**
+ * 250. Count Univalue Subtrees
+ *
+ * Given the root of a binary tree, return the number of uni-value subtrees.
+ *
+ * A uni-value subtree means all nodes of the subtree have the same value.
+ *
+ *
+ *
+ * Example 1:
+ *
+ *
+ * Input: root = [5,1,5,5,5,null,5]
+ * Output: 4
+ *
+ */
 public class UniValSubTreeSimple {
 
     int count = 0;

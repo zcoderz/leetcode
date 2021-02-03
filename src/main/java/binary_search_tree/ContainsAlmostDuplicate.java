@@ -4,7 +4,20 @@ package binary_search_tree;
 import java.util.TreeSet;
 
 /**
+ * 220. Contains Duplicate III
  * this is a very elegant solution to a seemingly complicated problem.
+ *
+ * Given an array of integers, find out whether there are two distinct indices i and j in the array such that
+ * the absolute difference between nums[i] and nums[j] is at most t and the absolute
+ * difference between i and j is at most k.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: nums = [1,2,3,1], k = 3, t = 0
+ * Output: true
+ *
  */
 public class ContainsAlmostDuplicate {
 

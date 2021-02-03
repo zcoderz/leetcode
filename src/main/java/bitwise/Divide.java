@@ -12,6 +12,8 @@ package bitwise;
  * truncate(8.345) = 8 and truncate(-2.7335) = -2.
  * <p>
  * This problem requires A LOT OF FOCUS! best to start with simple test cases
+ *
+ * IMP-1: Facebook asks this questions often. The approach is tricky
  */
 public class Divide {
 
@@ -44,7 +46,9 @@ public class Divide {
         neg = (dividend < 0) ? -neg : neg;
 
         //change dividend and divisor to negative numbers
-        //this is so you could handle the case of division of Integer.MIN_VALUE
+        //this is so you could handle the case of division of Integer.MIN_VALUE.
+        //Integer.MIN_VALUE has no equivalent in positive space as -ive values have an extra value in integers.
+        //specifically it is the -2147483648
         dividend = (dividend < 0) ? dividend : -dividend;
         divisor = (divisor < 0) ? divisor : -divisor;
 

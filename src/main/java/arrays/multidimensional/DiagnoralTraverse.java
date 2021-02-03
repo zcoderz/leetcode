@@ -4,6 +4,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 498. Diagonal Traverse
+ * Given a matrix of M x N elements (M rows, N columns), return all elements of the matrix in diagonal order as shown in the below image.
+ *
+ *
+ *
+ * Example:
+ *
+ * Input:
+ * [
+ *  [ 1, 2, 3 ],
+ *  [ 4, 5, 6 ],
+ *  [ 7, 8, 9 ]
+ * ]
+ *
+ * IMP-3
+ *
+ */
 public class DiagnoralTraverse {
 
     public static void main(String[] args) {

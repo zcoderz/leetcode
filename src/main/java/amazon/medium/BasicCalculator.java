@@ -2,6 +2,24 @@ package amazon.medium;
 
 import java.util.Stack;
 
+/**
+ * 227. Basic Calculator II
+ * Given a string s which represents an expression, evaluate this expression and return its value.
+ *
+ * The integer division should truncate toward zero.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: s = "3+2*2"
+ * Output: 7
+ * Example 2:
+ *
+ * Input: s = " 3/2 "
+ * Output: 1
+ *
+ */
 public class BasicCalculator {
 
     public static void main(String[] args) {

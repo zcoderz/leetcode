@@ -4,9 +4,43 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 957. Prison Cells After N Days
+ * There are 8 prison cells in a row, and each cell is either occupied or vacant.
+ *
+ * Each day, whether the cell is occupied or vacant changes according to the following rules:
+ *
+ * If a cell has two adjacent neighbors that are both occupied or both vacant, then the cell becomes occupied.
+ * Otherwise, it becomes vacant.
+ * (Note that because the prison is a row, the first and the last cells in the row can't have two adjacent neighbors.)
+ *
+ * We describe the current state of the prison in the following way: cells[i] == 1 if the i-th cell is occupied, else cells[i] == 0.
+ *
+ * Given the initial state of the prison, return the state of the prison after N days (and N such changes described above.)
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: cells = [0,1,0,1,1,0,0,1], N = 7
+ * Output: [0,0,1,1,0,0,0,0]
+ * Explanation:
+ * The following table summarizes the state of the prison on each day:
+ * Day 0: [0, 1, 0, 1, 1, 0, 0, 1]
+ * Day 1: [0, 1, 1, 0, 0, 0, 0, 0]
+ * Day 2: [0, 0, 0, 0, 1, 1, 1, 0]
+ * Day 3: [0, 1, 1, 0, 0, 1, 0, 0]
+ * Day 4: [0, 0, 0, 0, 0, 1, 0, 0]
+ * Day 5: [0, 1, 1, 1, 0, 1, 0, 0]
+ * Day 6: [0, 0, 1, 0, 1, 1, 0, 0]
+ * Day 7: [0, 0, 1, 1, 0, 0, 0, 0]
+ *
  * this is a very interesting problem and should be practiced carefully
  * <p>
  * suggest do this again!
+ *
+ * IMP-1 very interesting question to practice
+ *
+ * ToDo- Repeat
  */
 public class PrisonCellsAfterNDays {
 
@@ -86,7 +120,7 @@ public class PrisonCellsAfterNDays {
     private int nextBit(int currBit) {
         int left = (currBit << 1); //you get the left cell if you left shift
         int right = (currBit >> 1); //you get the right cell if you right shift
-        //left ^ right returns 1 only if left ro right is 1, we want opposite of that hence not
+        //left ^ right returns 1 only if left or right is 1, we want opposite of that hence not
         //above logic causes first and last bit to never be 1 .
         // hence we and with 0x7e which is 01111110 ( max cells in requirement are 8)
         return ((~(left ^ right)) & 0x7e);

@@ -3,7 +3,11 @@ package amazon.medium;
 import java.util.PriorityQueue;
 
 /**
+ * 1167. Minimum Cost to Connect Sticks
+ *
  * calculate min cost to merge sticks into a single stick where cost is sum of len stick 1 + len stick 2
+ *
+ * IMP-2
  */
 public class CostOfConnectedSticks {
 

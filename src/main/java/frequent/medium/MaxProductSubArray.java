@@ -2,8 +2,11 @@ package frequent.medium;
 
 
 /**
+ * 152. Maximum Product Subarray
  * simple problem.
  * find max product in sub array.
+ *
+ * IMP-3
  */
 public class MaxProductSubArray {
 

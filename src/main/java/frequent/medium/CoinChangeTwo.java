@@ -1,8 +1,27 @@
 package frequent.medium;
 
 /**
+ * 518. Coin Change 2
+ *
  * Question asks to find number of combinations of coins that can be used to calculate a given amount
  *
+ * You are given coins of different denominations and a total amount of money.
+ * Write a function to compute the number of combinations that make up that amount.
+ * You may assume that you have infinite number of each kind of coin.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: amount = 5, coins = [1, 2, 5]
+ * Output: 4
+ * Explanation: there are four ways to make up the amount:
+ * 5=5
+ * 5=2+2+1
+ * 5=2+1+1+1
+ * 5=1+1+1+1+1
+ *
+ * IMP-1: Common question
  */
 public class CoinChangeTwo {
 

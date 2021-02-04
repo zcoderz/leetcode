@@ -4,14 +4,33 @@ import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
+ * 973. K Closest Points to Origin
+ * We have a list of points on the plane.  Find the K closest points to the origin (0, 0).
+ *
+ * (Here, the distance between two points on a plane is the Euclidean distance.)
+ *
+ * You may return the answer in any order.  The answer is guaranteed to be unique (except for the order that it is in.)
+ *
+ * Example 1:
+ *
+ * Input: points = [[1,3],[-2,2]], K = 1
+ * Output: [[-2,2]]
+ * Explanation:
+ * The distance between (1, 3) and the origin is sqrt(10).
+ * The distance between (-2, 2) and the origin is sqrt(8).
+ * Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin.
+ * We only want the closest K = 1 points from the origin, so the answer is just [[-2,2]].
+ *
+ * IMP-1 : Very common question. Important to practice
  *
  * this is a quicker method to find the first K shortest points than the standard sort
  * it will work to find the right location for the Kth element and then stop.
  *
- * unlike quick sort it doesnt recuse into both sides of partitioned array and therefore its complexity is O(N)
+ * unlike quick sort it doesn't recuse into both sides of partitioned array and therefore its complexity is O(N)
  * instead of O(N LogN)
  *
  * partition method is tricky , practice writing it again to get it sunk inside the head.....
+ * IMP-1: Common question and good practice for quick select
  */
 public class KClosestPointsQuickSelect {
     int[][] points;

@@ -2,6 +2,20 @@ package frequent.medium;
 
 import java.util.ArrayList;
 
+/**
+ * 253. Meeting Rooms II
+ *
+ * Given an array of meeting time intervals intervals where intervals[i] = [starti, endi],
+ * return the minimum number of conference rooms required.
+ *
+ *
+ * Example 1:
+ *
+ * Input: intervals = [[0,30],[5,10],[15,20]]
+ * Output: 2
+ *
+ * IMP-1: Common question
+ */
 public class MeetingRooms {
 
     /**

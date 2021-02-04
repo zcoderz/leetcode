@@ -6,8 +6,30 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Really interesting code that uses string offsets and dfs to figure out sentences that can be formed by the given
- * words
+ * 140. Word Break II
+ *
+ * Given a non-empty string s and a dictionary wordDict containing a list of non-empty words,
+ * add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.
+ *
+ * Note:
+ *
+ * The same word in the dictionary may be reused multiple times in the segmentation.
+ * You may assume the dictionary does not contain duplicate words.
+ * Example 1:
+ *
+ * Input:
+ * s = "catsanddog"
+ * wordDict = ["cat", "cats", "and", "sand", "dog"]
+ * Output:
+ * [
+ *   "cats and dog",
+ *   "cat sand dog"
+ * ]
+ *
+ *
+ * IMP-1 : Interesting question. Makes you think of how you can create a path that can reach the end of the string
+ * using words. Start dfs traversal from end , this ensures you traverse less paths -i,e those that possibly get to
+ * the end.
  */
 public class WordBreak2 {
 
@@ -67,6 +89,7 @@ public class WordBreak2 {
         }
 
         wordOut = new ArrayList<>();
+        //start from the end , while traversing back to start because you limit the traversal paths that way
         processDFS(len, "");
         return wordOut;
     }

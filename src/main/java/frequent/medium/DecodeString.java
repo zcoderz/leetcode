@@ -1,10 +1,35 @@
 package frequent.medium;
 
 /**
+ * 91. Decode Ways
+ *
+ * A message containing letters from A-Z can be encoded into numbers using the following mapping:
+ *
+ * 'A' -> "1"
+ * 'B' -> "2"
+ * ...
+ * 'Z' -> "26"
+ * To decode an encoded message, all the digits must be mapped back into letters using the reverse of the mapping above
+ * (there may be multiple ways). For example, "111" can have each of its "1"s be mapped into 'A's to make "AAA",
+ * or it could be mapped to "11" and "1" ('K' and 'A' respectively) to make "KA".
+ * Note that "06" cannot be mapped into 'F' since "6" is different from "06".
+ *
+ * Given a string s containing only digits, return the number of ways to decode it.
+ *
+ * The answer is guaranteed to fit in a 32-bit integer.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: s = "12"
+ * Output: 2
+ * Explanation: "12" could be decoded as "AB" (1 2) or "L" (12).
+ *
  * the O(n) solution below while simple is hard to think about
  * easier approach is via recursion but problem with that is it times out on leet code
- * on the recursive solution, you can track count from an index so that if you fall back on that index
- * you reuse the previously calculated value.
+ *
+ * IMP-1 : Real important question to practice
  */
 public class DecodeString {
 
@@ -59,88 +84,5 @@ public class DecodeString {
         }
         return oneBack;
     }
-
-
-//    class StackItem {
-//        int index;
-//        boolean lookedAt;
-//        public StackItem(int index, boolean lA) {
-//            this.index = index;
-//            this.lookedAt = lA;
-//        }
-//    }
-//    Stack<StackItem> stack = new Stack<>();
-//    void processDecodingStack() {
-//        while (!stack.isEmpty()) {
-//            if (stack.peek().lookedAt) {
-//                stack.pop(); continue;
-//            }
-//            stack.peek().lookedAt = true;
-//            int index = stack.peek().index;
-//            if (index == len) {
-//                count++;
-//                stack.pop();
-//                continue;
-//            }
-//            if (index > len) {
-//                stack.pop();
-//                continue; //moved too far right
-//            }
-//
-//            if (str.charAt(index) == '0') {
-//                stack.pop();
-//                continue; //if you got to 0 char via sequence, its not a valid sequence
-//            }
-//
-//            stack.push(new StackItem(index+1, false));
-//
-//            if ((index + 2) <= len) {
-//                //int val = Integer.parseInt(str.substring(index, index + 2));
-//                char ch = str.charAt(index);
-//                char ch1 = str.charAt(index+1);
-//                int val = ch - '0';
-//                val = val * 10;
-//                val += ch1 - '0';
-//
-//                if (val < 27) {
-//                    stack.push(new StackItem(index+2, false));
-//                }
-//            }
-//
-//
-//        }
-//    }
-//
-//    Map<Integer, Integer> theCounts = new HashMap<>();
-//    void processDecoding(int index) {
-//        if (index == len) {
-//            count++;
-//            return;
-//        }
-//        if (index > len) {
-//            return; //moved too far right
-//        }
-//
-//        if (str.charAt(index) == '0') {
-//            return; //if you got to 0 char via sequence, its not a valid sequence
-//        }
-//
-//        Integer num = theCounts.get(index);
-//        if (num != null) {
-//             count += num;
-//             return;
-//        }
-//        int increment = count;
-//        processDecoding(index+1);
-//
-//        if ((index+2) <= len) {
-//            int val = Integer.parseInt(str.substring(index, index+2));
-//            if (val < 27) {
-//                processDecoding(index+2);
-//            }
-//        }
-//        increment = count - increment;
-//        theCounts.put(index, increment);
-//    }
 
 }

@@ -3,7 +3,20 @@ package frequent.medium;
 import java.util.Arrays;
 
 /**
+ * 221. Maximal Square
+ * Given an m x n binary matrix filled with 0's and 1's,
+ * find the largest square containing only 1's and return its area.
+ *
+ * Example 1:
+ *
+ *
+ * Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
+ * Output: 4
+ *
  * interesting question to calculate size of squares
+ *
+ * IMP-1 : This question has similarities with other question in terms of how a matrix cell is dependent
+ * on surrounding cells.
  */
 public class MaximalSquare {
 

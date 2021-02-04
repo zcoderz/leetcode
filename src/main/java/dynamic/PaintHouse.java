@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 256. Paint House
+ *
  * There is a row of n houses, where each house can be painted one of three colors: red, blue, or green. The cost of
  * painting each house with a certain color is different. You have to paint all the houses such that no two adjacent
  * houses have the same color.
@@ -15,6 +17,8 @@ import java.util.Map;
  * <p>
  * Leetcode has a very elegant description to this problem's solution. please have a look at it as it gives a very
  * simple solution while analyzing it very well. its available at : https://leetcode.com/problems/paint-house/solution/
+ *
+ * IMP-1: Very important to practice this one. The DP solution is extremely elegant
  */
 public class PaintHouse {
 

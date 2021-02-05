@@ -13,6 +13,7 @@ package google.medium;
  * 0 E 0 0 E 0 W E 0 E 0 0
  * <p>
  * Placing a bomb at (1,1) kills 3 enemies.
+ * IMP-2
  */
 public class BombEnemy {
 

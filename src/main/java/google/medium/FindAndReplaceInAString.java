@@ -28,7 +28,7 @@ import java.util.TreeMap;
  * <p>
  * Input: S = "abcd", indexes = [0, 2], sources = ["a", "cd"], targets = ["eee", "ffff"] Output: "eeebffff" Explanation:
  * "a" starts at index 0 in S, so it's replaced by "eee". "cd" starts at index 2 in S, so it's replaced by "ffff".
- * IMP-2
+ * IMP-3 nice practice question
  */
 public class FindAndReplaceInAString {
 
@@ -84,7 +84,7 @@ public class FindAndReplaceInAString {
 
     /**
      * this is an interesting problem. below is a way that i came up with a solution but this  is more complicated than
-     * the other solution also listed below that is from leetcode.
+     * the other solution also listed above that is from leetcode.
      *
      * @param str
      * @param indexes

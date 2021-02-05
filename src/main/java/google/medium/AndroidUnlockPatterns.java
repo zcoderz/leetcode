@@ -25,6 +25,7 @@ package google.medium;
  * <p>
  * Two unlock patterns are considered unique if there is a dot in one sequence that is not in the other, or the order of
  * the dots is different.
+ * IMP-1: Get a hang of this one
  */
 public class AndroidUnlockPatterns {
 
@@ -41,7 +42,8 @@ public class AndroidUnlockPatterns {
     }
 
     /**
-     * this is a very clever solution and was presented by someone in leetcode discussion some things to note are that
+     * this is a very clever solution and was presented by someone in leetcode discussion
+     * some things to note are that
      * the question doesnt explicitly specify that knight moves are legal. but they are marking coordinates between
      * source and dest that are skipped simplifies the problem a lot
      * <p>

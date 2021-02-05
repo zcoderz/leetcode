@@ -21,6 +21,7 @@ package google.medium;
  * There is  1 square of side 3.
  * Total number of squares = 10 + 4 + 1 = 15.
  *
+ * IMP-1 : This question has matrix logic that repeats. Good practice...
  */
 public class CountSquareSubmatrices {
 

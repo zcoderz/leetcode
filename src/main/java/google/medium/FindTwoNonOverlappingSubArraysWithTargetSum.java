@@ -20,6 +20,7 @@ import java.util.Arrays;
  * Output: 2
  * Explanation: Only two sub-arrays have sum = 3 ([3] and [3]). The sum of their lengths is 2.
  *
+ * IMP-1: Extremely sharp question. Do this again.
  */
 public class FindTwoNonOverlappingSubArraysWithTargetSum {
 
@@ -67,7 +68,7 @@ public class FindTwoNonOverlappingSubArraysWithTargetSum {
             }
         }
 
-        //update prefix for min len going left ti right
+        //update prefix for min len going left to right
         for (int i =1; i < arr.length; i++) {
             prefix[i] = Math.min(prefix[i], prefix[i-1]);
         }

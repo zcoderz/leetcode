@@ -20,6 +20,8 @@ import java.util.*;
  * Below solution is via DFS. A faster solution would be via union find. in union find you can check whether numerator
  * and denom are in same set to find whether division possibility exists. and then you can find the divisor weight
  * relative to root for each of the numerator and denom. you divide the two weights to get num/denom.
+ *
+ * IMP-1: Very intelligent approach to division. Thinking is unique
  */
 public class EvaluateDivisions {
 

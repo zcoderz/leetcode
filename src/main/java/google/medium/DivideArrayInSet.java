@@ -18,6 +18,7 @@ import java.util.*;
  * Output: true
  * Explanation: Array can be divided into [1,2,3,4] and [3,4,5,6].
  *
+ * IMP-2: Good practice question
  */
 public class DivideArrayInSet {
 

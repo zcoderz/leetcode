@@ -4,6 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * 560. Subarray Sum Equals K
+ * Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: nums = [1,1,1], k = 2
+ * Output: 2
+ *
+ * IMP-1 : Common question
+ */
 public class SubArraySum {
 
     public static void main(String [] args) {
@@ -17,6 +30,11 @@ public class SubArraySum {
 
     /**
      * simple and beautiful implementation for calculating number of sub arrays that add to given sum
+     * leet code animation explains this algo nicely
+     *
+     * Algo essentially is that map contains the accumulated count of sum as you iterate left to right
+     * if current sum -k exists in map, it must mean that you reached another sum of k.
+     * therefore the number of occurrences of k must add number of times sum -k occurred.
      * @param nums
      * @param k
      * @return
@@ -32,17 +50,12 @@ public class SubArraySum {
         //hence the count of sums in the map up to now only include indices we have seen so far
         //as we can have negative numbers in process they can create scenarios where
         //including sums on the right of the index can give incorrect answers
-        //i,e if looking for sum as 8
-        //in below when on index 3, we are looking for #3 which can occur on indexes 4 and 1
-        //including that on index 4 will give incorrect numbers as 0-4 doesnt add to 8
-        //[0,1,2,3,4,5]
-        //[1,2,3,5,-8,8]
 
         for (int i = 0; i < nums.length; i++) {
             sum += nums[i];
             if (map.containsKey(sum - k))
                 count += map.get(sum - k);
-            //use map to keep track # of sub arrats that add to the sum we are looking for
+            //use map to keep track # of sub arrays that add to the sum we are looking for
             map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
         return count;

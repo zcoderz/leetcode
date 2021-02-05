@@ -7,9 +7,23 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 /**
+ * 767. Reorganize String
+ *
+ * Given a string S, check if the letters can be rearranged so that two characters that are adjacent
+ * to each other are not the same.
+ *
+ * If possible, output any possible result.  If not possible, return the empty string.
+ *
+ * Example 1:
+ *
+ * Input: S = "aab"
+ * Output: "aba"
+ *
  * questions requires reorganizing the string such that no two characters are adjacent to each other.
  * its tricky to identify that the logic requires use of a pq sorted by char count....
  * but once you identify, solution is real easy!
+ *
+ * IMP-1: Common and very interesting question
  */
 public class ReorganizeString {
 

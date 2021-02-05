@@ -2,8 +2,34 @@ package frequent.medium;
 
 
 /**
+ * 528. Random Pick with Weight
+ * You are given an array of positive integers w where w[i] describes the weight of ith index (0-indexed).
+ *
+ * We need to call the function pickIndex() which randomly returns an integer in the
+ * range [0, w.length - 1]. pickIndex() should return the integer proportional to its weight in the w array.
+ * For example, for w = [1, 3], the probability of picking the index 0 is 1 / (1 + 3) = 0.25 (i.e 25%)
+ * while the probability of picking the index 1 is 3 / (1 + 3) = 0.75 (i.e 75%).
+ *
+ * More formally, the probability of picking index i is w[i] / sum(w).
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input
+ * ["Solution","pickIndex"]
+ * [[[1]],[]]
+ * Output
+ * [null,0]
+ *
+ * Explanation
+ * Solution solution = new Solution([1]);
+ * solution.pickIndex(); // return 0. Since there is only one single element on the array the only option is to return the first element.
+ *
  * interesting problem . asks to return an index where weight of the index is denoted in array.
  * so the index with higher weights should have higher probability of being returned and vice versa
+ *
+ * IMP-1 : Common question with a distinct idea
  */
 public class RandomPickByWeight {
 

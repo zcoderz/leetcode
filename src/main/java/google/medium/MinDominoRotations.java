@@ -14,6 +14,8 @@ package google.medium;
  * <p>
  * This is an interesting problem where it can be simplified a whole lot via good focus as in the below code. This
  * solution is from leetcode.
+ *
+ * IMP-2: This is a nice question to practice
  */
 public class MinDominoRotations {
 
@@ -29,6 +31,8 @@ public class MinDominoRotations {
         if (arrA.length == 0) {
             return 0;
         }
+        //if a solution is found by choosing the first element in arrayA then return
+        //else try with first element in arrayB
         int rotA = validate(arrA, arrB, arrA[0]);
         if (rotA != -1 || arrA[0] == arrB[0]) return rotA;
         return validate(arrA, arrB, arrB[0]);

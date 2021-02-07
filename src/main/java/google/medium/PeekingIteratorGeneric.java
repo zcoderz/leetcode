@@ -6,6 +6,8 @@ import java.util.Iterator;
  * Same as PeekingIterator but implemented to solve generically.
  *
  * @param <T>
+ *
+ *  IMP-3: Design problem
  */
 public class PeekingIteratorGeneric<T> implements Iterator<T> {
     Iterator<T> iterator;

@@ -17,6 +17,7 @@ import java.util.Stack;
  * push(1), push(2), push(3), push(4), pop() -> 4,
  * push(5), pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1
  *
+ * IMP-1: Simple question that requires using stacks appropriately to validate behavior
  */
 public class ValidateStackSequences {
 

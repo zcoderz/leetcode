@@ -10,6 +10,7 @@ package google.medium;
  *  [0,1,1,0],
  *  [0,0,0,1]]
  * Output: 3
+ * IMP-1: Matrix diagonal properties repeat often, practice this.
  */
 public class LongestLine {
 

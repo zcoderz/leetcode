@@ -27,6 +27,9 @@ import utils.Node;
  * Input: n = 1, headID = 0, manager = [-1], informTime = [0]
  * Output: 0
  * Explanation: The head of the company is the only employee in the company.
+ *
+ * IMP-3: Simple and fun question.
+ *
  */
 public class TimeNeededToInformAllEmployees {
 

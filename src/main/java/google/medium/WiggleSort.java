@@ -7,6 +7,8 @@ package google.medium;
  * Example:
  * <p>
  * Input: nums = [3,5,2,1,6,4] Output: One possible answer is [3,5,1,6,2,4]
+ *
+ * IMP-2: Practice the wording in the question as an example to figure out the simple ask.
  */
 public class WiggleSort {
 

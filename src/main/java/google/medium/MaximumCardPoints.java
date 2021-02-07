@@ -49,6 +49,7 @@ import java.util.Map;
  * It uses memorization to track the max value at each left right index and thus avoids repeats.
  * Nevertheless the calculation is high compute. See the solution in class MaximumCardPointsFast for a simpler
  * and faster solution.
+ * IMP-2 : very interesting problem
  */
 public class MaximumCardPoints {
 

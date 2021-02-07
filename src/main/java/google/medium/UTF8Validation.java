@@ -28,6 +28,9 @@ package google.medium;
  * Return false. The first 3 bits are all one's and the 4th bit is 0 means it is a 3-bytes character. The next byte is a
  * continuation byte which starts with 10 and that's correct. But the second continuation byte does not start with 10,
  * so it is invalid.
+ *
+ * IMP-2: Under the UTF-8 word galore this is a simple rule verification problem that uses bit masks to validate rules
+ * wording is confusing but you can use the examples to get to the behavior.
  */
 public class UTF8Validation {
 
@@ -44,6 +47,12 @@ public class UTF8Validation {
         System.out.println(res);
     }
 
+    /**
+     * logic simply ensures that the bits per val are in correct order
+     * create a mask of 100000000 (1<<7) & 010000000(1<<6) to verify rules
+     * @param data
+     * @return
+     */
     public boolean validUtf8(int[] data) {
         int continuation = 0;
         int sevenMask = 1 << 7;

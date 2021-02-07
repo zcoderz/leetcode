@@ -19,6 +19,7 @@ import java.util.Map;
  * type of fruit each.
  * <p>
  * What is the total amount of fruit you can collect with this procedure?
+ * IMP-1: Sliding window. This approach repeats often.
  */
 public class FruitIntoBasket {
 

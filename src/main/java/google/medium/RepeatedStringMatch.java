@@ -25,10 +25,6 @@ import java.util.Map;
 public class RepeatedStringMatch {
 
     public static void main(String[] args) {
-        BigInteger test = BigInteger.valueOf(2);
-        test = test.modInverse(BigInteger.valueOf(3));
-        System.out.println(test);
-
         RepeatedStringMatch rep = new RepeatedStringMatch();
         String a = "abcd", b = "cdabcdab";
         int res = rep.repeatedStringMatch(a, b);

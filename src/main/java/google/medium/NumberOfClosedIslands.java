@@ -8,7 +8,7 @@ package google.medium;
  *
  * Return the number of closed islands.
  *
- * IMP-1
+ * IMP-1 : Number islands and its variations is a common question
  * The implementation is super simple but the approach towards this solution needs to be super clever
  *
  * The approach is to start at the edges, left, top, right, bottom and invalidate any cells that are connected to

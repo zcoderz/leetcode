@@ -17,6 +17,7 @@ package google.medium;
  * there are many rows and columns the logic repeats and will become slow.
  * <p>
  * Need a solution that could work for cases with many columns or rows in a performant manner.
+ * IMP-1: Very smart approach. Should practice this idea.
  */
 public class SentenceScreenFitting {
 

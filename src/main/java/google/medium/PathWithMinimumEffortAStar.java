@@ -44,6 +44,7 @@ import java.util.PriorityQueue;
  *   The below solution ran on leetcode in 105ms
  *   The time complexity is O(N*M*(Log (N*M))) N*M cells and sorting them in the priority queue takes log (N*M)
  *
+ *  IMP-1 : Path finding. see other solution for same problem as well
  */
 public class PathWithMinimumEffortAStar {
 

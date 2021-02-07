@@ -26,7 +26,7 @@ package google.medium;
  * Input: N = 21, K = 17, W = 10
  * Output: 0.73278
  *
- * IMP-1
+ * IMP-1 : This is a good practice question on probabilities, should definitely practice
  * TODO - repeat!
  */
 public class NewGame21 {
@@ -71,6 +71,7 @@ public class NewGame21 {
         //get to 3 from 0-3 by choosing 3, from 2 to 3, by choosing 1 or from 1-3 by choosing 2
         //and so on.....until K because once you reach K or more the game ends
         for (int i = 1; i <= K; i++) {
+            // -probabilities[i-W-1] to drop probability before the last W cards when i-W-1 >= 0
             previousProb +=   ((i-W-1) >= 0 ?  -probabilities[i-W-1] : 0)  + probabilities[i-1];
             probabilities[i]= previousProb * oneProbability;
         }

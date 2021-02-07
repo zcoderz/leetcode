@@ -22,6 +22,8 @@ import java.util.*;
  * <p>
  * Finally, sentences can only be similar if they have the same number of words. So a sentence like words1 = ["great"]
  * can never be similar to words2 = ["doubleplus","good"].
+ *
+ * IMP-1: Good practice for union find
  */
 public class SentenceSimilarity {
 

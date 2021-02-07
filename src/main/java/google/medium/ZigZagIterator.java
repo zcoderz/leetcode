@@ -13,6 +13,8 @@ import java.util.List;
  * <p>
  * Input: v1 = [1,2] v2 = [3,4,5,6] Output: [1,3,2,4,5,6] Explanation: By calling next repeatedly until hasNext returns
  * false, the order of elements returned by next should be: [1,3,2,4,5,6].
+ *
+ * IMP-3 : Simple practice question
  */
 public class ZigZagIterator {
 

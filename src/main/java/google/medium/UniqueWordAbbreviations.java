@@ -16,6 +16,8 @@ import java.util.Set;
  * dog --> d1g because there is one letter between the first letter 'd' and the last letter 'g'. internationalization
  * --> i18n because there are 18 letters between the first letter 'i' and the last letter 'n'. it --> it because any
  * word with only two characters is an abbreviation of itself.
+ *
+ *
  */
 public class UniqueWordAbbreviations {
 

@@ -12,8 +12,9 @@ import java.util.*;
  * parallel to the x and y axes.
  * <p>
  * If there isn't any rectangle, return 0.
+ * IMP-1: this is a line sweep based approach thats common in questions such as the one below that ask area of rectangle
  */
-public class MinAreaRectangle {
+public class    MinAreaRectangle {
 
     TreeMap<Integer, List<Integer>> coordinateMap = new TreeMap<>();
     int minArea = Integer.MAX_VALUE;

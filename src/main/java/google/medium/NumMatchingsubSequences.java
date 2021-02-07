@@ -16,6 +16,7 @@ import java.util.List;
  * Output: 3
  * Explanation: There are three words in words that are a subsequence of S: "a", "acd", "ace".
  *
+ * IMP-1: This is a very clever approach to the problem. Should practice this ; can be reused.
  */
 public class NumMatchingsubSequences {
 

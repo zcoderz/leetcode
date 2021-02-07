@@ -40,7 +40,7 @@ package google.medium;
  * Input: cardPoints = [1,79,80,1,1,1,200,1], k = 3
  * Output: 202
  *
- *
+ * IMP-1: Clever idea for the max car point problem.
  */
 public class MaximumCardPointsFast {
 

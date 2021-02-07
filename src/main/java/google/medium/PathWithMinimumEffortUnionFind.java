@@ -47,7 +47,7 @@ import java.util.*;
  *   See proof of the time complexity for union find here :
  *   https://en.wikipedia.org/wiki/Disjoint-set_data_structure#Proof_of_O(log*(n))_time_complexity_of_Union-Find
  *
- *
+ *  IMP-1 : Path finding. see other solution for same problem as well
  */
 public class PathWithMinimumEffortUnionFind {
 

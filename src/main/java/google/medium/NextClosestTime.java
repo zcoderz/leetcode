@@ -57,7 +57,7 @@ public class NextClosestTime {
      * that's it. else set to lowest and move to the next highest time digit.
      * <p>
      * i personally found this approach much simpler to understand and implement than the approach in leet code which
-     * searches for the lowest possible next time based on time delta from orig to each of the possitibilities based on
+     * searches for the lowest possible next time based on time delta from orig to each of the possibilities based on
      * available digits
      *
      * @return

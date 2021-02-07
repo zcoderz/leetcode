@@ -32,6 +32,8 @@ import java.util.TreeSet;
  * 2. Store the meeting times in a treeset that's sorted by the meeting times
  * 3. Sort criteria is such that if the two meetings overlap with each other return them to be same. Otherwise sort by
  * meeting start time.
+ *
+ * IMP-1: Meeting overlap is common question
  */
 public class MyCalendarI {
 

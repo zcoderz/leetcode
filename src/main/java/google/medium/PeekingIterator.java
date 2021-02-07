@@ -19,6 +19,8 @@ import java.util.List;
  * Calling next() after that still return 2. You call next() the final time and it returns 3, the last element. Calling
  * hasNext() after that should return false. Follow up: How would you extend your design to be generic and work with all
  * types, not just integer?
+ *
+ * IMP-3 : its more of a design problem
  */
 public class PeekingIterator implements Iterator<Integer> {
 

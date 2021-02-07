@@ -60,7 +60,9 @@ public class SwapAdjacentInLRString {
     }
 
     /**
-     * clever solution from leetcode in that it checks that number of
+     * clever solution from leetcode . the code essentially transforms such that L moves XL to LX (i,e left) and
+     * RX moves XR (i.e right). So you are essentially iterating through source and target and ensuring that the
+     * condition does indeed hold
      * @param start
      * @param end
      * @return

@@ -41,6 +41,8 @@ import java.util.Arrays;
  *
  *
  *  This code ran in 92 ms, interestingly its the best of the solutions here though not great.
+ *
+ *  IMP-1 : Path finding. see other solution for same problem as well
  */
 public class PathWithMinEffortBinarySearch {
 

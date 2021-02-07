@@ -39,7 +39,7 @@ import java.util.Map;
  * concept is simple : start with an array, per snap create an overlap map , sore new items in the overlay
  * when an item , snap is requested find the latest snap that contains the index. if none, return from original array
  *
- * IMP-2
+ * IMP-2 : Good practice question
  *
  */
 public class SnapshotArray {

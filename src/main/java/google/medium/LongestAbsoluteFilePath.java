@@ -20,6 +20,8 @@ import java.util.ArrayList;
  * <p>
  * Given a string input representing the file system in the explained format, return the length of the longest absolute
  * path to a file in the abstracted file system. If there is no file in the system, return 0.
+ *
+ * IMP-2: Common question
  */
 public class LongestAbsoluteFilePath {
 

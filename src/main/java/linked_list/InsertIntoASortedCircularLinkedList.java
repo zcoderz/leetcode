@@ -3,12 +3,24 @@ package linked_list;
 import utils.ListNode;
 
 /**
+ * 708. Insert into a Sorted Circular Linked List
+ *
+ * Given a node from a Circular Linked List which is sorted in ascending order,
+ * write a function to insert a value insertVal into the list such that it remains a sorted circular list.
+ * The given node can be a reference to any single node in the list, and may not be necessarily the smallest value in the circular list.
+ *
+ * If there are multiple suitable places for insertion, you may choose any place to insert the new value.
+ * After the insertion, the circular list should remain sorted.
+ *
+ * If the list is empty (i.e., given node is null), you should create a new single circular list and
+ * return the reference to that single node. Otherwise, you should return the original given node.
+ *
  * This problem is not as simple as it seems! Basically the list is circular and it has a turning point
  * where next value is less than prior. The question in leet code doesnt stress the notion of a turning point.
  * Best to ask interviewer of expected scenarios in test data and write out the test cases before solving a problem
  * such as this.
  *
- * Nice problem to practice!
+ * IMP-2: Nice problem to practice!
  */
 public class InsertIntoASortedCircularLinkedList {
 

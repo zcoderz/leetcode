@@ -10,6 +10,8 @@ package graph;
  * The graph is given in the following form: graph[i] is a list of indexes j for which the edge between nodes i and j
  * exists. Each node is an integer between 0 and graph.length - 1.  There are no self edges or parallel edges: graph[i]
  * does not contain i, and it doesn't contain any element twice.
+ *
+ * IMP-1: Simple technique but needs to be practiced
  */
 public class IsGraphBipartite {
 

@@ -5,10 +5,14 @@ import utils.graph.UnionFind;
 import utils.graph.Vertex;
 
 /**
+ * 1135. Connecting Cities With Minimum Cost
+ *
  * the problem uses min spanning trees (union find) to connect the cities (vertices) together while traversing the path
  * using edges with minimum cost.
+ *
+ * IMP-2 : Excellent question to practice union find
  */
-public class ConnectCitiesWithMinCost {
+public class    ConnectCitiesWithMinCost {
 
     public static void main(String[] args) {
         int[][] connections = {{1, 2, 5}, {1, 3, 6}, {2, 3, 1}};

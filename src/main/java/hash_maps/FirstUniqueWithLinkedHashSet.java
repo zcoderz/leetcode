@@ -3,15 +3,16 @@ package hash_maps;
 import java.util.*;
 
 /**
+ * 1429. First Unique Number
+ *
  * You have a queue of integers, you need to retrieve the first unique integer in the queue.
  *
  * Implement the FirstUnique class:
  *
  * FirstUnique(int[] nums) Initializes the object with the numbers in the queue.
- * int showFirstUnique() returns the value of the first unique integer of the queue, and returns -1 if there is no such integer.
- * void add(int vale) insert value to the queue.
- *
- * See FirstUniqueNumber which is similar to this solution.
+ * int showFirstUnique() returns the value of the first unique integer of the queue,
+ * and returns -1 if there is no such integer.
+ * void add(int value) insert value to the queue.
  */
 public class FirstUniqueWithLinkedHashSet {
 

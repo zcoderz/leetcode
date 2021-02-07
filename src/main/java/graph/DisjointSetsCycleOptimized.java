@@ -4,6 +4,9 @@ import utils.graph.Edge;
 import utils.graph.UnionFind;
 import utils.graph.Vertex;
 
+/**
+ * IMP-1 : cycle detection in graphs via disjoint sets is good practice
+ */
 public class DisjointSetsCycleOptimized {
 
     private int numVertices, numEdges;    // V-> no. of vertices & E->no.of edges

@@ -1,13 +1,38 @@
-package misc;
+package frequent.medium;
 
+
+/**
+ * 5. Longest Palindromic Substring
+ * Given a string s, return the longest palindromic substring in s.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: s = "babad"
+ * Output: "bab"
+ * Note: "aba" is also a valid answer.
+ * Example 2:
+ *
+ * Input: s = "cbbd"
+ * Output: "bb"
+ *
+ * IMP-1 : Very common question
+ */
 public class LongestPalindromeSubstring {
 
     public static void main(String[] args) {
         String s = "babad";
         String pal = longestPalindrome(s);
-        return;
+        System.out.println(pal);
     }
 
+    /**
+     * palindromes are based off a center. so try to figure out the palindrome length based off of its size from
+     * start to end via starting off of a center index
+     * @param s
+     * @return
+     */
     public static String longestPalindrome(String s) {
         if (s == null || s.length() == 0) {
             return "";
@@ -22,15 +47,10 @@ public class LongestPalindromeSubstring {
                 start = i - (maxLen - 1) / 2;
                 end = start + maxLen;
             }
-
         }
         return s.substring(start, end);
     }
 
-    //aaaa
-    //0123
-    //  aba
-    //-10123
     static int centerPalindrome(String s, int left, int right) {
 
         while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {

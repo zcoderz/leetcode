@@ -1,10 +1,31 @@
-package misc;
+package frequent.hard;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * 269. Alien Dictionary
+ * There is a new alien language that uses the English alphabet. However, the order among letters are unknown to you.
+ *
+ * You are given a list of strings words from the dictionary, where words are sorted lexicographically by the rules of this new language.
+ *
+ * Derive the order of letters in this language, and return it. If the given input is invalid, return "". If there are multiple valid solutions, return any of them.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: words = ["wrt","wrf","er","ett","rftt"]
+ * Output: "wertf"
+ * Example 2:
+ *
+ * Input: words = ["z","x"]
+ * Output: "zx"
+ *
+ * IMP-1: Excellent common question to practice
+ */
 public class AlienDictionary {
 
     public String alienOrder(String[] words) {

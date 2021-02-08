@@ -1,7 +1,23 @@
 package logic;
 
 /**
- * find the min number of swaps needed to readjust the array such that all 1s in the array are next to each other
+ * 1151. Minimum Swaps to Group All 1's Together
+ * Given a binary array data, return the minimum number of swaps required to group all 1’s present in the array together in any place in the array.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: data = [1,0,1,0,1]
+ * Output: 1
+ * Explanation:
+ * There are 3 ways to group all 1's together:
+ * [1,1,1,0,0] using 1 swap.
+ * [0,1,1,1,0] using 2 swaps.
+ * [0,0,1,1,1] using 1 swap.
+ * The minimum is 1.
+ *
+ * IMP-1: Very clever idea that simplifies the problem.
  */
 public class MinSwaps {
 

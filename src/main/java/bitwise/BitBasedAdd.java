@@ -1,5 +1,8 @@
-package misc;
+package bitwise;
 
+/**
+ * IMP-2 : Good practice question for bit based arithmetic
+ */
 public class BitBasedAdd {
 
     public static void main(String[] args) {

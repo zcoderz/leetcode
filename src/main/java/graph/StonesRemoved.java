@@ -1,4 +1,4 @@
-package misc;
+package graph;
 
 import utils.graph.generic.UnionFindNode;
 

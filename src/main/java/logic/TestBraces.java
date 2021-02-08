@@ -1,4 +1,4 @@
-package misc;
+package logic;
 
 import java.util.*;
 

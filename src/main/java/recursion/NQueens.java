@@ -1,5 +1,8 @@
 package recursion;
 
+/**
+ * 52. N-Queens II
+ */
 public class NQueens {
 
     int count = 0; //used to track number of possible placements
@@ -24,6 +27,9 @@ public class NQueens {
 
     /**
      * recuse to find number of possible placement for queen
+     * each iteration of the recursion indicates that the queen can be placed on a given row
+     * terminate recursion when you reach n, increment count at n.
+     * final answer is the value of the count....!
      * @param row
      */
     void recurse(int row) {

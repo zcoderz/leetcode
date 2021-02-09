@@ -3,8 +3,20 @@ package recursion;
 import utils.ListNode;
 
 /**
- * mastering recursion needs a lot of practice!!!
- * dont skip the easy questions.
+ *
+ * 21. Merge Two Sorted Lists
+ *
+ * Merge two sorted linked lists and return it as a sorted list.
+ * The list should be made by splicing together the nodes of the first two lists.
+ *
+ * Example 1:
+ *
+ *
+ * Input: l1 = [1,2,4], l2 = [1,3,4]
+ * Output: [1,1,2,3,4,4]
+ *
+ * Simple question
+ * don't skip the easy questions.
  *
  */
 public class MergeTwoSortedLists {
@@ -29,10 +41,6 @@ public class MergeTwoSortedLists {
             return l2;
         } else if (l2 == null) {
             return l1;
-//      below is an interesting case to skip over duplicate values.
-//         else if (l2.val == l1.val) {
-//            l1.next = mergeTwoLists(l1.next, l2.next);
-//            return l1;
         } else if (l1.val > l2.val) {
             //important to recognize that equal can be treat as below.....this one is tricky!
             //i started to write a slightly more complicated case for equal but realized equal is same as below

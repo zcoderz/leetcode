@@ -1,6 +1,10 @@
 package utils;
 
 
+/**
+ * Good example on using segment trees for fast search on a data range
+ * i,e find minimum over a range
+ */
 public class SegmentTreeNodeRectangleArea {
     public int start;
     public int end;

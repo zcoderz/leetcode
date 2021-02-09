@@ -12,7 +12,8 @@ import java.util.*;
  * parallel to the x and y axes.
  * <p>
  * If there isn't any rectangle, return 0.
- * IMP-1: this is a line sweep based approach thats common in questions such as the one below that ask area of rectangle
+ * IMP-1: this is a line sweep based approach that's common in questions
+ * such as the one below that ask area of rectangle
  */
 public class    MinAreaRectangle {
 

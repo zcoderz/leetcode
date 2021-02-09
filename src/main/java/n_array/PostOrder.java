@@ -4,6 +4,29 @@ import utils.Node;
 
 import java.util.*;
 
+/**
+ * 590. N-ary Tree Postorder Traversal
+ * Given an n-ary tree, return the postorder traversal of its nodes' values.
+ *
+ * Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).
+ *
+ *
+ *
+ * Follow up:
+ *
+ * Recursive solution is trivial, could you do it iteratively?
+ *
+ *
+ *
+ * Example 1:
+ *
+ *
+ *
+ * Input: root = [1,null,3,2,4,null,5,6]
+ * Output: [5,6,3,2,4,1]
+ *
+ * IMP-3: Simple question, good to practice for tree traversal.
+ */
 public class PostOrder {
 
     /**
@@ -15,16 +38,17 @@ public class PostOrder {
      * @return
      */
     public List<Integer> postorder(Node root) {
-        Stack<Node> stack = new Stack<>();
-        stack.push(root);
         LinkedList<Integer> list = new LinkedList<>();
         if (root == null) {
             return list;
         }
-
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
         while (!stack.isEmpty()) {
             Node n = stack.pop();
+            //stack.addAll will make the right most child on top while is what we want
             stack.addAll(n.children);
+            //add the newly processed val into the beginning of the list
             list.addFirst(n.val);
         }
         return list;

@@ -1,8 +1,18 @@
-package recursion;
+package frequent.hard;
 
 import java.util.*;
 
 /**
+ * 37. Sudoku Solver
+ * Write a program to solve a Sudoku puzzle by filling the empty cells.
+ *
+ * A sudoku solution must satisfy all of the following rules:
+ *
+ * Each of the digits 1-9 must occur exactly once in each row.
+ * Each of the digits 1-9 must occur exactly once in each column.
+ * Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
+ * The '.' character indicates empty cells.
+ *
  * an interesting back tracking problem.
  * i use here sets to simplify the code but doing set copies slows down the code which is needed when doing
  * set union and intersection. a more efficient approach is to use arrays in row/cols for each of the integer values.

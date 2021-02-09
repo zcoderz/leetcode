@@ -25,8 +25,8 @@ package search.binary_search;
 class MedianOfTwoArrays {
 
     public static void main(String[] args) {
-        int[] nums1 = {};
-        int[] nums2 = {3};
+        int[] nums1 = {7,8};
+        int[] nums2 = {0,1,2};
         double med = findMedianSortedArrays(nums1, nums2);
         System.out.println(med);
     }
@@ -35,8 +35,8 @@ class MedianOfTwoArrays {
      * This is a very clever solution from leet code discussion.
      * see detailed description here :
      * https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/908004/Python-Binary-Search-(Diagram)
-     * Essentially you are working (doing Binary Search) on the smaller of the two arrays
-     * while comparing L,R on each of the arrays
+     * Essentially you are doing Binary Search on the smaller of the two arrays
+     * while comparing Left,Right on each of the sub arrays in the two arrays
      * @param nums1
      * @param nums2
      * @return
@@ -50,13 +50,22 @@ class MedianOfTwoArrays {
         int lo =0; int hi = nums1.length;
 
         int totalSize = nums1.length + nums2.length;
+        //adding 1 to totalSize so in case of odd numbers will pick the max number from left of the two partitions
+        //for that to happen, right must be ahead of the median on one of the partitions
+        //and thus the partition size needs to be include the right of the two partitions must be extended by 1
+
+        //i,e for arrays [7,8] & [1,2,3] median is 3. therefore need to choose such that left of right array is
+        //included in the partition. in this case, p1 is 0, p2 needs to be 3, for that to happen partition size must
+        //be 3, which is (left Size + right Size + 1) / 2
+
         int partitionSize = (totalSize + 1) / 2;
 
         while (lo <= hi) {
             int p1 = (lo + hi) / 2;
             int p2 = partitionSize - p1;
 
-            //having sentinels of Integer MIN and MAX help simplify edge cases
+            //having sentinels of Integer MIN and MAX help simplify boundary cases - i,e when median is at edge of an
+            //array
             int numALeft = p1 > 0 ? nums1[p1-1] : Integer.MIN_VALUE;
             int numAright = p1 < nums1.length ? nums1[p1] : Integer.MAX_VALUE;
 
@@ -64,11 +73,11 @@ class MedianOfTwoArrays {
             int numBRight = p2 < nums2.length ? nums2[p2] : Integer.MAX_VALUE;
 
             //at this point you are either moving p1 left or right
-            //by moving lo right or hi left
+            //by moving lo right of p1 or hi left of p1
             if (numALeft > numBRight) {
-                hi = p1 - 1; //need to move numALeft further left (moving p1 left)
+                hi = p1 - 1; //moving p1 left
             } else if (numBLeft > numAright) {
-                lo = p1 + 1; //need to move numARight further right (moving p1 right)
+                lo = p1 + 1; //moving p1 right
             } else {
                 //the partitions at this point are correct
                 if ((totalSize %2) ==0 ) {

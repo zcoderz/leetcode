@@ -3,6 +3,42 @@ package trie;
 import java.util.*;
 
 /**
+ * 642. Design Search Autocomplete System
+ * Design a search autocomplete system for a search engine. Users may input a sentence
+ * (at least one word and end with a special character '#'). For each character they type except '#',
+ * you need to return the top 3 historical hot sentences that have prefix the same
+ * as the part of sentence already typed. Here are the specific rules:
+ *
+ * The hot degree for a sentence is defined as the number of times a user typed the exactly same sentence before.
+ * The returned top 3 hot sentences should be sorted by hot degree (The first is the hottest one).
+ * If several sentences have the same degree of hot, you need to use ASCII-code order (smaller one appears first).
+ * If less than 3 hot sentences exist, then just return as many as you can.
+ * When the input is a special character, it means the sentence ends, and in this case, you need to return an empty list.
+ * Your job is to implement the following functions:
+ *
+ * The constructor function:
+ *
+ * AutocompleteSystem(String[] sentences, int[] times): This is the constructor. The input is historical data.
+ * Sentences is a string array consists of previously typed sentences.
+ * Times is the corresponding times a sentence has been typed. Your system should record these historical data.
+ *
+ * Now, the user wants to input a new sentence. The following function will provide the next character the user types:
+ *
+ * List<String> input(char c): The input c is the next character typed by the user.
+ * The character will only be lower-case letters ('a' to 'z'), blank space (' ') or a special character ('#').
+ * Also, the previously typed sentence should be recorded in your system.
+ * The output will be the top 3 historical hot sentences that have prefix the same as the part of sentence already typed.
+ *
+ *
+ * Example:
+ * Operation: AutocompleteSystem(["i love you", "island","ironman", "i love leetcode"], [5,3,2,2])
+ * The system have already tracked down the following sentences and their corresponding times:
+ * "i love you" : 5 times
+ * "island" : 3 times
+ * "ironman" : 2 times
+ * "i love leetcode" : 2 times
+ * Now, the user begins another search:
+ *
  * this is an interesting design problem what we get is quick retrieval of the top n sentences at each node. however ,
  * this comes at a cost where we are storing a lot of data at each trienode.
  * <p>
@@ -10,6 +46,8 @@ import java.util.*;
  * structure to just contain the top n strings , rather than hold them in a set and map thereby reducing space needed
  * for the set and map. however, we'd need an external aggregator that can build the trie with top n strings and feed
  * the top n strings to the trie responsible for returning the data
+ *
+ * IMP-2: Good design practice question
  */
 public class AutoCompleteSystem {
 
@@ -78,7 +116,7 @@ public class AutoCompleteSystem {
             nodes.add(node);
             if (doReturn) {
                 int i = 0;
-                Iterator<SentenceCount> iterator = node.sentenceCounts.stream().iterator();
+                Iterator<SentenceCount> iterator = node.sentenceCounts.iterator();
                 List<String> sentences = new ArrayList<>();
                 while (i < 3 && iterator.hasNext()) {
                     SentenceCount count = iterator.next();

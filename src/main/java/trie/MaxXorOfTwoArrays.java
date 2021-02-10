@@ -4,9 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 421. Maximum XOR of Two Numbers in an Array Given an integer array nums, return the maximum result of nums[i] XOR
- * nums[j], where 0 ≤ i ≤ j < n. this is a very interesting application of a trie create a trie of bits and use that to
- * figure out xor
+ * 421. Maximum XOR of Two Numbers in an Array
+ * Given an integer array nums, return the maximum result of nums[i] XOR nums[j], where 0 ≤ i ≤ j < n.
+ *
+ * Follow up: Could you do this in O(n) runtime?
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: nums = [3,10,5,25,2,8]
+ * Output: 28
+ * Explanation: The maximum result is 5 XOR 25 = 28.
+ *
+ * IMP-1: Very important question to practice. The solution is unique and elegant.
  */
 public class MaxXorOfTwoArrays {
 
@@ -52,7 +63,7 @@ public class MaxXorOfTwoArrays {
         for (Character ch : binary.toCharArray()) {
             maxXor = maxXor << 1; //left shift at each iteration so the bit is accounted at its correct final index
             Integer chInt = ch == '0' ? 0 : 1;
-            //create the new node if it doesnt already exist
+            //create the new node if it doesn't already exist
             TrieNode newNode = node.map.computeIfAbsent(chInt, k -> new TrieNode());
             Integer opposite = chInt == 0 ? 1 : 0;
             TrieNode nextXorNode;

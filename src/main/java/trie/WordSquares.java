@@ -2,6 +2,48 @@ package trie;
 
 import java.util.*;
 
+/**
+ * 425. Word Squares
+ * Given a set of words (without duplicates), find all word squares you can build from them.
+ *
+ * A sequence of words forms a valid word square if the kth row and column read the exact same string,
+ * where 0 ≤ k < max(numRows, numColumns).
+ *
+ * For example, the word sequence ["ball","area","lead","lady"] forms a word square because each word reads
+ * the same both horizontally and vertically.
+ *
+ * b a l l
+ * a r e a
+ * l e a d
+ * l a d y
+ * Note:
+ * There are at least 1 and at most 1000 words.
+ * All words will have the exact same length.
+ * Word length is at least 1 and at most 5.
+ * Each word contains only lowercase English alphabet a-z.
+ * Example 1:
+ *
+ * Input:
+ * ["area","lead","wall","lady","ball"]
+ *
+ * Output:
+ * [
+ *   [ "wall",
+ *     "area",
+ *     "lead",
+ *     "lady"
+ *   ],
+ *   [ "ball",
+ *     "area",
+ *     "lead",
+ *     "lady"
+ *   ]
+ * ]
+ *
+ * Explanation:
+ * The output consists of two word squares. The order of output does not matter
+ * (just the order of words in each word square matters).
+ */
 public class WordSquares {
 
     String[] words;
@@ -51,12 +93,20 @@ public class WordSquares {
     }
 
     /**
-     * this a tricky one! note that the word square will be symmetric through the diagonal therefore we can traverse
-     * through the words in a backtracking style where we keep building prefixes based on words until the desired length
-     * is reached
-     * <p>
-     * if a match isnt found we backtrack
+     * This is a very clever implementation.
+     * For a word square : the letters in the square must be symmetric around the center.
+     * the logic is that you build a word prefix based on letters in a list of words at a given index denoted by index
+     * in the array. use a trie to get list of words that match the prefix.
+     * for each word that matches , repeat the above via including that word in the list to be searched (backtrack)
      *
+     * i,e words (ball, area, lead, lady)
+     * start with : ball at index 1
+     * 1st call get area as it starts with prefix a (constructed via ball's first index)
+     * 2nd call get lead as it starts with prefix le (constructed via ball and area second index)
+     * 3rd call get lady as it starts with prefix lad (constructed via ball, area and lead's third index)
+     * now you have the 4 words processed which equals the size of words started with and hence a square is formed
+     *
+     * Very neat!
      * @param wordList
      * @param index
      * @param result

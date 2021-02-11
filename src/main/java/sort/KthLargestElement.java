@@ -2,6 +2,26 @@ package sort;
 
 import java.util.Random;
 
+/**
+ * 215. Kth Largest Element in an Array
+ * Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+ *
+ * Example 1:
+ *
+ * Input: [3,2,1,5,6,4] and k = 2
+ * Output: 5
+ * Example 2:
+ *
+ * Input: [3,2,3,1,2,4,5,5,6] and k = 4
+ * Output: 4
+ * Note:
+ * You may assume k is always valid, 1 ≤ k ≤ array's length.
+ *
+ * IMP-3: Common interview questions are on this theme.
+ * The same question is also solved in the class : KthLargest via binary trees.
+ * Most efficient to find the slot via quick select
+ *
+ */
 public class KthLargestElement {
 
     Random random = new Random();
@@ -13,8 +33,13 @@ public class KthLargestElement {
         int val = kthLargestElement.findKthLargest(nums, k);
     }
 
+    /**
+     * find the (length of nums - k) smallest element, thats the same as the kth largest element
+     * @param nums
+     * @param k
+     * @return
+     */
     public int findKthLargest(int[] nums, int k) {
-
         return searchKSmallest(0, nums.length - 1, nums.length - k, nums);
     }
 

@@ -6,11 +6,30 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * 347. Top K Frequent Elements
+ * Given a non-empty array of integers, return the k most frequent elements.
+ *
+ * Example 1:
+ *
+ * Input: nums = [1,1,1,2,2,3], k = 2
+ * Output: [1,2]
+ * Example 2:
+ *
+ * Input: nums = [1], k = 1
+ * Output: [1]
+ * Note:
+ *
+ * You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+ * Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+ * It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
+ * You can return the answer in any order.
+ *
  * quick select is a fairly complicate implementation for an interview. perhaps choose map and priority queue if in
  * interview.
- * <p>
+ *
  * if choosing quick select , write place holder methods for partition , swap and quick select recursion for on the key
  * calling method and time permitting go into the other methods.
+ *
  */
 public class TopKFrequent {
 
@@ -72,14 +91,14 @@ public class TopKFrequent {
         int mid = (low + high) / 2;
         //get counts from map
         //use the median value from left, mid, right
-        int midV = numCount.get(arr[mid]);
-        int lowV = numCount.get(arr[low]);
-        int highV = numCount.get(arr[high]);
+        int midFrequency = numCount.get(arr[mid]);
+        int lowFrequency = numCount.get(arr[low]);
+        int highFrequency = numCount.get(arr[high]);
 
         int pivot = mid;
-        if (lowV > midV && lowV < highV) {
+        if (lowFrequency > midFrequency && lowFrequency < highFrequency) {
             pivot = low;
-        } else if (highV > lowV && highV < midV) {
+        } else if (highFrequency > lowFrequency && highFrequency < midFrequency) {
             pivot = high;
         }
 
@@ -106,13 +125,13 @@ public class TopKFrequent {
         swap(arr, low, pivot);
         int pIndex = low;
         //get pivot from count map
-        int pivotV = numCount.get(arr[low++]);
+        int pivotFrequency = numCount.get(arr[low++]);
         //loop continuous
         while (true) {
             //check bounds before accessing array
-            while (low <= high && numCount.get(arr[low]) < pivotV) low++;
+            while (low <= high && numCount.get(arr[low]) < pivotFrequency) low++;
             //check bounds before accessing array
-            while (low <= high && numCount.get(arr[high]) > pivotV) high--;
+            while (low <= high && numCount.get(arr[high]) > pivotFrequency) high--;
             //break if off bound
             if (low >= high) break;
             swap(arr, low++, high--);

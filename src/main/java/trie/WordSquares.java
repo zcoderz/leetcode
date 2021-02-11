@@ -158,7 +158,6 @@ public class WordSquares {
     private static class Trie {
         Map<Character, Trie> childs = new HashMap<>();
         private List<Integer> words = new ArrayList<>();
-
     }
 
 }

@@ -1,7 +1,21 @@
-package sort;
+package search.binary_search;
 
 /**
+ * 1060. Missing Element in Sorted Array
+ * Given a sorted array A of unique numbers, find the K-th missing number starting from the leftmost number of the array.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: A = [4,7,9,10], K = 1
+ * Output: 5
+ * Explanation:
+ * The first missing number is 5.
+ *
  * find the Kth missing element in the array.
+ *
+ * IMP-3: binary search based solution is good practice
  */
 public class MissingElements {
 
@@ -47,7 +61,8 @@ public class MissingElements {
      */
     int search(int[] nums, int left, int right, int k) {
         if ((right - left) == 1) {
-            //the gap between left and right has narrowed to a single offset
+            //the offset between left and right is 1 but there may be any k numbers left
+            //hence break here and add the remaining k to nums[left]
             return nums[left] + k;
         }
 

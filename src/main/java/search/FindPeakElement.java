@@ -14,6 +14,20 @@ public class FindPeakElement {
         return findPeek(0, nums.length - 1, nums);
     }
 
+    /**
+     * this is a clever solution.
+     *
+     * the code is based around the below idea :
+     * 1. items left of the peek index will have the item following the mid index be greater than the mid index
+     * 2. items right of the peek index will have the item following the mid index be less than the mid index
+     *
+     * therefore, based on 1 & 2 you can determine whether to move left or right in the array.
+     * when you reach a point where left and right index are same than that must be the peek index.
+     * @param left
+     * @param right
+     * @param nums
+     * @return
+     */
     public int findPeek(int left, int right, int[] nums) {
         if (left == right) return nums[left];
 

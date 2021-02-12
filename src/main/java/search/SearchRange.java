@@ -16,7 +16,7 @@ package search;
  * Input: nums = [5,7,7,8,8,10], target = 8
  * Output: [3,4]
  *
- * IMP-1: Great question! should practice this again.
+ * IMP-1: Great question! should practice this again. the solution is amazingly simple.
  */
 public class SearchRange {
     public static void main(String[] args) {

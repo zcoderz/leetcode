@@ -22,7 +22,7 @@ package search.binary_search;
 
  IMP-1: Very Common question, excellent practice for binary search
  */
-class MedianOfTwoArrays {
+class  MedianOfTwoArrays {
 
     public static void main(String[] args) {
         int[] nums1 = {7,8};

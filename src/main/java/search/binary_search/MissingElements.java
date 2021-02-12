@@ -71,7 +71,9 @@ public class MissingElements {
             //left off of mid has enough missing, so focus on left
             return search(nums, left, mid, k);
         } else {
-            //left off of mid didnt have enough missing , so find the remaining missing on the right
+            //left off of mid didn't have enough missing , so find the remaining missing on the right
+            //(nums[mid] - nums[left]) : val difference between left and mid
+            //mid - left : distance between mid and left
             int gaps = k - ((nums[mid] - nums[left]) - (mid - left));
             return search(nums, mid, right, gaps);
         }

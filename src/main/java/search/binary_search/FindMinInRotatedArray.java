@@ -1,17 +1,35 @@
 package search.binary_search;
 
 /**
- * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
- * <p>
- * (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
- * <p>
- * Find the minimum element.
- * <p>
- * The array may contain duplicates.
+ * 153. Find Minimum in Rotated Sorted Array
+ * Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
+ *
+ * [4,5,6,7,0,1,2] if it was rotated 4 times.
+ * [0,1,2,4,5,6,7] if it was rotated 7 times.
+ * Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+ *
+ * Given the sorted rotated array nums, return the minimum element of this array.
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: nums = [3,4,5,1,2]
+ * Output: 1
+ * Explanation: The original array was [1,2,3,4,5] rotated 3 times.
+ * Example 2:
+ *
+ * Input: nums = [4,5,6,7,0,1,2]
+ * Output: 0
+ * Explanation: The original array was [0,1,2,4,5,6,7] and it was rotated 4 times.
+ *
+ * This problem is similar to MinInRotatedArrayWithDuplicates and to SearchRotated
+ * Essentially we are finding the rotation index which will tell us the min point.
+ *
+ * IMP-1: Search rotated array and search with duplicates is a common set of problems that needs to be practiced
  */
 public class FindMinInRotatedArray {
-    //this problem is similar to rotated array, essentially we are finding the rotation index
-    //which will tell us the min point.
+
 
     public static void main(String[] args) {
         FindMinInRotatedArray minR = new FindMinInRotatedArray();
@@ -35,11 +53,10 @@ public class FindMinInRotatedArray {
             if (nums[mid] > nums[high]) {
                 low = mid + 1; //in case transition to low didnt occur before the mid, it must happen after the mid
             } else if (nums[mid] < nums[high]) {
-                //in this case you are covering until the mid assuming transition from high to low
+                //in this case you are covering until the mid assuming transition
                 //happened at or before mid. this is fine given the array is sorted
                 high = mid;
             }
-
         }
         return low;
     }

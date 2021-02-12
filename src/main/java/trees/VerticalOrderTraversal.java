@@ -5,6 +5,22 @@ import utils.TreeNode;
 
 import java.util.*;
 
+
+/**
+ * 314. Binary Tree Vertical Order Traversal
+ * Given the root of a binary tree, return the vertical order traversal of its nodes' values.
+ * (i.e., from top to bottom, column by column).
+ *
+ * If two nodes are in the same row and column, the order should be from left to right.
+ *
+ *
+ * Example 1:
+ *
+ *
+ * Input: root = [3,9,20,null,null,15,7]
+ * Output: [[9],[3,15],[20],[7]]
+ *
+ */
 public class VerticalOrderTraversal {
 
     //using a tree so that the data is sorted in increased column order
@@ -64,25 +80,4 @@ public class VerticalOrderTraversal {
             }
         }
     }
-
-    /**
-     * the below logic doesnt work as nodes from lower tree levels can possibly get processed before upper that's
-     * because the code iterates through left side entirely before moving over the the other side Iterate through the
-     * tree and add nodes in to their appropriate indexes
-     *
-     * @param treeNode
-     * @param colIndex
-     */
-    void processTreeWrong(TreeNode treeNode, int colIndex) {
-        List<Integer> list = treeMap.getOrDefault(colIndex, new ArrayList<>());
-        list.add(treeNode.val);
-        treeMap.put(colIndex, list);
-        if (treeNode.left != null) {
-            processTreeWrong(treeNode.left, colIndex - 1);
-        }
-        if (treeNode.right != null) {
-            processTreeWrong(treeNode.right, colIndex + 1);
-        }
-    }
-
 }

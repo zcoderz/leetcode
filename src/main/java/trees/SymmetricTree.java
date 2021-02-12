@@ -3,9 +3,28 @@ package trees;
 import utils.TreeNode;
 
 /**
- * Definition for a binary tree node.
+ * 101. Symmetric Tree
+ * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+ *
+ * For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+ *
+ *     1
+ *    / \
+ *   2   2
+ *  / \ / \
+ * 3  4 4  3
+ *
+ *
+ * But the following [1,2,2,null,3,null,3] is not:
+ *
+ *     1
+ *    / \
+ *   2   2
+ *    \   \
+ *    3    3
+ *
+ *
  */
-
 
 class SymmetricTree {
 
@@ -36,6 +55,12 @@ class SymmetricTree {
         return symCompare(root.left, root.right);
     }
 
+    /**
+     * simple code alternate traversal between left and right nodes
+     * @param nodeA
+     * @param nodeB
+     * @return
+     */
     boolean symCompare(TreeNode nodeA, TreeNode nodeB) {
         if (nodeA == null && nodeB == null) {
             return true;

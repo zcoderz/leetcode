@@ -6,6 +6,27 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * 103. Binary Tree Zigzag Level Order Traversal
+ * Given a binary tree, return the zigzag level order traversal of its nodes' values.
+ * (ie, from left to right, then right to left for the next level and alternate between).
+ *
+ * For example:
+ * Given binary tree [3,9,20,null,null,15,7],
+ *     3
+ *    / \
+ *   9  20
+ *     /  \
+ *    15   7
+ * return its zigzag level order traversal as:
+ * [
+ *   [3],
+ *   [20,9],
+ *   [15,7]
+ * ]
+ *
+ * IMP-2: Common interview question
+ */
 public class ZigZagTraversal {
 
     public static void main(String[] args) {
@@ -24,7 +45,13 @@ public class ZigZagTraversal {
         traversal.zigzagLevelOrder(node3);
     }
 
-
+    /**
+     * A simple and elegant approach.
+     * Note that a market 'null' is added to to the queue that it has passed one level of traversal.
+     * This is a simple and neat way to manage level demarcation.
+     * @param root
+     * @return
+     */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         boolean traverse_left = false;
         List<List<Integer>> arr = new LinkedList<>();
@@ -32,7 +59,6 @@ public class ZigZagTraversal {
         queue.add(root);
         queue.add(null);
         LinkedList<Integer> currentLevel = new LinkedList<>();
-
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
             if (node != null) {
@@ -49,18 +75,13 @@ public class ZigZagTraversal {
                     queue.add(null);
                 }
             }
-
             if (null != node && node.left != null) {
                 queue.add(node.left);
             }
             if (null != node && node.right != null) {
                 queue.add(node.right);
             }
-
-
         }
-
         return arr;
     }
-
 }

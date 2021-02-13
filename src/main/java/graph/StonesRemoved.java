@@ -16,6 +16,7 @@ import java.util.Set;
  * Given an array stones of length n where stones[i] = [xi, yi] represents the location of the ith stone,
  * return the largest possible number of stones that can be removed.
  *
+ * IMP-2: This is a good question to practice
  */
 public class StonesRemoved {
 

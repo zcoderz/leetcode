@@ -22,7 +22,7 @@ import java.util.Map;
  *     /  \
  *    15   7
  *
- * IMP-2: Fun question to practice
+ * IMP-1: Common question. See CreateTreeFromPreAndInOrder for another flavor of the same type of question.
  */
 public class InOrderPostOrderBuildTree {
 

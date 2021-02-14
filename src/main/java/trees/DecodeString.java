@@ -2,8 +2,29 @@ package trees;
 
 import java.util.Stack;
 
-public class DecodeString {
 
+/**
+ * 394. Decode String
+ *
+ * Given an encoded string, return its decoded string.
+ *
+ * The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is
+ * being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+ *
+ * You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
+ *
+ * Furthermore, you may assume that the original data does not contain any digits and that digits
+ * are only for those repeat numbers, k. For example, there won't be input like 3a or 2[4].
+ *
+ * IMP-1: Very common question
+ *
+ * Example 1:
+ *
+ * Input: s = "3[a]2[bc]"
+ * Output: "aaabcbc"
+ *
+ */
+public class DecodeString {
 
     Stack<String> stringStack = new Stack<>();
 
@@ -14,69 +35,40 @@ public class DecodeString {
         System.out.println(strVal);
     }
 
-    public String decodeString(String s) {
-        String strPrior = "";
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '[') {
-                stringStack.push(strPrior);
-                strPrior = "";
-            } else if (s.charAt(i) == ']') {
-                String concatVal = strPrior;
-                int val = -1;
-                while (val == -1) {
-                    String strIntVal = stringStack.pop();
-                    val = getNum(strIntVal);
-                    if (val == -1) {
-                        concatVal = strIntVal + concatVal;
-                    } else {
-                        concatVal = repeat(concatVal, val);
-                        stringStack.push(concatVal);
-                    }
+    /**
+     * A very simple and neat approach, keep number of repeats and strings in separate stacks
+     *
+     * @param s
+     * @return
+     */
+    String decodeString(String s) {
+        Stack<Integer> countStack = new Stack<>();
+        Stack<StringBuilder> stringStack = new Stack<>();
+        StringBuilder currentString = new StringBuilder();
+        int k = 0;
+        for (char ch : s.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                k = k * 10 + ch - '0';
+            } else if (ch == '[') {
+                // push the number k to countStack
+                countStack.push(k);
+                // push the currentString to stringStack
+                stringStack.push(currentString);
+                // reset currentString and k
+                currentString = new StringBuilder();
+                k = 0;
+            } else if (ch == ']') {
+                StringBuilder decodedString = stringStack.pop();
+                // decode currentK[currentString] by appending currentString k times
+                for (int currentK = countStack.pop(); currentK > 0; currentK--) {
+                    decodedString.append(currentString);
                 }
-                strPrior = "";
+                currentString = decodedString;
             } else {
-                String newC = "" + s.charAt(i);
-                boolean isStringSplit = stringSplit(newC, strPrior);
-                if (isStringSplit) {
-                    stringStack.push(strPrior);
-                    strPrior = newC;
-                } else {
-                    strPrior = strPrior + s.charAt(i);
-                }
+                currentString.append(ch);
             }
         }
-        return simplify(strPrior);
-    }
-
-    boolean stringSplit(String strA, String strB) {
-        int numA = getNum(strA);
-        int numB = getNum(strB);
-        return ((numA == -1 && numB > 0) || (numB == -1 && numA > 0));
-    }
-
-    String repeat(String strVal, int num) {
-        String strRetVal = strVal;
-        for (int i = 0; i < num - 1; i++) {
-            strRetVal = strRetVal + strVal;
-        }
-        return strRetVal;
-    }
-
-    String simplify(String strPrior) {
-        String strBuffer = strPrior;
-        while (!stringStack.isEmpty()) {
-            String strVal = stringStack.pop();
-            strBuffer = strVal + strBuffer;
-        }
-        return strBuffer;
-    }
-
-    Integer getNum(String strVal) {
-        try {
-            return Integer.parseInt(strVal);
-        } catch (NumberFormatException e) {
-            return -1;
-        }
+        return currentString.toString();
     }
 
 }

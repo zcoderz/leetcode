@@ -17,6 +17,9 @@ import java.util.Set;
  * return the largest possible number of stones that can be removed.
  *
  * IMP-2: This is a good question to practice
+ *
+ *Time complexity for union find is O(log(n)) - see here
+ * https://en.wikipedia.org/wiki/Disjoint-set_data_structure
  */
 public class StonesRemoved {
 

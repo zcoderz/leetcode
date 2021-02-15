@@ -5,6 +5,9 @@ import utils.Pair;
 import java.util.*;
 
 /**
+ * * 127. Word Ladder
+ *
+ * See WordLadder for a simpler solution.
  * A very interesting approach the word ladder problem. Work at the problem from both bottom up and top down via two
  * directional BFS
  */

@@ -9,14 +9,32 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
- * Given a binary tree where every node has a unique value, and a target key k, find the value of the nearest leaf node
- * to target k in the tree.
- * <p>
+ * 742. Closest Leaf in a Binary Tree
+ * Given a binary tree where every node has a unique value, and a target key k,
+ * find the value of the nearest leaf node to target k in the tree.
+ *
  * Here, nearest to a leaf means the least number of edges travelled on the binary tree to reach any leaf of the tree.
  * Also, a node is called a leaf if it has no children.
- * <p>
- * In the following examples, the input tree is represented in flattened form row by row. The actual root tree given
- * will be a TreeNode object.
+ *
+ * In the following examples, the input tree is represented in flattened form row by row.
+ * The actual root tree given will be a TreeNode object.
+ *
+ * Example 1:
+ *
+ * Input:
+ * root = [1, 3, 2], k = 1
+ * Diagram of binary tree:
+ *           1
+ *          / \
+ *         3   2
+ *
+ * Output: 2 (or 3)
+ *
+ * Explanation: Either 2 or 3 is the nearest leaf node to the target of 1.
+ *
+ * IMP-1 : The question has an interesting approach.
+ * You need to transform the tree into a graph and then run a BFS from search node to nearest leaf.
+ * Doesn't matter if leaf is a child of a node or leaf is child of a parent node.
  */
 public class ClosestLeafInABinaryTree {
 

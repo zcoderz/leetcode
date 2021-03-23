@@ -56,6 +56,8 @@ public class TaskScheduler {
         int openSlots = (maxFreq - 1) * n;
         //remove the open slots until all slots have been used
         for (int j = num - 2; j >= 0 && openSlots > 0 && taskFreq[j] > 0; j--) {
+            //taking a min here so that if two tasks have same highest frequency , you can only reduce at max
+            //(maxFrequency -1)
             openSlots -= Math.min(taskFreq[j], maxFreq - 1);
         }
 

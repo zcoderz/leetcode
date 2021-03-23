@@ -90,8 +90,8 @@ public class ClosestLeafInABinaryTree {
             int iQueueSize = queue.size();
             for (int i = 0; i < iQueueSize; i++) {
                 Node node = queue.poll();
-                //dont process root as a leaf node as root can have a single child and thus be treated
-                //as a leaf node
+                //don't process root as a leaf node as root can have a single child and thus be treated as a leaf node
+                //checking for size as 1 since node has link to parent
                 if (node.children.size() == 1 && node.val != rootVal) {
                     return node.val;
                 }

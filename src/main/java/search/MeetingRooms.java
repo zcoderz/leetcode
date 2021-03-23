@@ -32,8 +32,8 @@ public class MeetingRooms {
     /**
      * A clever approach that simplifies the problem a whole lot
      * 1. sort by meeting start times
-     * 2. add meeting end times into priority queue. if priority queue isn't empty and it has a meeting whole end time
-     * is before the new meeting's start time , remove the element at top of the priority queue. Otherwise, increment
+     * 2. add meeting end times into priority queue. if priority queue isn't empty and it has a meeting  end time
+     * before the new meeting's start time , remove the element at top of the priority queue. Otherwise, increment
      * the number of rooms variable.
      *
      * @param intervals

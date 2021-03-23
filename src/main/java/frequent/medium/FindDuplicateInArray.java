@@ -27,7 +27,7 @@ package frequent.medium;
  * as a way to detect start of a cycle , assuming only one cycle in path
  * <p>
  * S = starting point, I = where cycle starts, F = distance between cycle and start, C = distance until cycle
- * repeats, m = intersection point of the two pointers (see note below) you run two pinters, where second pointer is
+ * repeats, m = intersection point of the two pointers (see note below) you run two pointers, where second pointer is
  * twice as fast as the other. since one is running twice as fast as other, at some point inside the cycle they will
  * intersect.
  * <p>

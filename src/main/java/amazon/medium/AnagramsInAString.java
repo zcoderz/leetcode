@@ -49,13 +49,12 @@ public class AnagramsInAString {
         if (s.isEmpty() || p.isEmpty() || p.length() > s.length()) return new ArrayList();
         int[] target = new int[26];
         int[] source = new int[26];
-
         List<Integer> out = new ArrayList<>();
+        //initialize source and target arrays
         for (int i = 0; i < p.length(); i++) {
             char c = p.charAt(i);
             target[c - 'a'] += 1;
         }
-
         for (int i = 0; i < p.length(); i++) {
             char c = s.charAt(i);
             source[c - 'a'] += 1;
@@ -64,13 +63,14 @@ public class AnagramsInAString {
             out.add(0);
         }
         int len = p.length();
+        //use a sliding window approach to determine whether source matches target
         for (int i = 1; (i + len) <= s.length(); i++) {
             char c = s.charAt(i - 1);
-            source[c - 'a'] -= 1;
+            source[c - 'a'] -= 1; //decrement char at prior index
             c = s.charAt(i + len - 1);
-            source[c - 'a'] += 1;
+            source[c - 'a'] += 1; //increment char at new index
             if (Arrays.equals(target, source)) {
-                out.add(i);
+                out.add(i); //if source and target match then add starting index to output
             }
         }
         return out;

@@ -72,14 +72,16 @@ public class CountSmallerToSelf {
         for (int i = 0, j = 0; i < left.length || j < right.length;) {
             //pick the smaller element from the left or right array
             if (j == right.length || i < left.length && left[i].second <= right[j].second) {
-                //each time we choose an item from the left array. we want to know how many
-                //numbers from array right are moved before this number.
+                //when we enter this case left is less than right or we have reached end of right
+                //so we pick the left value and use the index of the left value 'left[i].first' and update it by j
+                //updating by j because j is the number of values on the right that were less than the given value
                 arr[i + j] = left[i];
                 smaller[left[i].first] += j;
                 i++;
             } else {
-                //no action on count when picking item from the right array since the question only asks
-                //how many items to the right are less than the given item
+                //will enter this case when right is less than left, in this case we pick the right value
+                //and increment count of j , incrementing j as it signifies how many values in right array
+                //were less than the given index in left array
                 arr[i + j] = right[j];
                 j++;
             }

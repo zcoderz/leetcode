@@ -18,6 +18,7 @@ package google.medium;
  * outwards to validate whether indeed its surrounded on sides by 1s. but that becomes a very complicated problem
  * due to corners
  *
+ *
  */
 public class NumberOfClosedIslands {
 

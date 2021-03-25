@@ -21,7 +21,7 @@ import java.util.*;
  * Input: nums = []
  * Output: []
  *
- * IMP-1: Common question.
+ * IMP-1: Common question. I have this coded in arrays as well.
  */
 public class ThreeSum {
 

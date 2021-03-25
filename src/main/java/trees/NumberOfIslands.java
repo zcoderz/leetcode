@@ -25,7 +25,6 @@ import java.util.Set;
  * ]
  * Output: 1
  *
- * IMP-1: This is a very common interview question
  */
 public class NumberOfIslands {
 

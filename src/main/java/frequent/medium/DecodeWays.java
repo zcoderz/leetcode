@@ -1,5 +1,8 @@
 package frequent.medium;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 91. Decode Ways
  *
@@ -31,10 +34,10 @@ package frequent.medium;
  *
  * IMP-1 : Real important question to practice
  */
-public class DecodeString {
+public class DecodeWays {
 
     public static void main(String []args) {
-        DecodeString dS = new DecodeString();
+        DecodeWays dS = new DecodeWays();
         int count = dS.numDecodings("0");
         assert count == 0;
         count = dS.numDecodings("10");
@@ -83,6 +86,39 @@ public class DecodeString {
             oneBack = v;
         }
         return oneBack;
+    }
+
+    private Map<Integer, Integer> memorizationMap = new HashMap<>();
+
+    /**
+     * recursive approach to calculate num decodings....
+     * @param index
+     * @param s
+     * @return
+     */
+    int numDecodings(int index, String s) {
+        //memorization is used to return the value which already has been calculated so that you don't recalculate it.
+        //saves compute.
+        if (memorizationMap.containsKey(index)) {
+            return memorizationMap.get(index);
+        }
+        if (index == s.length()) {
+            return 1;
+        }
+        if (s.charAt(index) == '0') {
+            return 0;
+        }
+        if (index == s.length() - 1) {
+            return 1;
+        }
+        int res = numDecodings(index + 1, s);
+        int nextTwoChars = Integer.parseInt(s.substring(index, index + 2));
+        if (nextTwoChars <= 26) {
+            res += numDecodings(index + 2, s);
+        }
+        //add to the memorization map so you can reuse the calculation later if needed
+        memorizationMap.put(index, res);
+        return res;
     }
 
 }

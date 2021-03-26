@@ -32,12 +32,13 @@ public class AlienDictionary {
         int numWords = words.length;
         Map<Character, String> wordDependencies = new HashMap<>();
         Set<Character> uniqueChars = new HashSet<>();
+        //create a unique list of chars
         for (String word : words) {
             for (int i = 0; i < word.length(); i++) {
                 uniqueChars.add(word.charAt(i));
             }
         }
-
+        //create a dependency map
         for (int i = 1; i < numWords; i++) {
             String wordA = words[i - 1];
             String wordB = words[i];
@@ -46,19 +47,15 @@ public class AlienDictionary {
             while (index < inLen && wordA.charAt(index) == wordB.charAt(index)) {
                 index++;
             }
-
             if (index < inLen) {
                 String strDep = wordDependencies.getOrDefault(wordA.charAt(index), "");
                 strDep = strDep + wordB.charAt(index);
                 wordDependencies.put(wordA.charAt(index), strDep);
             }
-
         }
-
         StringBuilder builder = new StringBuilder();
         Set<Character> visited = new HashSet<>();
-
-
+        //iterate through the unique chars while like running toposort to process dependencies
         for (Character ch : uniqueChars) {
             if (!visited.contains(ch)) {
                 Set<Character> visiting = new HashSet<>();
@@ -68,11 +65,18 @@ public class AlienDictionary {
                 }
             }
         }
-
         return builder.reverse().toString();
-
     }
 
+    /**
+     * process the char dependencies via running toposort
+     * @param wordDependencies
+     * @param builder
+     * @param visited
+     * @param ch
+     * @param visiting
+     * @return
+     */
     int topoSort(Map<Character, String> wordDependencies, StringBuilder builder, Set<Character> visited,
                  Character ch, Set<Character> visiting) {
         visiting.add(ch);

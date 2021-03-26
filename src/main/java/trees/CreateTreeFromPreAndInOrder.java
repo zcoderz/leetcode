@@ -43,40 +43,6 @@ public class CreateTreeFromPreAndInOrder {
     HashMap<Integer, Integer> idx_map = new HashMap<>();
 
     /**
-     *
-     * Repeat below for each sub tree (Root, Left, Right), where repeat is done for left and right sub trees
-     *   Preorder traversal follows Root -> Left -> Right order
-     *   The first element in the preorder list is a root.
-     *   Once you know the root, you can use the inorder list to split the array into left and right sub arrays
-     * Use return of the repeat to stitch left and right child trees
-     *
-     * @param in_left
-     * @param in_right
-     * @return
-     */
-    public TreeNode helper(int in_left, int in_right) {
-        // if there is no elements to construct subtrees
-        if (in_left == in_right)
-            return null;
-
-        // pick up pre_idx element as a root
-        int root_val = preorder[pre_idx];
-        TreeNode root = new TreeNode(root_val);
-
-        // root splits inorder list
-        // into left and right subtrees
-        int index = idx_map.get(root_val);
-
-        // move to the next pre order root
-        pre_idx++;
-        // build left subtree
-        root.left = helper(in_left, index);
-        // build right subtree
-        root.right = helper(index + 1, in_right);
-        return root;
-    }
-
-    /**
      * construct a map based on in order coordinates of given indices
      * @param preorder
      * @param inorder
@@ -90,6 +56,40 @@ public class CreateTreeFromPreAndInOrder {
         int idx = 0;
         for (Integer val : inorder)
             idx_map.put(val, idx++);
-        return helper(0, inorder.length);
+        return helper(0, inorder.length-1);
+    }
+
+    /**
+     *
+     * Repeat below for each sub tree (Root, Left, Right), where repeat is done for left and right sub trees
+     *   Preorder traversal follows Root -> Left -> Right order
+     *   The first element in the preorder list is a root.
+     *   Once you know the root, you can use the inorder list to split the array into left and right sub arrays
+     * Use return of the repeat to stitch left and right child trees
+     *
+     * @param in_left
+     * @param in_right
+     * @return
+     */
+    public TreeNode helper(int in_left, int in_right) {
+        // if there is no elements to construct subtrees
+        if (in_left > in_right)
+            return null;
+
+        // pick up pre_idx element as a root
+        int root_val = preorder[pre_idx];
+        TreeNode root = new TreeNode(root_val);
+
+        // root splits inorder list
+        // into left and right subtrees
+        int index = idx_map.get(root_val);
+
+        // move to the next pre order root
+        pre_idx++;
+        // build left subtree
+        root.left = helper(in_left, index-1);
+        // build right subtree
+        root.right = helper(index + 1, in_right);
+        return root;
     }
 }

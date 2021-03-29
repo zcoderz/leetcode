@@ -2,15 +2,15 @@ package bitwise;
 
 /**
  * 29. Divide Two Integers
- * <p>
+ *
  * Given two integers dividend and divisor, divide two integers without using multiplication, division, and mod
  * operator.
- * <p>
+ *
  * Return the quotient after dividing dividend by divisor.
- * <p>
+ *
  * The integer division should truncate toward zero, which means losing its fractional part. For example,
  * truncate(8.345) = 8 and truncate(-2.7335) = -2.
- * <p>
+ *
  * This problem requires A LOT OF FOCUS! best to start with simple test cases
  *
  * IMP-1: Facebook asks this questions often. The approach is tricky
@@ -19,7 +19,8 @@ public class Divide {
 
     public static void main(String[] args) {
         Divide div = new Divide();
-        int res = div.divide(-2147483648, -3);
+        //int res = div.divide(-2147483648, -3);
+        int res = div.divide(78, 2);
         System.out.println(res);
     }
 
@@ -33,7 +34,7 @@ public class Divide {
      * @return
      */
     public int divide(int dividend, int divisor) {
-        //Special case: overflow. (-2^32 / -1) = 2^32 which is outside the bounds of int as max int is 2^32-1
+        //Special case: overflow. (-2^31 / -1) = 2^31 which is outside the bounds of int as max int is 2^31-1
         //treat this as a special case
         if (dividend == Integer.MIN_VALUE && divisor == -1) {
             return Integer.MAX_VALUE;
@@ -54,7 +55,7 @@ public class Divide {
 
         int aggPower = 0;
         int remDividend = dividend;
-        while (true) {
+        while(true) {
             int power = 0;
             int origRemaining = remDividend;
             while (remDividend < 0) {
@@ -65,13 +66,17 @@ public class Divide {
             //because the comparison was actually made at the power before the last incremented one
             //decrement the power by one
             power--;
-            if ((remDividend + divisor) <= 0) {
+            if (remDividend ==0) {
                 int val = aggPower;
                 if (power >= 0) {
-                    val += (1 << power);
-                    if (remDividend + divisor < 0) {
-                        val--; //remove one from power to get the rem dividend in negative territory
-                    }
+                    val +=  (1 << power);
+                }
+                return neg == -1 ? -val : val;
+            } else if (remDividend + divisor < 0) {
+                int val = aggPower;
+                if (power >= 0) {
+                    val +=  (1 << power) ;
+                    val--; //remove one from power to get the rem dividend in negative territory
                 }
                 return neg == -1 ? -val : val;
             }

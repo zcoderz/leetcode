@@ -46,7 +46,7 @@ public class CompareVersions {
     /**
      * below is an extremely simple but elegant solution for the problem it could be a lot more complicated with many
      * more conditions if the problem wasn't simplified as below
-     * <p>
+     *
      * because versions could be constructed as 1.0.0.0.0.0.0.1 & 1.0.0.1 or they can be constructed as 1.0.0.0.0.10 vs
      * 1.0.0.0.0.9 or they could be 1.1.0 and 1.1.0.0.0.0 which are same you need a way where you : 1. divide the
      * version into chunks split on '.' 2. do integer comparison instead of string comparison 10 > 9 but doesnt work

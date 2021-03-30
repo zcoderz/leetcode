@@ -32,7 +32,7 @@ public class IsRobotBounded {
 
     public static void main(String [] args) {
         IsRobotBounded bounded = new IsRobotBounded();
-        boolean isBounded = bounded.isRobotBounded("GGLLGG");
+        boolean isBounded = bounded.isRobotBounded("GRGRGR");
         assert isBounded;
         Arrays.fill(bounded.robotDirMovements, 0);
         bounded.currDir=0;

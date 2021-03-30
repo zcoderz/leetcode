@@ -36,7 +36,8 @@ public class LongestContinuousDiffLess {
 
     public static void main(String [] args) {
 
-        int [] nums = {1,5,6,7,8,10,6,5,6};
+        //int [] nums = {1,5,6,7,8,10,6,5,6};
+        int [] nums = {12,5,6,7,8,10};
         int limit = 4;
 
         LongestContinuousDiffLess longest = new LongestContinuousDiffLess();
@@ -61,16 +62,18 @@ public class LongestContinuousDiffLess {
     public int longestSubarray(int[] nums, int limit) {
         ArrayDeque<Integer> increasing = new ArrayDeque<> ();
         ArrayDeque<Integer> decreasing = new ArrayDeque<> ();
+        //add the value in first index to the array
         increasing.offer(nums[0]); decreasing.offer(nums[0]);
         int len = nums.length;
         int res = 1;
         int i = 0;
+        //start loop from second index
         for (int j = 1; j < len; j++) {
-            //make sure that num[i] gets added into the correct slot in the increasing array
+            //if the increasing array constraints are not processed then drop the last value from the increasing array
             while (!increasing.isEmpty() && increasing.getLast() > nums[j]) {
                 increasing.pollLast();
             }
-            //make sure that num[i] gets added into the correct slot in the decreasing array
+            //if the decreasing array constraints are not processed then drop the last value from the decreasing array
             while (!decreasing.isEmpty() && decreasing.getLast() < nums[j]) {
                 decreasing.pollLast();
             }
@@ -87,9 +90,13 @@ public class LongestContinuousDiffLess {
                 if (decreasing.peekFirst() == nums[i]) {
                     decreasing.pollFirst();
                 }
+                //we keep moving the left pointer right and dropping items that violate the limit condition
+                //until the condition is no longer violated
                 i++;
             }
             //size of longest contiguous array is difference between right and left indices
+            //given we are validating the subarray is within the bounds above the left and right indexes must be
+            //pointing to valid indexes
             res = Math.max(res, j-i+1);
         }
         return res;

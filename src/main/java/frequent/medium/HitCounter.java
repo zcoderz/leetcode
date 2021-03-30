@@ -78,12 +78,11 @@ public class HitCounter {
     public int getHits(int timestamp) {
         int prior = timestamp - (60*5);
         //search the lower and higher edges to find the count.
-        //ideally would have used a single method that would have returned the number of rows in between the
-        //time stamp and prior.
         SortedMap<Integer, Integer> less = set.headMap(timestamp, true);
         SortedMap<Integer, Integer> tailMap =  less.tailMap(prior);
         int count = 0;
         for (Map.Entry<Integer, Integer> entry : tailMap.entrySet()) {
+            //strip out any record equal to prior value as that maybe present but shouldn't to be included
             if (entry.getKey().equals(prior)) continue;
             count += entry.getValue();
         }

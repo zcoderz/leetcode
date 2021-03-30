@@ -20,13 +20,10 @@ public class Permutations {
     public static void main(String [] args) {
         Permutations perm = new Permutations();
         int [] nums = {1,2,3};
-
         List<List<Integer>> retList = perm.permute(nums);
-
         for (List<Integer> list : retList) {
             System.out.println(list.toString());
         }
-
     }
 
     public List<List<Integer>> permute(int[] nums) {
@@ -34,26 +31,30 @@ public class Permutations {
         for (int num : nums) {
             arr.add(num);
         }
-
-        int num = arr.size();
+        int length = arr.size();
         List<List<Integer>> retList = new ArrayList<>();
-
-        execute(num, 0, arr, retList);
-
+        execute(length, 0, arr, retList);
         return retList;
     }
 
-    void execute(int num, int index, List<Integer> nums, List<List<Integer>> retList) {
-        if (index == num) {
+
+    /**
+     * The idea of calculating the permutation is that you swap the current index with the second index (i below).
+     * you recuse forward in the permutation until you reach end of the collection
+     * on back tracking you reverse (undo) the swap previously done
+     * @param length
+     * @param index
+     * @param nums
+     * @param retList
+     */
+    void execute(int length, int index, List<Integer> nums, List<List<Integer>> retList) {
+        if (index == length) {
             retList.add(new ArrayList<>(nums));
         }
-
-        for (int i = index; i < num; i++) {
+        for (int i = index; i < length; i++) {
             Collections.swap(nums, index, i);
-            execute(num, index + 1, nums, retList);
+            execute(length, index + 1, nums, retList);
             Collections.swap(nums, index, i);
         }
-
     }
-
 }

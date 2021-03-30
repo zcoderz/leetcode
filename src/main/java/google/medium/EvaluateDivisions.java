@@ -4,19 +4,19 @@ import java.util.*;
 
 /**
  * 399. Evaluate Division
- * <p>
+ *
  * You are given an array of variable pairs equations and an array of real numbers values, where equations[i] = [Ai, Bi]
  * and values[i] represent the equation Ai / Bi = values[i]. Each Ai or Bi is a string that represents a single
  * variable.
- * <p>
+ *
  * You are also given some queries, where queries[j] = [Cj, Dj] represents the jth query where you must find the answer
  * for Cj / Dj = ?.
- * <p>
+ *
  * Return the answers to all queries. If a single answer cannot be determined, return -1.0.
- * <p>
+ *
  * Note: The input is always valid. You may assume that evaluating the queries will not result in division by zero and
  * that there is no contradiction.
- * <p>
+ *
  * Below solution is via DFS. A faster solution would be via union find. in union find you can check whether numerator
  * and denom are in same set to find whether division possibility exists. and then you can find the divisor weight
  * relative to root for each of the numerator and denom. you divide the two weights to get num/denom.

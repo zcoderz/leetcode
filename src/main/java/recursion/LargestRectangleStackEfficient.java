@@ -1,5 +1,7 @@
 package recursion;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /**
@@ -23,7 +25,8 @@ public class LargestRectangleStackEfficient {
 
     public static void main(String[] args) {
         //int[] heights = {2, 1, 5, 6, 4, 11, 5};
-        int [] heights = {6, 7, 5, 2, 4, 5, 9, 3};
+        //int [] heights = {6, 7, 5, 2, 4, 5, 9, 3};
+        int [] heights = {1,1};
         LargestRectangleStackEfficient lg = new LargestRectangleStackEfficient();
         int area = lg.largestRectangleArea(heights);
         System.out.println(area);
@@ -31,6 +34,7 @@ public class LargestRectangleStackEfficient {
 
     int[] heights;
     int maxArea = 0;
+
 
     /**
      * the equations in stack based solution are tricky to conceptualize.
@@ -42,15 +46,16 @@ public class LargestRectangleStackEfficient {
         this.heights = heights;
 
         Stack<Integer> stack = new Stack<>();
-        stack.push(-1);
+        stack.push(-1); //add sentinel
 
         for (int i = 0; i < heights.length; i++) {
             while (stack.peek() != -1 && heights[stack.peek()] > heights[i]) {
-                //get the height of last element in stack but pop it
-                //need to pop it so that we can know index of element before it that was smaller than it
-                //remember area is from current length to that of length of index smaller than the last popped element
-                //equation for the area here is : (i−stack[top−1]−1)×heights[stack[top]].
-                //this equation works because bars were in ascending order until now
+                //when the above condition is met , it means that the element on top of stack is higher than current
+                //index based on "heights[stack.peek()] > heights[i]"
+                //and by definition all elements between the current index on top of stack and i must be greater in height
+                //than the height on top of stack.
+                //so you get height via current stack index height
+                //and you get width by (i-1-index on top of stack). you subtract 1 from i to exclude current index
                 int h = heights[stack.pop()];
                 int priorIndex = stack.peek();
                 int width = i - priorIndex - 1; //prior index needs to be excluded hence subtract 1
@@ -62,8 +67,8 @@ public class LargestRectangleStackEfficient {
 
         while (stack.peek() != -1) {
             int h = heights[stack.pop()];
-            // similar to above concept except we are taking width from end of array to element before the popped one
-            // equation that works for below is : (stack[top]−stack[top−1])×a[stack[top]])
+            //here any elements left on stack are greater than the last index
+            //so area is just there height * length - index (subtract 1 to remove index of element left on stack)
             int width = heights.length - stack.peek() -1;
             int area = h * width;
             maxArea = Math.max(maxArea, area);

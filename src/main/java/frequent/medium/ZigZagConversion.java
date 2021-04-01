@@ -50,14 +50,11 @@ public class ZigZagConversion {
      * @return
      */
     public String convert(String s, int numRows) {
-
         if (numRows == 1) return s;
-
         StringBuilder ret = new StringBuilder();
         int n = s.length();
         //cycle is twice number of rows -2. every row except first and last gets two repeats
         int cycleLen = 2 * numRows - 2;
-
         for (int i = 0; i < numRows; i++) {
             //repeat every cycleLen
             for (int j = 0; j + i < n; j += cycleLen) {

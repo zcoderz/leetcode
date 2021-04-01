@@ -47,41 +47,10 @@ public class WordBreak {
     }
 
     /**
-     * the solution is clever 1. it tries to use memorization, this makes a huge difference in performance 2. the idea
-     * to put dictionary words in a hashset and compare them with string sub strings is clever
-     *
-     * @param strOrig
-     * @param iStart
-     * @return
-     */
-    boolean processWordBreaks(String strOrig, int iStart) {
-        if (iStart == len) {
-            //you reached the end of the string and hence processing is good!
-            return true;
-        }
-
-        if (memorization[iStart] != null) {
-            //if you had searched up to the index, return the previously calculated value
-            return memorization[iStart];
-        }
-
-        for (int i = iStart + 1; i <= len; i++) {
-            if (wordDict.contains(strOrig.substring(iStart, i))) {
-                memorization[i] = processWordBreaks(strOrig, i);
-                if (memorization[i]) {
-                    return memorization[i];
-                }
-            }
-        }
-        memorization[iStart] = false;
-        return false;
-    }
-
-    /**
-     * A DP based solution from leetcode
-     * description on leet code is clear.
-     *
-     * idea is that if you can find all sub segments of the string in word set then the whole must exist
+     * Here is a DP based solution from leetcode
+     * if you can divide the string into two parts, left and right both of which can be formed via words in dictionary
+     * then the whole string can be formed from the words
+     * use the above fact as you iterate over the string from left to right
      *
      * @param s
      * @param wordDict
@@ -100,6 +69,35 @@ public class WordBreak {
             }
         }
         return dp[s.length()];
+    }
+
+    /**
+     * the solution is clever 1. it tries to use memorization, this makes a huge difference in performance 2. the idea
+     * to put dictionary words in a hashset and compare them with string sub strings is clever
+     *
+     * @param strOrig
+     * @param iStart
+     * @return
+     */
+    boolean processWordBreaks(String strOrig, int iStart) {
+        if (iStart == len) {
+            //you reached the end of the string and hence processing is good!
+            return true;
+        }
+        if (memorization[iStart] != null) {
+            //if you had searched up to the index, return the previously calculated value
+            return memorization[iStart];
+        }
+        for (int i = iStart + 1; i <= len; i++) {
+            if (wordDict.contains(strOrig.substring(iStart, i))) {
+                memorization[i] = processWordBreaks(strOrig, i);
+                if (memorization[i]) {
+                    return memorization[i];
+                }
+            }
+        }
+        memorization[iStart] = false;
+        return false;
     }
 
 }

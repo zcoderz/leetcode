@@ -8,16 +8,22 @@ import java.util.Map;
 /**
  * 336. Palindrome Pairs
  *
- * Given a list of unique words, return all the pairs of the distinct indices (i, j) in the given list,
- * so that the concatenation of the two words words[i] + words[j] is a palindrome.
- *
- *
- *
- * Example 1:
- *
- * Input: words = ["abcd","dcba","lls","s","sssll"]
- * Output: [[0,1],[1,0],[3,2],[2,4]]
- * Explanation: The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
+ Given a list of unique words, return all the pairs of the distinct indices (i, j) in the given list,
+ so that the concatenation of the two words words[i] + words[j] is a palindrome.
+
+ Example 1:
+ Input: words = ["abcd","dcba","lls","s","sssll"]
+ Output: [[0,1],[1,0],[3,2],[2,4]]
+ Explanation: The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
+
+ Example 2:
+ Input: words = ["bat","tab","cat"]
+ Output: [[0,1],[1,0]]
+ Explanation: The palindromes are ["battab","tabbat"]
+
+ Example 3:
+ Input: words = ["a",""]
+ Output: [[0,1],[1,0]]
  *
  *
  * IMP-1: This is a hard but interesting problem. code approach is unique , so recommend understanding this in
@@ -53,22 +59,21 @@ public class PalindromePairs {
     }
 
     /**
-     * checking whether the given string is a palindrome
+     * main method is modularized where it breaks the work up into several smaller methods
      *
-     * @param str
+     * @param words
      * @return
      */
-    public boolean isPalindrome(String str) {
-        int i = 0, j = str.length() - 1;
-        while (j > i) {
-            if (str.charAt(i) != str.charAt(j)) {
-                return false;
-            }
-            j--;
-            i++;
-        }
-        return true;
+    public List<List<Integer>> palindromePairs(String[] words) {
+        this.words = words;
+        root = new Trie();
+        results = new ArrayList<>();
+        buildTrie();
+        processPalindrome();
+        return results;
     }
+
+
 
     /**
      * construct trie
@@ -131,20 +136,7 @@ public class PalindromePairs {
         }
     }
 
-    /**
-     * main method is modularized where it breaks the work up into several smaller methods
-     *
-     * @param words
-     * @return
-     */
-    public List<List<Integer>> palindromePairs(String[] words) {
-        this.words = words;
-        root = new Trie();
-        results = new ArrayList<>();
-        buildTrie();
-        processPalindrome();
-        return results;
-    }
+
 
     private static class Trie {
         Map<Character, Trie> child = new HashMap<>();
@@ -154,4 +146,21 @@ public class PalindromePairs {
         int wordId = -1;
     }
 
+    /**
+     * checking whether the given string is a palindrome
+     *
+     * @param str
+     * @return
+     */
+    public boolean isPalindrome(String str) {
+        int i = 0, j = str.length() - 1;
+        while (j > i) {
+            if (str.charAt(i) != str.charAt(j)) {
+                return false;
+            }
+            j--;
+            i++;
+        }
+        return true;
+    }
 }

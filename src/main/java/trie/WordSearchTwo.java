@@ -6,12 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 212. Word Search II
- * Given an m x n board of characters and a list of strings words, return all words on the board.
- *
- * Each word must be constructed from letters of sequentially adjacent cells,
- * where adjacent cells are horizontally or vertically neighboring.
- * The same letter cell may not be used more than once in a word.
+ Given an m x n board of characters and a list of strings words, return all words on the board.
+
+ Each word must be constructed from letters of sequentially adjacent cells,
+ where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+
+ Example 1:
+
+
+ Input: board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], words = ["oath","pea","eat","rain"]
+ Output: ["eat","oath"]
+ Example 2:
+
+
+ Input: board = [["a","b"],["c","d"]], words = ["abcb"]
+ Output: []
  *
  * IMP-1: Excellent practice problem
  * Leet code has a great explanation for it : https://leetcode.com/problems/word-search-ii/solution/
@@ -38,14 +47,13 @@ public class WordSearchTwo {
     }
 
     public List<String> findWords(char[][] board, String[] words) {
+        //construct the trie from the words
         TrieNode root = new TrieNode();
         root.buildTrie(words);
-
         int maxRows = board.length;
         if (maxRows == 0) return wordsFound;
         int maxCols = board[0].length;
         if (maxCols == 0) return wordsFound;
-
         for (int iRow = 0; iRow < maxRows; iRow++) {
             for (int iCol = 0; iCol < maxCols; iCol++) {
                 char boardChar = board[iRow][iCol];
@@ -55,7 +63,6 @@ public class WordSearchTwo {
                 }
             }
         }
-
         return wordsFound;
     }
 
@@ -65,17 +72,12 @@ public class WordSearchTwo {
             wordsFound.add(node.getWord());
             node.setWord(null);
         }
-
         int maxRows = board.length;
         int maxCols = board[0].length;
-
-
         board[row][col] = '#';
-
         for (int[] move : moves) {
             int tmpRow = row + move[0];
             int tmpCol = col + move[1];
-
             if (tmpRow >= 0 && tmpCol >= 0 && tmpRow < maxRows && tmpCol < maxCols) {
                 char boardCharNew = board[tmpRow][tmpCol];
                 TrieNode cNode = node.getChildNode(boardCharNew);
@@ -100,5 +102,4 @@ public class WordSearchTwo {
         }
         board[row][col] = boardChar;
     }
-
 }

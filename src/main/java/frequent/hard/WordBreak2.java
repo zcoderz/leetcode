@@ -78,7 +78,7 @@ public class WordBreak2 {
         if (!contains) return new ArrayList<>();
 
         //for each index in the string create a list that contains
-        //starting indexes that can map to the given character
+        //starting indexes that can map to the given characters
         for (int end = 1; end <= len; end++) {
             ArrayList<Integer> aList = dp[end];
             for (int start = 0; start < end; start++) {

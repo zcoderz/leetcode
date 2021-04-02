@@ -24,6 +24,8 @@ public class Divide {
         System.out.println(res);
     }
 
+    private static int HALF_INT_MIN = -1073741824;
+
     /**
      * you could simplify your life by writing this code assuming only positive numbers and then as a second step handle
      * overflow and negative number conditions. for me thinking on the number line rightwards (positive) is mentally
@@ -53,42 +55,32 @@ public class Divide {
         dividend = (dividend < 0) ? dividend : -dividend;
         divisor = (divisor < 0) ? divisor : -divisor;
 
-        int aggPower = 0;
-        int remDividend = dividend;
-        while(true) {
-            int power = 0;
-            int origRemaining = remDividend;
-            while (remDividend < 0) {
-                int divisorAgg = divisor << power;
-                remDividend = origRemaining - divisorAgg;
-                power++;
-            }
-            //because the comparison was actually made at the power before the last incremented one
-            //decrement the power by one
-            power--;
-            if (remDividend ==0) {
-                int val = aggPower;
-                if (power >= 0) {
-                    val +=  (1 << power);
-                }
-                return neg == -1 ? -val : val;
-            } else if (remDividend + divisor < 0) {
-                int val = aggPower;
-                if (power >= 0) {
-                    val +=  (1 << power) ;
-                    val--; //remove one from power to get the rem dividend in negative territory
-                }
-                return neg == -1 ? -val : val;
-            }
-            //remove the last power as it decrements it by power of 2 too far
-            // i,e 24 * 2 = 48, which if too far out, wed need to note down the 24
-            // and start again from multiples of 2,4,8...
-            power--;
-            //adjust the remainder to remove the part that was subtracted out in the above loop
-            //i,e remove divisor << power
-            remDividend = origRemaining - (divisor << power);
-            //note that powers need to be aggregated as multiples of 2
-            aggPower += (1 << power);
+        //trying to fix the highest power of two and the highest divisor multiple (highest double) that can be used
+        //>= HALF_INT_MIN is to avoid overflow (we are working in negatives so need to check only the negative side)
+        int highestDouble = divisor;
+        int highestPowerOfTwo = -1;
+        while (highestDouble >= HALF_INT_MIN && dividend <= highestDouble + highestDouble) {
+            highestPowerOfTwo += highestPowerOfTwo;
+            highestDouble += highestDouble;
         }
+
+        //keep subtracting highest double from dividend until dividend is less than the divisor
+        int quotient = 0;
+        while (dividend <= divisor) {
+            if (dividend <= highestDouble) {
+                quotient += highestPowerOfTwo;
+                dividend -= highestDouble;
+            }
+            /* We know that these are always even, so no need to worry about the
+             * annoying "bit-shift-odd-negative-number" case. */
+            highestPowerOfTwo >>= 1;
+            highestDouble >>= 1;
+        }
+
+        //adjust to return the quotient based on neg sign
+        if (neg != 1) {
+            return -quotient;
+        }
+        return quotient;
     }
 }

@@ -31,9 +31,6 @@ public class Divide {
      * overflow and negative number conditions. for me thinking on the number line rightwards (positive) is mentally
      * much simpler when justifying the conditions....
      *
-     * @param dividend
-     * @param divisor
-     * @return
      */
     public int divide(int dividend, int divisor) {
         //Special case: overflow. (-2^31 / -1) = 2^31 which is outside the bounds of int as max int is 2^31-1

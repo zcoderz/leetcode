@@ -60,11 +60,9 @@ public class CompareVersions {
     public int compareVersion(String version1, String version2) {
         String[] s1 = version1.split("\\.");
         String[] s2 = version2.split("\\.");
-
         int oneSz = s1.length;
         int twoSz = s2.length;
         int maxSz = Math.max(oneSz, twoSz);
-
         for (int i = 0; i < maxSz; i++) {
             int a = i < oneSz ? Integer.parseInt(s1[i]) : 0;
             int b = i < twoSz ? Integer.parseInt(s2[i]) : 0;

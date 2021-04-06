@@ -44,7 +44,6 @@ public class    MinAreaRectangle {
             List<Integer> yCoordinates = coordinateMap.computeIfAbsent(point[0], (l) -> new ArrayList<>());
             yCoordinates.add(point[1]);
         }
-
         HashMap<Pair<Integer, Integer>, Integer> xyMap = new HashMap<>();
         //move across the X axis from left to right
         for (Map.Entry<Integer, List<Integer>> entry : coordinateMap.entrySet()) {
@@ -60,7 +59,6 @@ public class    MinAreaRectangle {
                 xyMap.put(pair, entry.getKey());
             }
         }
-
         if (minArea == Integer.MAX_VALUE) {
             return 0;
         }

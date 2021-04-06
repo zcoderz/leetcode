@@ -104,7 +104,6 @@ public class FindTwoNonOverlappingSubArraysWithTargetSum {
             while (sum > target) {
                 sum -= arr[left++];
             }
-
             if (sum == target) {
                 if (left > 0 && best[left - 1] != EDGE) {
                     ans = Math.min(ans, best[left - 1] + i - left + 1);

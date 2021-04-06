@@ -60,7 +60,6 @@ public class MinSwaps {
             //keep track of maxOnes found as you iterate across the array
             maxOnes = Math.max(maxOnes, movingMaxOnes);
         }
-
         //number of swaps equals to number of elements in the segment that contained max ones that are not 1
         return countOnes - maxOnes;
     }

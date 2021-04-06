@@ -44,10 +44,8 @@ public class LargestRectangleStackEfficient {
      */
     public int largestRectangleArea(int[] heights) {
         this.heights = heights;
-
         Stack<Integer> stack = new Stack<>();
         stack.push(-1); //add sentinel
-
         for (int i = 0; i < heights.length; i++) {
             while (stack.peek() != -1 && heights[stack.peek()] > heights[i]) {
                 //when the above condition is met , it means that the element on top of stack is higher than current
@@ -64,7 +62,6 @@ public class LargestRectangleStackEfficient {
             }
             stack.push(i);
         }
-
         while (stack.peek() != -1) {
             int h = heights[stack.pop()];
             //here any elements left on stack are greater than the last index

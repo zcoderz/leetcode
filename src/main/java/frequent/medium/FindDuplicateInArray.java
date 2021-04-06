@@ -53,13 +53,11 @@ public class FindDuplicateInArray {
 
     public int findDuplicate(int[] nums) {
         int i = 0, j = 0;
-
         while (i != j || (i == 0)) {
             i = nums[i];
             j = nums[j];
             j = nums[j]; //move j twice as fast as i
         }
-
         //j based on above is at point m based on above logic
         i = 0; //move i to start
         while (i != j) {

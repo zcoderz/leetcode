@@ -1,5 +1,3 @@
-
-
 I have solved here several hundred coding questions where the source of the questions has been leetcode. 
 
 The source of questions has been top questions across organizations and in addition top questions 

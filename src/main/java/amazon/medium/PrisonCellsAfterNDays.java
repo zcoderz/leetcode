@@ -114,23 +114,19 @@ public class PrisonCellsAfterNDays {
      * method returns bit transformation of the current bit based on below logic 1 if both left and right neighbors are
      * 1 or 0, otherwise bit is 0
      * this approach saves a lot of compute and can be applied to other problems so make sure you understand it
-     * @param currBit
-     * @return
      */
     private int nextBit(int currBit) {
         int left = (currBit << 1); //you get the right cell if you left shift
         int right = (currBit >> 1); //you get the left cell if you right shift
         //left ^ right returns 1 only if left or right is 1, we want opposite of that hence not
         //above logic causes first and last bit to never be 1 .
-        // hence we and with 0x7e which is 01111110 ( max cells in requirement are 8)
+        //hence we and with 0x7e which is 01111110 ( max cells in requirement are 8)
         return ((~(left ^ right)) & 0x7e);
     }
 
     /**
      * method returns a bit representation of cells
      *
-     * @param cells
-     * @return
      */
     private int bitFromCells(int[] cells) {
         int val = 0;

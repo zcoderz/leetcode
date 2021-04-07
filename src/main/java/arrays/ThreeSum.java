@@ -50,10 +50,6 @@ public class ThreeSum {
      * Use a two pointer approach, start from smallest on left and largest on right then advance the right or left
      * pointer based on whether the sum from left and right indexes is less or greater than the target
      *
-     * @param start
-     * @param startIndex
-     * @param nums
-     * @param lSums
      */
     void findSums(int start, int startIndex, int[] nums,
                   List<List<Integer>> lSums) {

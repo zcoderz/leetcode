@@ -47,13 +47,11 @@ public class TopKFrequentWords {
      */
     public List<String> topKFrequent(String[] words, int k) {
         Map<String, Integer> wordCount = new HashMap<>();
-
         //use map to count the data
         for (String word : words) {
             Integer i = wordCount.getOrDefault(word, 0);
             wordCount.put(word, i+ 1);
         }
-
         PriorityQueue<WordCount> priorityQueue = new PriorityQueue<WordCount>(
                 (l, m)-> {
                     if (l.count.equals(m.count)) {
@@ -64,15 +62,12 @@ public class TopKFrequentWords {
                         return Integer.compare(l.count , m.count);
                     }
                 } );
-
-
         for (Map.Entry<String, Integer> mapVal : wordCount.entrySet()) {
             priorityQueue.offer(new WordCount(mapVal.getKey(), mapVal.getValue()));
             if (priorityQueue.size() > k) {
                 priorityQueue.poll();   //trim pq size when its greater than threshold
             }
         }
-
         List<String> strings = new ArrayList<>();
         //important to use poll here to get next head from the pq. we cant just iterate over the pq
         while (!priorityQueue.isEmpty()) {

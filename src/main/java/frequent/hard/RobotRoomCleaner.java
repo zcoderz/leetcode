@@ -80,10 +80,6 @@ public class RobotRoomCleaner {
     /**
      * method cleans room and recurse
      *
-     * @param row
-     * @param col
-     * @param robot
-     * @param direction
      */
     void recurseClean(int row, int col, Robot robot, int direction) {
         //mark room as visited
@@ -114,7 +110,6 @@ public class RobotRoomCleaner {
     /**
      * move back to starting cell
      *
-     * @param robot
      */
     void stepBackRobot(Robot robot) {
         robot.turnRight();

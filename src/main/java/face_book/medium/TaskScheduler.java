@@ -60,7 +60,6 @@ public class TaskScheduler {
             //(maxFrequency -1)
             openSlots -= Math.min(taskFreq[j], maxFreq - 1);
         }
-
         //number slots needed are total work unit + remaining open slots
         return tasks.length + openSlots;
     }

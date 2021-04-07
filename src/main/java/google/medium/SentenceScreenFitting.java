@@ -57,12 +57,10 @@ public class SentenceScreenFitting {
     public int wordsTyping(String[] sentence, int rows, int cols) {
         int[] nextIndex = new int[sentence.length];
         int[] numberRepeatsPerWordStar = new int[sentence.length];
-
         for (int i = 0; i < sentence.length; i++) {
             int currWordIndex = i;
             int repeats = 0;
             int currIndex = 0;
-
             //loop till you reach the last column to find number of repeats that can go in a single row
             //assuming you started with a certain word. also check what would be the next word to start
             //the next row

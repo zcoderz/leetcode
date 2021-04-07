@@ -47,10 +47,8 @@ public class OpenTheLock {
         String level = "L";
         queue.add(start);
         queue.add(level);
-
         Set<String> deads = new HashSet<>();
         Collections.addAll(deads, deadends);
-
         int passes = 0;
         while (!queue.isEmpty()) {
             String str = queue.poll();

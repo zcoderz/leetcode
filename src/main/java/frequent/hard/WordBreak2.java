@@ -68,7 +68,6 @@ public class WordBreak2 {
         Arrays.setAll(dp, ArrayList::new);
         HashSet<Character> sentenceChars = new HashSet<>();
         updateCharSet(s, sentenceChars);
-
         HashSet<Character> dictChars = new HashSet<>();
         for (String word : wordDict) {
             updateCharSet(word, dictChars);
@@ -76,7 +75,6 @@ public class WordBreak2 {
         //this is a quick check to exit early if no matches are possible
         boolean contains = dictChars.containsAll(sentenceChars);
         if (!contains) return new ArrayList<>();
-
         //for each index in the string create a list that contains
         //starting indexes that can map to the given characters
         for (int end = 1; end <= len; end++) {
@@ -87,7 +85,6 @@ public class WordBreak2 {
                 }
             }
         }
-
         wordOut = new ArrayList<>();
         //start from the end , while traversing back to start because you limit the traversal paths that way
         processDFS(len, "");

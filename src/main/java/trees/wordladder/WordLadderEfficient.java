@@ -76,10 +76,6 @@ public class WordLadderEfficient {
      * quicker as you will cut down the unnecessary search paths since the two searches meet some where in the middle
      * thus reducing space and time complexity
      *
-     * @param beginWord
-     * @param endWord
-     * @param wordList
-     * @return
      */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Map<String, List<String>> wordMappings = new HashMap<>();

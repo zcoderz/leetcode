@@ -35,9 +35,6 @@ public class SearchRotated {
 
     /**
      * first find the turning point and then search left or right of it
-     * @param nums
-     * @param target
-     * @return
      */
     public int search(int[] nums, int target) {
         if (nums.length == 0) {
@@ -64,11 +61,6 @@ public class SearchRotated {
      * start from the first index in the array compare mid value against start value
      * if mid is greater then turning point is to the right
      * if mid is smaller then turning point is to the left (inclusive of the mid index)
-     * @param startVal
-     * @param startIndex
-     * @param lastIndex
-     * @param nums
-     * @return
      */
     int findTurning(int startVal, int startIndex, int lastIndex, int[] nums) {
         if (startIndex >= lastIndex) {

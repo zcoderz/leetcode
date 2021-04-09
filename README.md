@@ -16,5 +16,16 @@ For many of the questions I have coded several solutions and explained in commen
 I have also included inline comments of the coding solutions. 
 Each question also has reference to the source leet-code question including the question’s unique number.
 
-See my website : https://www.uqcodewall.com/ where for 100 important questions I have explained the solution in 
- simple english. Hope you will find the explanation there straightforward. 
+See my website : https://www.uqcodewall.com/ where for 100+ most important questions I have explained the solution in 
+ simple english. Hope you will find the explanation there straightforward.
+
+In addition, my website (https://www.uqcodewall.com/) contains several articles on:
+- Performance optimization
+- System Design with examples
+- Leadership Notes
+- Recommended Reads 
+- Common network topics
+- Behavioral related topics to enable good work culture
+
+
+Here is my linked-in profile: https://www.linkedin.com/in/usman-qadir-05028410/

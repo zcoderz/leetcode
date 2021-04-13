@@ -38,7 +38,7 @@ public class DeleteNodeInBST {
     TreeNode deleteNode(TreeNode root, int key) {
         if(root == null) return null; //edge case
         if(root.val == key) { //here is the case where values match
-            //case where left or right or both are null
+            //case where left or right or both are null, return the non-null child
             if (root.left == null) {
                 return root.right;
             }

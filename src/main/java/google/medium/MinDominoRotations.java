@@ -2,16 +2,21 @@ package google.medium;
 
 
 /**
- * 1007. Minimum Domino Rotations For Equal Row In a row of dominoes, A[i] and B[i] represent the top and bottom halves
- * of the ith domino. (A domino is a tile with two numbers from 1 to 6 - one on each half of the tile.)
- * <p>
+ * In a row of dominoes, A[i] and B[i] represent the top and bottom halves of the ith domino.  (A domino is a tile
+ * with two numbers from 1 to 6 - one on each half of the tile.)
+
  * We may rotate the ith domino, so that A[i] and B[i] swap values.
- * <p>
- * Return the minimum number of rotations so that all the values in A are the same, or all the values in B are the
- * same.
- * <p>
+ * Return the minimum number of rotations so that all the values in A are the same, or all the values in B are the same.
  * If it cannot be done, return -1.
- * <p>
+ * Example 1:
+ * Input: A = [2,1,2,4,2,2], B = [5,2,6,2,3,2]
+ * Output: 2
+ * Explanation:
+ * The first figure represents the dominoes as given by A and B: before we do any rotations.
+ * If we rotate the second and fourth dominoes, we can make every value in the top row equal to 2,
+ * as indicated by the second figure.
+ *
+ *
  * This is an interesting problem where it can be simplified a whole lot via good focus as in the below code. This
  * solution is from leetcode.
  *
@@ -41,12 +46,13 @@ public class MinDominoRotations {
     /**
      * the approach to the solution is that for a domino to occur all elements in either of the arrays must be same and
      * elements can only be swapped by an element in the other array at the same index
-     * <p>
+     *
      * based on above given all indexes must be same, you can
-     * <p>
+     *
      * 1. pick element from array 1 at index 0 (could be any index) count how many min rotations are needed to make
-     * elements same in either of arrays. if this returns a solution, it is a valid solution. 2. do same as 1 but pick
-     * element from array 2 (at the same index as 1) 3. neither 1 or 2 returns a valid solution and then you return -1
+     * elements same in either of arrays. if this returns a solution, it is a valid solution.
+     * 2. do same as 1 but pick element from array 2 (at the same index as 1) 3. neither 1 or 2 returns a valid
+     * solution and then you return -1
      *
      * @param arrA
      * @param arrB

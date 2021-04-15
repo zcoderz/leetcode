@@ -63,7 +63,6 @@ public class SearchSuggestionSystem {
             getThreeWordsFrom(node, list);
             return list;
         }
-        Character ch = word.charAt(index);
         TrieNode childNode = node.getChildNode(word.charAt(index));
         if (childNode == null) {
             return new ArrayList<>();

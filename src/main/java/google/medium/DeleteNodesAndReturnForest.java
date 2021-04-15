@@ -10,16 +10,14 @@ import java.util.Set;
 
 /**
  * 1110. Delete Nodes And Return Forest Given the root of a binary tree, each node in the tree has a distinct value.
- * <p>
  * After deleting all nodes with a value in to_delete, we are left with a forest (a disjoint union of trees).
- * <p>
  * Return the roots of the trees in the remaining forest.  You may return the result in any order.
- * <p>
+ *
  * Example 1:
- * <p>
- * <p>
- * <p>
+ *
  * Input: root = [1,2,3,4,5,6,7], to_delete = [3,5] Output: [[1,2,null,4],[6],[7]]
+ *
+ *
  * IMP-2: Good practice on tree traversal for deletes
  */
 public class DeleteNodesAndReturnForest {

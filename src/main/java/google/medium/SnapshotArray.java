@@ -5,15 +5,6 @@ import java.util.Map;
 
 /**
  * 1146. Snapshot Array
- * Medium
- *
- * 696
- *
- * 132
- *
- * Add to List
- *
- * Share
  * Implement a SnapshotArray that supports the following interface:
  *
  * SnapshotArray(int length) initializes an array-like data structure with the given length.  Initially, each element equals 0.
@@ -36,7 +27,7 @@ import java.util.Map;
  *
  * This is a nice question to practice as it has overlap with practical problems in coding.
  *
- * concept is simple : start with an array, per snap create an overlap map , sore new items in the overlay
+ * concept is simple : start with an array, per snap create an overlap map , store new items in the overlay
  * when an item , snap is requested find the latest snap that contains the index. if none, return from original array
  *
  * IMP-2 : Good practice question

@@ -21,11 +21,11 @@ import java.util.*;
  *
  * IMP-2
  */
-public class ExclusiveTimeOfFunctions {
+public class ExclusiveTimeOffFunctions {
 
     public static void main(String [] args) {
         String [] loggArr = {"0:start:0","1:start:2","1:end:5","0:end:6"};
-        ExclusiveTimeOfFunctions exclusive = new ExclusiveTimeOfFunctions();
+        ExclusiveTimeOffFunctions exclusive = new ExclusiveTimeOffFunctions();
         List<String> list = Arrays.asList(loggArr);
 //        int [] out = exclusive.exclusiveTime(2, list);
 //        System.out.println(Arrays.toString(out));
@@ -92,7 +92,7 @@ public class ExclusiveTimeOfFunctions {
                 priorTime = time;
             } else {
                 //update the time in map when a function ends.
-                //end is till end of the given time slow. hence add 1 to the diff of time - prior
+                //end is till end of the given time slot. hence add 1 to the diff of time - prior
                 int timeOnCpu = time - priorTime + 1;
                 timeOnCpu += idToTime.get(id);
                 idToTime.put(id, timeOnCpu);

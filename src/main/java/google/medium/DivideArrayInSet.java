@@ -29,9 +29,9 @@ public class DivideArrayInSet {
         boolean pos = divide.isPossibleDivideFaster(nums, k);
         System.out.println(pos);
 
-        int [] nums2 = {1,2,3,4};
+        int [] nums2 = {1,2,2,3,3,4};
         int  k1 = 3;
-        boolean pos1 = divide.isPossibleDivide(nums2, k1);
+        boolean pos1 = divide.isPossibleDivideFaster(nums2, k1);
         System.out.println(pos1);
     }
 

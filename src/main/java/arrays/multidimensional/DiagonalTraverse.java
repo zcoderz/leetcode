@@ -22,15 +22,15 @@ import java.util.List;
  * IMP-3
  *
  */
-public class DiagnoralTraverse {
+public class DiagonalTraverse {
 
     public static void main(String[] args) {
 
         int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
-        DiagnoralTraverse diagnoralTraverse = new DiagnoralTraverse();
+        DiagonalTraverse diagonalTraverse = new DiagonalTraverse();
 
-        int[] tmp = diagnoralTraverse.findDiagonalOrder(matrix);
+        int[] tmp = diagonalTraverse.findDiagonalOrder(matrix);
         for (int num : tmp) {
             System.out.println(num);
         }

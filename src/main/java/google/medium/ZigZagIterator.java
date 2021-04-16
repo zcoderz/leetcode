@@ -6,12 +6,10 @@ import java.util.List;
 
 /**
  * 281. Zigzag Iterator Given two 1d vectors, implement an iterator to return their elements alternately.
- * <p>
- * <p>
- * <p>
  * Example:
  * <p>
- * Input: v1 = [1,2] v2 = [3,4,5,6] Output: [1,3,2,4,5,6] Explanation: By calling next repeatedly until hasNext returns
+ * Input: v1 = [1,2] v2 = [3,4,5,6]
+ * Output: [1,3,2,4,5,6] Explanation: By calling next repeatedly until hasNext returns
  * false, the order of elements returned by next should be: [1,3,2,4,5,6].
  *
  * IMP-3 : Simple practice question
@@ -21,14 +19,14 @@ public class ZigZagIterator {
     //index to the current list in array that is being processed
     int currIndex = 0;
     //lists to be processed
-    List<Integer>[] lists;
+    List<List<Integer>> lists;
     //list of current indexes for each of the lists
     Integer[] listIndexes;
     public ZigZagIterator(List<Integer> v1, List<Integer> v2) {
         int count = 2;
-        lists = new IntegerList[count];
-        lists[0] = new IntegerList(v1);
-        lists[1] = new IntegerList(v2);
+        lists = new ArrayList<> ();
+        lists.add(v1);
+        lists.add(v2);
         listIndexes = new Integer[count];
         for (int i = 0; i < count; i++) {
             listIndexes[i] = 0;
@@ -51,10 +49,10 @@ public class ZigZagIterator {
      * @return
      */
     public int next() {
-        while (listIndexes[currIndex] == lists[currIndex].size()) {
+        while (listIndexes[currIndex] == lists.get(currIndex).size()) {
             currIndex = getNextIndex();
         }
-        int val = lists[currIndex].get(listIndexes[currIndex]);
+        int val = lists.get(currIndex).get(listIndexes[currIndex]);
         listIndexes[currIndex] = listIndexes[currIndex] + 1;
         currIndex = getNextIndex();
         return val;
@@ -67,11 +65,11 @@ public class ZigZagIterator {
      */
     public boolean hasNext() {
         int iterations = 0;
-        while (listIndexes[currIndex] == lists[currIndex].size() && iterations != listIndexes.length) {
+        while (listIndexes[currIndex] == lists.get(currIndex).size() && iterations != listIndexes.length) {
             currIndex = getNextIndex();
             iterations++;
         }
-        return listIndexes[currIndex] != lists[currIndex].size();
+        return listIndexes[currIndex] != lists.get(currIndex).size();
     }
 
     /**
@@ -80,16 +78,8 @@ public class ZigZagIterator {
      * @return
      */
     int getNextIndex() {
-        return (currIndex + 1) % lists.length;
+        return (currIndex + 1) % lists.size();
     }
 
-    /**
-     * need this class so that we can store the lists in an array. problem is that in java you cant create an array of
-     * generic classes hence this is used as a workaround.
-     */
-    public static class IntegerList extends ArrayList<Integer> {
-        public IntegerList(List<Integer> list) {
-            super(list);
-        }
-    }
+
 }

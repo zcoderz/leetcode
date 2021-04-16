@@ -72,10 +72,12 @@ public class InsertIntoASortedCircularLinkedList {
         } else {
             ListNode prior = head;
             ListNode curr = head.next;
-            while (curr != head &&
+            while (curr != head ) {
+                if (prior.val <= insertVal && curr.val >= insertVal) {
                     //this checks for a simple case where new val is greater than prior but less
                     //the current
-                    (!(prior.val <= insertVal && curr.val >= insertVal))) {
+                    break;
+                }
                 // this condition checks for whether this is the turning point in the list
                 if (curr.val < prior.val
                 // if turning point and insert value is greater than previous or less than curr

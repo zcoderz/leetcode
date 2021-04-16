@@ -53,10 +53,8 @@ public class RottingOranges {
         Set<Pair<Integer, Integer>> visited = new HashSet<>();
         Set<Pair<Integer, Integer>> fresh = new HashSet<>();
         LinkedList<Pair<Integer, Integer>> queue = new LinkedList<>();
-
         int rows = grid.length;
         int cols = grid[0].length;
-
         for (int i =0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (grid[i][j] == 1) {
@@ -66,24 +64,18 @@ public class RottingOranges {
                 }
             }
         }
-
         int loops = 0;
         while (!queue.isEmpty()) {
             boolean looped = false;
             int size = queue.size();
-
             for (int i =0; i < size; i++) {
                 Pair<Integer, Integer> point = queue.poll();
-                for (int j = 0; j < moves.length; j++) {
-                    int [] move = moves[j];
-
+                for (int[] move : moves) {
                     int newX = point.first + move[0];
                     int newY = point.second + move[1];
-
                     if (newX >= rows || newX < 0 || newY < 0 || newY >= cols) {
                         continue;
                     }
-
                     Pair<Integer, Integer> p = new Pair<>(newX, newY);
                     if (!visited.contains(p) && grid[newX][newY] == 1) {
                         if (!looped) {
@@ -95,7 +87,6 @@ public class RottingOranges {
                         queue.add(p);
                     }
                 }
-
             }
         }
         //if any fresh oranges left return -1

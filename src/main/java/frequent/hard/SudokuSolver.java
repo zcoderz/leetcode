@@ -18,7 +18,7 @@ import java.util.*;
  * set union and intersection. a more efficient approach is to use arrays in row/cols for each of the integer values.
  * however, the set approach is more neat in implementation and can be applied to a bigger variety of problems.
  */
-public class SudokoSolver {
+public class SudokuSolver {
     
     public static void main(String [] args) {
         char [][] matrix = {
@@ -31,10 +31,10 @@ public class SudokoSolver {
                 {'.','6','.','.','.','.','2','8','.'},
                 {'.','.','.','4','1','9','.','.','5'},
                 {'.','.','.','.','8','.','.','7','9'}};
-        SudokoSolver sudokoSolver = new SudokoSolver();
-        sudokoSolver.solveSudoku(matrix);
-        for (int i = 0; i < sudokoSolver.rows; i++) {
-            for (int c =0; c < sudokoSolver.cols; c++) {
+        SudokuSolver sudokuSolver = new SudokuSolver();
+        sudokuSolver.solveSudoku(matrix);
+        for (int i = 0; i < sudokuSolver.rows; i++) {
+            for (int c = 0; c < sudokuSolver.cols; c++) {
                 System.out.print(matrix[i][c]);
             }
             System.out.println();

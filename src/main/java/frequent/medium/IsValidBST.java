@@ -14,58 +14,26 @@ import utils.TreeNode;
  * Both the left and right subtrees must also be binary search trees.
  *
  *
- * Example 1:
  *
- *
- * Input: root = [2,1,3]
- * Output: true
- *
- * IMP-3: Common question. The code below does current node's comparison on stack unwind. Better to do comparison
- * while going down as you can cancel invalid scenarios quicker
+ * IMP-3: Common question.
  */
 public class IsValidBST {
 
-    public static enum CompareType {
-        LESS, GREATER
-    }
+    Integer prevVal;
 
     public boolean isValidBST(TreeNode root) {
-
-        isValidBST(root.left);
-        isValidBST(root.right);
-        boolean comp = compareBST(root.left, CompareType.LESS, root.val);
-        if (!comp) return false;
-        comp = compareBST(root.right, CompareType.GREATER, root.val);
-        if (!comp) return false;
-        return true;
-    }
-
-    boolean compareBST(TreeNode node, CompareType compareType, Integer val) {
-        if (node == null) {
+        if (root == null) {
             return true;
         }
-        boolean compVal = compare(node.val, val, compareType);
-        if (!compVal) {
+        if (!isValidBST(root.left)) {
             return false;
         }
-        compVal = compareBST(node.left, compareType, val);
-        if (!compVal) {
+        if (prevVal != null && root.val <= prevVal) {
             return false;
         }
-        compVal = compareBST(node.right, compareType, val);
-        if (!compVal) {
-            return false;
-        }
-
-        return true;
+        prevVal = root.val;
+        return isValidBST(root.right);
     }
 
-    boolean compare(Integer nodeVal, Integer val, CompareType compareType) {
-        if (compareType == CompareType.LESS) {
-            return val > nodeVal;
-        } else {
-            return val < nodeVal;
-        }
-    }
 }
 

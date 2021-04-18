@@ -32,9 +32,9 @@ public class KthLargest {
 
     public static void main(String [] args) {
 
-        int [] nums = {4,5,8,2};
+        int [] nums = {4,5,8,2,1,9,12,13};
         KthLargest kthLargest = new KthLargest(3, nums);
-        int val = kthLargest.add(3);
+        int val = kthLargest.findKthLargest(kthLargest.root, 3);
         System.out.println(val);
 
         val = kthLargest.add(5);
@@ -82,27 +82,36 @@ public class KthLargest {
             node.left = addToTree(node.left, n);
         }
 
-        //if the same number is re inserted we adjust its count rather than creating a new node.
-        //we could have created a new node and it would make the math a little simpler in search
-        //but thats just wasting memory
+        //count is the number of children a node has.
+        //so when a new child is added under a node we increment its count
         node.count = node.count+1;
         return node;
     }
 
+    /**
+     * the kth arithmetic is simple if you draw a tree out on a white board and work the edge cases out based off of
+     * test case
+     * @param node
+     * @param k
+     * @return
+     */
     private int findKthLargest(TreeNode node, int k) {
         //check how many numbers are greater than the current number
         int right = node.right == null ? 0 : node.right.count;
         //check where the current number falls based on
         //its count - numbers less than it
+        //nodeNum is the kth largest index of this node based off of its children
         int nodeNum = node.count - (node.left== null? 0: node.left.count);
 
-        //if kth largest is on right, go to right
         if (k <= right) {
+            //if kth largest is on right, go to right
             assert node.right != null;
             return findKthLargest(node.right, k);
         } else if (k > nodeNum) {
-            //if k largest is greater than current number's k vale , go to left
             assert node.left != null;
+            //if we are searching for a number smaller than the current node, we go left
+            //while also decrementing from k the 'nodeNum' which states the kth rank of this node based off of its
+            //children
             return findKthLargest(node.left, k-nodeNum);
         } else {
             //this must be the number you are looking for

@@ -36,12 +36,7 @@ import java.util.List;
  */
 public class PeekingIterator implements Iterator<Integer> {
 
-    Iterator<Integer> iterator;
-    boolean currNonInitialized = true;
-    Integer currValue;
-    public PeekingIterator(Iterator<Integer> iterator) {
-        this.iterator = iterator;
-    }
+
 
     public static void main(String[] args) {
         List<Integer> testArr = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
@@ -56,6 +51,13 @@ public class PeekingIterator implements Iterator<Integer> {
         System.out.println(pI.next());
         System.out.println(pI.peek());
         System.out.println(pI.next());
+    }
+
+    Iterator<Integer> iterator;
+    boolean currNonInitialized = true;
+    Integer currValue;
+    public PeekingIterator(Iterator<Integer> iterator) {
+        this.iterator = iterator;
     }
 
     /**

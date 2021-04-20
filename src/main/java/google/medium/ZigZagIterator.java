@@ -45,8 +45,6 @@ public class ZigZagIterator {
     /**
      * if the index or the element at current list is at end, move to the next list output the element in curr list and
      * move its index ahead
-     *
-     * @return
      */
     public int next() {
         while (listIndexes[currIndex] == lists.get(currIndex).size()) {
@@ -60,8 +58,6 @@ public class ZigZagIterator {
 
     /**
      * return true if any of the lists has a next element available
-     *
-     * @return
      */
     public boolean hasNext() {
         int iterations = 0;
@@ -74,8 +70,6 @@ public class ZigZagIterator {
 
     /**
      * internal helper method to get next list
-     *
-     * @return
      */
     int getNextIndex() {
         return (currIndex + 1) % lists.size();

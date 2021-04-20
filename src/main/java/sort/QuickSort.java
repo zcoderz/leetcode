@@ -19,8 +19,11 @@ public class QuickSort {
         if (lo >= hi) {
             return;
         }
+        //get the index which was chosen as pivot and partitioned into its correct place
         int j = partition(arr, lo, hi);
+        //repeat for left part of the array
         quickSort(arr, lo, j - 1);
+        //repeat for right part of the array
         quickSort(arr, j + 1, hi);
     }
 
@@ -31,12 +34,12 @@ public class QuickSort {
         while (j > i) {
             while (arr[j] > pivot) j--;
             while (arr[i] < pivot) i++;
-            if (i >= j) break;
-
+            if (i >= j) break; //stop when i & j cross
+            //per above loop by definition i would be at an index greater than the pivot value
+            //and j would be at an index less than the pivot
             swap(arr, i++, j--);
-
         }
-        swap(arr, j, lo);
+        swap(arr, j, lo); //j represents the index at which the pivot should exist
         return j;
     }
 

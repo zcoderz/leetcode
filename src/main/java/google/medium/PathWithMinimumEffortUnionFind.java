@@ -74,10 +74,8 @@ public class PathWithMinimumEffortUnionFind {
     public int minimumEffortPath(int[][] heights) {
         int rows = heights.length;
         int cols = heights[0].length;
-
         int [] rowMoves = {1, 0};
         int [] colMoves = {0, 1};
-
         ArrayList<Edge> edges = new ArrayList<>();
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
@@ -103,11 +101,9 @@ public class PathWithMinimumEffortUnionFind {
                     (l) -> new UnionFindNode<>(edge.leftCell));
             UnionFindNode<Integer> rightNode = unionFindNodeMap.computeIfAbsent(edge.rightCell,
                     (l) -> new UnionFindNode<>(edge.rightCell));
-
             leftNode.union(rightNode);
             UnionFindNode<Integer> first = unionFindNodeMap.get(0);
             UnionFindNode<Integer> last = unionFindNodeMap.get(lastCell);
-
             if ((first != null) && (last != null) && (first.find() == last.find())) {
                 return edge.weight;
             }

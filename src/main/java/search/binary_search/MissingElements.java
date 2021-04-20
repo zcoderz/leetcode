@@ -64,16 +64,15 @@ public class MissingElements {
             //hence break here and add the remaining k to nums[left]
             return nums[left] + k;
         }
-
         int mid = (left + right) / 2;
-        if ((nums[mid] - nums[left]) > k) {
+        //find the gap between left and mid
+        int theGap = ((nums[mid] - nums[left]) - (mid - left));
+        if (theGap >= k) {
             //left off of mid has enough missing, so focus on left
             return search(nums, left, mid, k);
         } else {
-            //left off of mid didn't have enough missing , so find the remaining missing on the right
-            //(nums[mid] - nums[left]) : val difference between left and mid
-            //mid - left : distance between mid and left
-            int gaps = k - ((nums[mid] - nums[left]) - (mid - left));
+            //left of mid didn't have enough missing , so find the remaining missing on the right
+            int gaps = k - theGap;
             return search(nums, mid, right, gaps);
         }
     }

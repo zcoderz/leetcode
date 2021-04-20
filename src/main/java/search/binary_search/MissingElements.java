@@ -19,10 +19,10 @@ package search.binary_search;
 public class MissingElements {
 
     public static void main(String[] args) {
-        int[] arr = {4, 7, 9, 10};
-
+        //int[] arr = {4, 7, 9, 10};
+        int[] arr = {1, 2};
         MissingElements mE = new MissingElements();
-        int num = mE.missingElement(arr, 1);
+        int num = mE.missingElement(arr, 2);
         System.out.println(num);
 
         num = mE.missingElement(arr, 3);
@@ -41,10 +41,10 @@ public class MissingElements {
         if (nums.length == 0) return k;
         int gaps = (nums[nums.length - 1] - nums[0]) - (nums.length) + 1;
         if (k > gaps) {
-            //if more gaps requested then occur in array , get the num via below equation
+            //if more gaps requested than the number that occur in array
+            //get the kth missing via the below equation
             return nums[nums.length - 1] + (k - gaps);
         }
-
         //do a binary search
         return search(nums, 0, nums.length - 1, k);
     }

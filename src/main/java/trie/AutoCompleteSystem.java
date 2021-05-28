@@ -55,6 +55,7 @@ public class AutoCompleteSystem {
     private TrieNode node;
     private TrieNode root;
     private List<TrieNode> nodes = new ArrayList<>();
+    private static Integer SENTENCE_COUNT_THRESHOLD = 3;
 
     public AutoCompleteSystem(String[] sentences, int[] times) {
         node = new TrieNode();
@@ -118,7 +119,7 @@ public class AutoCompleteSystem {
                 int i = 0;
                 Iterator<SentenceCount> iterator = node.sentenceCounts.iterator();
                 List<String> sentences = new ArrayList<>();
-                while (i < 3 && iterator.hasNext()) {
+                while (i < SENTENCE_COUNT_THRESHOLD && iterator.hasNext()) {
                     SentenceCount count = iterator.next();
                     sentences.add(count.sentence);
                     i++;

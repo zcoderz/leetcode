@@ -25,7 +25,7 @@ public class ConvertBSTtoSortedDoubleLinkedList {
     TreeNode prior;
 
     public TreeNode treeToDoublyList(TreeNode root) {
-        levelOrderTraversal(root);
+        inOrderTraversal(root);
         if (head != null && prior != null) {
             head.left = prior;
             prior.right = head;
@@ -38,11 +38,11 @@ public class ConvertBSTtoSortedDoubleLinkedList {
      *
      * @param node
      */
-    void levelOrderTraversal(TreeNode node) {
+    void inOrderTraversal(TreeNode node) {
         if (node == null) {
             return;
         }
-        levelOrderTraversal(node.left);
+        inOrderTraversal(node.left);
         if (head == null) {
             head = new TreeNode(node.val);
             prior = head;
@@ -52,6 +52,6 @@ public class ConvertBSTtoSortedDoubleLinkedList {
             curr.left = prior;
             prior = curr;
         }
-        levelOrderTraversal(node.right);
+        inOrderTraversal(node.right);
     }
 }

@@ -38,11 +38,11 @@ public class DecodeWays {
 
     public static void main(String []args) {
         DecodeWays dS = new DecodeWays();
-        int count = dS.numDecodings("0");
-        assert count == 0;
-        count = dS.numDecodings("10");
-        assert count == 1;
-        count = dS.numDecodings("101");
+//        int count = dS.numDecodings("0");
+//        assert count == 0;
+//        count = dS.numDecodings("10");
+//        assert count == 1;
+        int count = dS.numDecodings(0, "101");
         assert count == 1;
         count = dS.numDecodings("28");
         assert count == 1;

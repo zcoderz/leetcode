@@ -31,6 +31,7 @@ public class KthLargestElement {
         int[] nums = {3, 2, 1, 5, 6, 4};
         int k = 2;
         int val = kthLargestElement.findKthLargest(nums, k);
+        System.out.println(val);
     }
 
     /**

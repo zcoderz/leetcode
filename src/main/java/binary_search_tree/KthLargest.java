@@ -32,9 +32,10 @@ public class KthLargest {
 
     public static void main(String [] args) {
 
-        int [] nums = {4,5,8,2,1,9,12,13};
-        KthLargest kthLargest = new KthLargest(3, nums);
-        int val = kthLargest.findKthLargest(kthLargest.root, 3);
+        //int [] nums = {4,5,8,2,1,9,12,13};
+        int [] nums = {3,2,1,5,6,4};
+        KthLargest kthLargest = new KthLargest(2, nums);
+        int val = kthLargest.findKthLargest(kthLargest.root, 2);
         System.out.println(val);
 
         val = kthLargest.add(5);

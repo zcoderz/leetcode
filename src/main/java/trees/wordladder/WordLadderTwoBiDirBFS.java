@@ -33,7 +33,7 @@ import java.util.*;
  * IMP-1 : Very clever solution using two directional BFS.
  *
  */
-public class WordLetterTwoBiDirBFS {
+public class WordLadderTwoBiDirBFS {
 
 
     public static void main(String[] args) {
@@ -72,7 +72,7 @@ public class WordLetterTwoBiDirBFS {
 //        strWords.add("log");
 //        strWords.add("cog");
 
-        WordLetterTwoBiDirBFS wl = new WordLetterTwoBiDirBFS();
+        WordLadderTwoBiDirBFS wl = new WordLadderTwoBiDirBFS();
         List<List<String>> list = wl.findLadders(strBeginWord, strEndWord, strWords);
 
         for (List<String> l : list) {

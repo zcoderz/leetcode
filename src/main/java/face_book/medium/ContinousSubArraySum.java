@@ -16,13 +16,14 @@ public class ContinousSubArraySum {
 
     public boolean checkSubarraySum(int[] nums, int k) {
         Map<Integer, Integer> modMap = new HashMap<>();
+        modMap.put(0,-1); //in case mod is 0 --> i,e {2,4,6} with k = 6
         int sum = 0;
         for (int i =0; i < nums.length; i++) {
             sum = (k ==0) ? nums[i] : (sum + nums[i]) % k;
-            if (modMap.containsKey(sum) && i-modMap.get(sum) != 1) {
+            if (modMap.containsKey(sum) && i-modMap.get(sum) > 1) {
                 return true;
             }
-            modMap.put(sum, i);
+            modMap.put(sum,  modMap.getOrDefault (sum, i));
         }
         return false;
     }

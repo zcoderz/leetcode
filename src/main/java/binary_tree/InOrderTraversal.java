@@ -28,8 +28,8 @@ public class InOrderTraversal {
                 stack.push(curr);
                 curr = curr.left;
             }
-            TreeNode node = stack.pop();
-            list.add(node.val);
+            curr = stack.pop();
+            list.add(curr.val);
             curr = curr.right;
         }
         return list;

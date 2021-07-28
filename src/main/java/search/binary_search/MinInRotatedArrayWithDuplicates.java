@@ -20,7 +20,7 @@ package search.binary_search;
  * Leetcode has an excellent explanation for this problem.
  * https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/solution/
  *
- * MP-1: Search rotated array and search with duplicates is a common set of problems that needs to be practiced
+ * IMP-1: Search rotated array and search with duplicates is a common set of problems that needs to be practiced
  */
 public class MinInRotatedArrayWithDuplicates {
 
@@ -59,7 +59,6 @@ public class MinInRotatedArrayWithDuplicates {
             } else {
                 high--; // this is a special case where if mid and high are same, move high one back
             }
-
         }
         return low;
     }

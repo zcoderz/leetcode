@@ -29,7 +29,7 @@ public class MergeIntervals {
         int [][]intervals = {{1,3},{2,6},{8,10},{15,18}};
         MergeIntervals mI = new MergeIntervals();
         int[][] out = mI.merge(intervals);
-        for (int i = 0; i < out.length; i++) {
+        for (int i = 0  ; i < out.length; i++) {
             System.out.println(out[i][0] + " : " + out[i][1]);
         }
     }

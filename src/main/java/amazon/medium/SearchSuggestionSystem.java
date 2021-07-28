@@ -46,7 +46,6 @@ public class SearchSuggestionSystem {
     }
 
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
-
         TrieNode node = new TrieNode();
         node.buildTrie(products);
         List<List<String>> list = new ArrayList<>();

@@ -33,24 +33,24 @@ public class LeastCommonAncestorRecursive {
 
     /**
      * Simple recursive solution to find LCA.
-     * @param root
+     * @param node
      * @param p
      * @param q
      * @return
      */
-    boolean processLCA(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null) return false;
+    boolean processLCA(TreeNode node, TreeNode p, TreeNode q) {
+        if (node == null) return false;
         boolean thisFound = false;
-        if ((root == p ) || (root == q)) {
+        if ((node == p ) || (node == q)) {
             thisFound = true;
         }
 
-        boolean foundL = processLCA(root.left, p, q);
-        boolean foundR = processLCA(root.right, p, q);
+        boolean foundL = processLCA(node.left, p, q);
+        boolean foundR = processLCA(node.right, p, q);
 
         //mark LCA if found in both left and right path or this one matches and one of the child path matches
         if ((foundL && foundR) || (thisFound && (foundL || foundR))) {
-            lca = root;
+            lca = node;
         }
 
         //return true if match is found in left, right or current

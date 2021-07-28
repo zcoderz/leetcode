@@ -26,8 +26,8 @@ public class FindTwoNonOverlappingSubArraysWithTargetSum {
 
     public  static void main(String [] args) {
         FindTwoNonOverlappingSubArraysWithTargetSum nonOverlapping = new FindTwoNonOverlappingSubArraysWithTargetSum();
-        int [] arr = {3,2,2,4,3};
-        int len = nonOverlapping.minSumOfLengths(arr, 3);
+        int [] arr = {1,2,2,3,2,6,7,2,1,4,8};
+        int len = nonOverlapping.minSumOfLengths(arr, 5);
         System.out.println(len);
 
         int [] arr2 = {3,1,1,1,5,1,2,1};

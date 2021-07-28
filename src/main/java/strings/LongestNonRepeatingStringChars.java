@@ -40,7 +40,7 @@ public class LongestNonRepeatingStringChars {
         for (int j = 0, i = 0; j < n; j++) {
             //add 1 so that indexes are set to begin with 1. this simplifies finding size based on i and j
             //when i is the index where the substring started and j is the end index. add 1 to j -1 so as to
-            //capture the starting index. i, in case of acda , starting a is at index 1, ending index is at 3, 3-1=2
+            //capture the starting index. i.e, in case of acda , starting a is at index 1, ending index is at 3, 3-1=2
             //so add 1 to 2 to get 3 where largest substring here is acd or cda
             i = Math.max(index[s.charAt(j)], i);
             ans = Math.max(ans, j - i + 1);

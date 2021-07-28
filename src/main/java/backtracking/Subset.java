@@ -34,6 +34,33 @@ public class Subset {
     }
 
     /**
+     * a good example on back tracking
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> subsetsBacktrack(int[] nums) {
+        List<List<Integer>> sets = new ArrayList<>();
+        for (int i =0 ; i <= nums.length; i++) {
+            backtrack(0, i, new ArrayList<>(), sets, nums);
+        }
+        return sets;
+    }
+
+    public void backtrack(int index, int targetSize, List<Integer> subSet, List<List<Integer>> allSubSets,
+                          int [] nums) {
+        if (subSet.size() == targetSize) {
+            allSubSets.add(new ArrayList<>(subSet));
+            return;
+        }
+
+        for (int i = index ; i < nums.length; i ++) {
+            subSet.add(nums[i]);
+            backtrack(i+1 , targetSize, subSet, allSubSets, nums);
+            subSet.remove(subSet.size()-1);
+        }
+    }
+
+    /**
      * this is an extremely neat solution. very interesting to learn it
      * @param nums
      * @return
@@ -60,32 +87,7 @@ public class Subset {
         return allSets;
     }
 
-    /**
-     * a good example on back tracking
-     * @param nums
-     * @return
-     */
-    public List<List<Integer>> subsetsBacktrack(int[] nums) {
-        List<List<Integer>> sets = new ArrayList<>();
-        for (int i =0 ; i <= nums.length; i++) {
-            backtrack(0, i, new ArrayList<>(), sets, nums);
-        }
-        return sets;
-    }
 
-    public void backtrack(int index, int targetSize, List<Integer> subSet, List<List<Integer>> allSubSets,
-                          int [] nums) {
-        if (subSet.size() == targetSize) {
-            allSubSets.add(new ArrayList<>(subSet));
-            return;
-        }
-
-        for (int i = index ; i < nums.length; i ++) {
-            subSet.add(nums[i]);
-            backtrack(i+1 , targetSize, subSet, allSubSets, nums);
-            subSet.remove(subSet.size()-1);
-        }
-    }
 
     public List<List<Integer>> subsetsCascade(int[] nums) {
         List<List<Integer>> sets = new ArrayList<>();

@@ -56,7 +56,7 @@ public class LargestRectangleStackEfficient {
                 //and you get width by (i-1-index on top of stack). you subtract 1 from i to exclude current index
                 int h = heights[stack.pop()];
                 int priorIndex = stack.peek();
-                int width = i - priorIndex - 1; //prior index needs to be excluded hence subtract 1
+                int width = i - priorIndex - 1; //subtract 1 to exclude current index (i)
                 int area = width * h;
                 maxArea = Math.max(area, maxArea);
             }

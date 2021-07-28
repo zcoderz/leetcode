@@ -20,7 +20,7 @@ public class Divide {
     public static void main(String[] args) {
         Divide div = new Divide();
         //int res = div.divide(-2147483648, -3);
-        int res = div.divide(78, 2);
+        int res = div.divide(30, 2);
         System.out.println(res);
     }
 
@@ -75,7 +75,7 @@ public class Divide {
         }
 
         //adjust to return the quotient based on neg sign
-        if (neg != 1) {
+          if (neg != 1) {
             return -quotient;
         }
         return quotient;

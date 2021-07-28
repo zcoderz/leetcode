@@ -7,10 +7,22 @@ public class PalindromeString {
 
     public static void main(String [] args) {
         PalindromeString ps = new PalindromeString();
-        String v = ps.convertToPalindrome("abbaccdzde");
+        String v = ps.convertToPalindrome("ababdd");
+        System.out.println(v);
+        v = ps.convertToPalindrome("a");
+        System.out.println(v);
+        v = ps.convertToPalindrome("ab");
+        System.out.println(v);
+        v = ps.convertToPalindrome("abb");
         System.out.println(v);
     }
 
+    /**
+     * returns empty string for invalid palindromes or a valid palindrome if its possible to form
+     * based on the string passed as parameter
+     * @param strVal string that needs to be converted to a palindrome if possible
+     * @return
+     */
     public String convertToPalindrome(String strVal) {
         char [] chBuffer = new char[strVal.length()];
         Map<Character, Integer> mapCount = new HashMap<>();

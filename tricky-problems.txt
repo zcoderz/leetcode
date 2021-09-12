@@ -1,91 +1,9 @@
-FB: 
-https://www.youtube.com/watch?v=XKu_SEDAykw
-----DO THESE QUEDSTIONS
-
-1. https://leetcode.com/problems/interval-list-intersections/ (D)
-2. https://leetcode.com/problems/accounts-merge/ (D)
-3. https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/ (D)
-
-   4. https://leetcode.com/problems/binary-search-tree-iterator/
-5. https://leetcode.com/problems/group-shifted-strings/
-
-6. https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/
-7. https://leetcode.com/problems/kth-largest-element-in-an-array/
-8. https://leetcode.com/problems/word-break/
-9. https://leetcode.com/problems/leftmost-column-with-at-least-a-one/
-10. https://leetcode.com/problems/construct-binary-tree-from-string/
-
-11. https://leetcode.com/problems/exclusive-time-of-functions/
-13. https://leetcode.com/problems/dot-product-of-two-sparse-vectors/
-  
-15. https://leetcode.com/problems/design-add-and-search-words-data-structure/
-
-
 For Google:
 --what is livelock?
 --what is N Choose K?
 --when is quick sort impractical and you have to use merge sort?
 --what is N-P Completeness?
 --what is a prefix tree?
-
-Arrays :
-https://uqcodewall.com/?page_id=215
-https://uqcodewall.com/?page_id=197
-
-PriorityQueue:
-https://uqcodewall.com/?page_id=422
-
-
-Design: 
-(LRU)
-https://uqcodewall.com/?page_id=245 
-
-
-Graph:
-robot room
-https://uqcodewall.com/?page_id=375
-word ladder
-https://uqcodewall.com/?page_id=542
-
-https://uqcodewall.com/?page_id=489
-https://uqcodewall.com/?page_id=1108
-
-tree:
-https://uqcodewall.com/?page_id=1255
-https://uqcodewall.com/?page_id=1122
-https://uqcodewall.com/?page_id=171
-
-diagonals:
-https://uqcodewall.com/?page_id=233
-
-strings:
-real elegant problem. practice recursive + iterative
-https://uqcodewall.com/?page_id=174
-https://uqcodewall.com/?page_id=220 (unique approach)
-https://uqcodewall.com/?page_id=370
-https://uqcodewall.com/?page_id=412
-
-dynamic programming:
-coin change : 
-https://uqcodewall.com/?page_id=154
-https://uqcodewall.com/?page_id=482
-https://uqcodewall.com/?page_id=312
-
-logical:
-https://uqcodewall.com/?page_id=1116 (max area)
-https://uqcodewall.com/?page_id=211 (max histogram area)
-https://uqcodewall.com/?page_id=270 (line sweep min area rect)
-https://uqcodewall.com/?page_id=436 (task schedule)
-https://uqcodewall.com/?page_id=456 (3-sum)
-https://uqcodewall.com/?page_id=559 (zig-zag conv)
-
-
-bits:
-https://uqcodewall.com/?page_id=1179 
-https://uqcodewall.com/?page_id=355 (prison cell ! very elegant question). 
-
-probability: https://uqcodewall.com/?page_id=280
-
 
 
 ===============================================
@@ -113,13 +31,6 @@ MissingElements
 MinInRotatedArrayWithDuplicates 
 MedianOfTwoArrays
 DisjointSetsCycleOptimized
-https://uqcodewall.com/?page_id=211 (max histogram area)
-https://uqcodewall.com/?page_id=436
-https://uqcodewall.com/?page_id=456
 
 
-bits:
-https://uqcodewall.com/?page_id=1179 
-https://uqcodewall.com/?page_id=355 (prison cell ! very elegant question). 
 
-probability: https://uqcodewall.com/?page_id=280

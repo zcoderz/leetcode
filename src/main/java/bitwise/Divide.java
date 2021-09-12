@@ -61,8 +61,9 @@ public class Divide {
             highestDouble += highestDouble;
         }
 
-        //keep subtracting highest double from dividend until dividend is less than the divisor
+        //keep subtracting the highest double from dividend until dividend is less than the divisor
         int quotient = 0;
+        //because you are dealing with negative numbers, the comparison is inverted
         while (dividend <= divisor) {
             if (dividend <= highestDouble) {
                 quotient += highestPowerOfTwo;
@@ -74,8 +75,8 @@ public class Divide {
             highestDouble >>= 1;
         }
 
-        //adjust to return the quotient based on neg sign
-          if (neg != 1) {
+        if (neg == 1) {
+            //return positive (neg ==1 means positive)
             return -quotient;
         }
         return quotient;

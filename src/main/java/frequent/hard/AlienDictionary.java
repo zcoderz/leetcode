@@ -28,6 +28,13 @@ import java.util.Set;
  */
 public class AlienDictionary {
 
+    public static void main(String [] args) {
+        String [] v = {"abc", "ab"};
+        AlienDictionary alien = new AlienDictionary();
+        String out = alien.alienOrder(v);
+        System.out.println(out);
+    }
+
     public String alienOrder(String[] words) {
         int numWords = words.length;
         Map<Character, String> wordDependencies = new HashMap<>();
@@ -42,6 +49,7 @@ public class AlienDictionary {
         for (int i = 1; i < numWords; i++) {
             String wordA = words[i - 1];
             String wordB = words[i];
+
             int inLen = Math.min(wordA.length(), wordB.length());
             int index = 0;
             while (index < inLen && wordA.charAt(index) == wordB.charAt(index)) {

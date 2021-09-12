@@ -30,7 +30,7 @@ public class FindTwoNonOverlappingSubArraysWithTargetSum {
         int len = nonOverlapping.minSumOfLengths(arr, 5);
         System.out.println(len);
 
-        int [] arr2 = {3,1,1,1,5,1,2,1};
+        int [] arr2 = {2,7,1,1,5,1,2,1};
         len = nonOverlapping.minSumOfLengthsFast(arr2, 3);
         System.out.println(len);
 

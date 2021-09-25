@@ -1,4 +1,4 @@
-package frequent.medium;
+package face_book.medium;
 
 import java.util.List;
 
@@ -59,6 +59,36 @@ public class LeftMostColumnWithOne {
             }
         }
         return leftMost;
+    }
+
+    public int leftMostColumnWithOneBinarySearch(LeftMostColumnWithOne.BinaryMatrix binaryMatrix) {
+        List<Integer> dims = binaryMatrix.dimensions();
+        int rows = dims.get(0);
+        int cols = dims.get(1);
+
+        int leftMost = cols-1;
+        int row = rows - 1;
+        boolean found = false;
+        while (row >= 0) {
+            if (binaryMatrix.get(row, leftMost) != 1) {
+                row--;
+                continue;
+            }
+            found = true;
+            int newLeft = 0;
+            int newRight = leftMost;
+            while (newLeft < newRight) {
+                int mid = newLeft + (newRight - newLeft) / 2;
+                if (binaryMatrix.get(row, mid) == 1) {
+                    newRight=mid;
+                } else {
+                    newLeft=mid+1;
+                }
+            }
+            leftMost = newRight;
+            row--;
+        }
+        return found ? leftMost : -1;
     }
 
 }

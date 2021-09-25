@@ -1,4 +1,4 @@
-package frequent.medium;
+package face_book.medium;
 
 
 /**
@@ -54,6 +54,18 @@ public class RandomPickByWeight {
             aggWeights[i] = sum;
         }
         this.sum = sum;
+    }
+
+    public int pickIndexLinear() {
+        double target = sum * Math.random();
+        int i = 0;
+        // run a linear search to find the target zone
+        for (; i < this.aggWeights.length; ++i) {
+            if (target < this.aggWeights[i])
+                return i;
+        }
+        // to have a return statement, though this should never happen.
+        return i - 1;
     }
 
     public int pickIndex() {

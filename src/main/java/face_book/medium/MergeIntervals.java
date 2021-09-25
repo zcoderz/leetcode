@@ -1,4 +1,4 @@
-package frequent.medium;
+package face_book.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;

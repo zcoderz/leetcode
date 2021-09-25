@@ -1,4 +1,4 @@
-package trees;
+package face_book.medium;
 
 import utils.Pair;
 import utils.TreeNode;

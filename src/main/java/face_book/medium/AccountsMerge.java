@@ -4,6 +4,37 @@ import utils.graph.generic.UnionFindNode;
 
 import java.util.*;
 
+/**
+ * 227. Basic Calculator II
+ * Medium
+ *
+ * 2869
+ *
+ * 424
+ *
+ * Add to List
+ *
+ * Share
+ * Given a string s which represents an expression, evaluate this expression and return its value.
+ *
+ * The integer division should truncate toward zero.
+ *
+ * You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+ *
+ * Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ *
+ *
+ *
+ * Example 1:
+ *
+ * Input: s = "3+2*2"
+ * Output: 7
+ * Example 2:
+ *
+ * Input: s = " 3/2 "
+ * Output: 1
+ *
+ */
 public class AccountsMerge {
 
     public List<List<String>> accountsMerge(List<List<String>> accounts) {

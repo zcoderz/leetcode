@@ -39,8 +39,8 @@ public class KClosestPointsQuickSelect {
         //int [][]points = {{-5,4},{-6,-5},{4,6}, {2, 11} , {7,11}};
         //int [][] points = {{1,3},{-2,2}};
         //int [][] points = {{0,1},{1,0}};
-        int [][] points = {{2,2},{2,2},{2,2},{2,2},{2,2},{2,2},{1,1}};
-
+        //int [][] points = {{2,2},{2,2},{2,2},{2,2},{2,2},{2,2},{1,1}};
+        int [][] points = {{3,3},{5,-1},{-2,4}};
 
         KClosestPointsQuickSelect kcp = new KClosestPointsQuickSelect();
         points = kcp.kClosest(points, 2);

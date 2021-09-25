@@ -1,4 +1,4 @@
-package frequent.medium;
+package face_book.medium;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class SubArraySum {
      */
     public int subarraySum(int[] nums, int k) {
         int count = 0, sum = 0;
-        HashMap < Integer, Integer > map = new HashMap < > ();
+        HashMap< Integer, Integer > map = new HashMap < > ();
         //add 0 so that as sub arrays add up to the number in question the diff between sum and k
         //would be 0 which needs to be calculated
         map.put(0, 1);
@@ -85,11 +85,11 @@ public class SubArraySum {
             int lookupV = sum - k;
             List<Integer> v = map.get(lookupV);
             if (v != null) {
-                    int iIndex = v.size() - 1;
-                    while (iIndex >= 0 && v.get(iIndex) >= j) {
-                        iIndex--;
-                    }
-                    numArr += iIndex + 1;
+                int iIndex = v.size() - 1;
+                while (iIndex >= 0 && v.get(iIndex) >= j) {
+                    iIndex--;
+                }
+                numArr += iIndex + 1;
             }
 
         }

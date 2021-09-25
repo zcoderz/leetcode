@@ -1,4 +1,4 @@
-package search;
+package face_book.medium;
 
 /**
  * 34. Find First and Last Position of Element in Sorted Array

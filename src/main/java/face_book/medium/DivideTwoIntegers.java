@@ -1,4 +1,4 @@
-package bitwise;
+package face_book.medium;
 
 /**
  * 29. Divide Two Integers
@@ -15,10 +15,10 @@ package bitwise;
  *
  * IMP-1: Facebook asks this questions often. The approach is tricky
  */
-public class Divide {
+public class DivideTwoIntegers {
 
     public static void main(String[] args) {
-        Divide div = new Divide();
+        DivideTwoIntegers div = new DivideTwoIntegers();
         //int res = div.divide(-2147483648, -3);
         int res = div.divide(30, 2);
         System.out.println(res);
@@ -52,7 +52,7 @@ public class Divide {
         dividend = (dividend < 0) ? dividend : -dividend;
         divisor = (divisor < 0) ? divisor : -divisor;
 
-        //trying to fix the highest power of two and the highest divisor multiple (highest double) that can be used
+        //trying to fix the highest power of two and the highest divisor multiple (the highest double) that can be used
         //>= HALF_INT_MIN is to avoid overflow (we are working in negatives so need to check only the negative side)
         int highestDouble = divisor;
         int highestPowerOfTwo = -1;

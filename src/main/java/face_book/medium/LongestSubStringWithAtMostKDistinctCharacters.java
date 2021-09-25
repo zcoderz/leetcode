@@ -1,4 +1,4 @@
-package hash_maps;
+package face_book.medium;
 
 import java.util.HashMap;
 import java.util.Map;

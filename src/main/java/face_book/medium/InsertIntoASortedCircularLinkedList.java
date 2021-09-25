@@ -1,4 +1,4 @@
-package linked_list;
+package face_book.medium;
 
 import utils.ListNode;
 

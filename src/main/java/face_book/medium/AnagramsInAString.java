@@ -1,4 +1,4 @@
-package amazon.medium;
+package face_book.medium;
 
 import java.util.*;
 
